@@ -21,15 +21,18 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', 'DashboardController@index')->name('dashboard');
+        //Route::get('/', 'DashboardController@index')->name('dashboard');
         //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
-        //Route::resource('/posts', 'PostController');
+        //Route::resource('/apartment', 'ApartmentController');
         //Route::resource('/categories', 'CategoryController');
     });
 
+    
 Route::get('/', 'HomeController@index')->name('LandingPage');
 
-Route::get('/searching', 'Admin\SearchController@index')->name('searchPage');
+Route::resource('/apartment', 'Admin\ApartmentController');
+
+
 
 Route::get('{any?}', function () {
     return view('guests.landing');

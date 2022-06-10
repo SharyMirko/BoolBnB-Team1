@@ -13,7 +13,7 @@
             </div>
             <div class="col">
                 <input type="text" placeholder="Location" name="Landing-search" id="Landing-search">
-                <a href="{{ route('searchPage') }}">
+                <a href="{{ route('apartment.index') }}">
                     <button class="btn btn-danger"type="submit">Cerca</button>
                 </a>
             </div>

@@ -4,10 +4,18 @@
 
 @section('content')
     <section class="container my-4" id="sec_1">
-        <h1>Titolo H1</h1>
-        <h2>Titolo H2</h2>
-        <input type="text" placeholder="Location" name="Landing-search" id="Landing-search">
-        <button type="submit">Cerca</button>
+        <div class="row row-cols-1 text-center">
+            <div class="col">
+                <h1>Titolo H1</h1>
+            </div>
+            <div class="col">
+                <h2>Titolo H2</h2>
+            </div>
+            <div class="col">
+                <input type="text" placeholder="Location" name="Landing-search" id="Landing-search">
+                <button class="btn btn-danger"type="submit">Cerca</button>
+            </div>
+        </div>
     </section>
 
     <section class="container my-4 py-4" id="sec_ap_prem">

@@ -29,7 +29,9 @@ Route::middleware('auth')
 
     
 Route::get('/', 'HomeController@index')->name('LandingPage');
-//Route::get('/show', 'HomeController@index')->name('LandingPage');
+
+// MOMENTANEO DA MODIFICARE
+Route::get('/show', 'Admin\ServiceController@index')->name('ShowPage');
 
 Route::resource('/apartment', 'Admin\ApartmentController');
 

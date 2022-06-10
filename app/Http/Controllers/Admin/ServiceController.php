@@ -15,7 +15,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        // return view('apartments.sh')
+        // MOMENTANEO DA MODIFICARE
+        return view('apartments.show');
     }
 
     /**

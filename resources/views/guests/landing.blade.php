@@ -9,7 +9,7 @@
                 <h1>Titolo H1</h1>
             </div>
             <div class="col">
-                <h2>Titolo H2</h2>
+                <h5>Titolo H5</h5>
             </div>
             <div class="col">
                 <input type="text" placeholder="Location" name="Landing-search" id="Landing-search">
@@ -21,7 +21,7 @@
     <section class="container my-4 py-4" id="sec_ap_prem">
         <div class="row py-3">
             <div class="col">
-                <h2>Titolo H2</h2>
+                <h3>Titolo H3</h3>
             </div>
         </div>
         <div class="row py-3">
@@ -87,7 +87,7 @@
 
     <section classes="container my-4 py-4" id="sec_loc_prin">
         <div class="row text-center my-3">
-            <h2>Location principali</h2>
+            <h3>Location principali</h3>
         </div>
         <div class="row row-cols-2 g-4 text-center">
             <div class="col position-relative">
@@ -111,7 +111,7 @@
 
     <section class="container my-4 py-4" id="sec_categorie">
         <div class="row text-center">
-            <h2>Categorie</h2>
+            <h3>Categorie</h3>
         </div>
         <div class="row row-cols-4 g-4 text-center">
             <div class="col position-relative">

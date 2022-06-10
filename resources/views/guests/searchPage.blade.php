@@ -3,5 +3,5 @@
 @section('title', 'Welcome')
 
 @section('content')
-    SI CERCA
+    
 @endsection

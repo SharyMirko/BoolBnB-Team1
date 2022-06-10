@@ -11,7 +11,7 @@
   --bs-blue: #3490dc;
   --bs-indigo: #6574cd;
   --bs-purple: #9561e2;
-  --bs-pink: #f66d9b;
+  --bs-pink: #F58D9D;
   --bs-red: #e3342f;
   --bs-orange: #f6993f;
   --bs-yellow: #ffed4a;
@@ -299,7 +299,7 @@ pre code {
 
 code {
   font-size: 0.875em;
-  color: #f66d9b;
+  color: #F58D9D;
   word-wrap: break-word;
 }
 
@@ -12176,5 +12176,26 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+}
+
+.nav-link-personal {
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.7rem;
+  border-top: 2px solid #fff;
+}
+
+.nav-link-personal:hover {
+  border-top: 2px solid #F15E75;
+}
+
+.btn-danger {
+  background-color: #F15E75;
+  border-color: #F15E75;
+}
+
+.btn-danger:hover {
+  background-color: #F58D9D;
+  border-color: #F58D9D;
 }
 

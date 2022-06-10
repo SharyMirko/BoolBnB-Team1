@@ -16,3 +16,12 @@
         border-top: 2px solid rgb(169, 29, 111);
     }
 }
+
+.btn-danger {
+    background-color: #F15E75;
+    border-color: #F15E75;
+    &:hover {
+        background-color: #F58D9D;
+        border-color: #F58D9D;
+    }
+}

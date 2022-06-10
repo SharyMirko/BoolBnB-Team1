@@ -1,9 +1,9 @@
 <header class="fixed-top">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark bg-light shadow-sm">
         <div class="container">
 
-            <a class="navbar-brand" href="{{ route('LandingPage') }}">
-                {{ config('app.name', 'Laravel') }}
+            <a class="navbar-brand text-dark" href="{{ route('LandingPage') }}">
+                {{ config('app.name', 'BoolBnB') }}
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -20,14 +20,25 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark nav-link-personal" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark nav-link-personal" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark nav-link-personal" href="#">Contact</a>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-dark nav-link-personal"
+                                href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link text-dark btn btn-danger "
+                                    href="{{ route('register') }}">{{ __('Regisrati!') }}</a>
                             </li>
                         @endif
                     @else
@@ -54,8 +65,9 @@
                                 </a>
 
                                 {{-- logout --}}
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                                           document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

@@ -6,3 +6,13 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.nav-link-personal {
+    color: #fff;
+    font-weight: bold;
+    font-size: .7rem;
+    border-top: 2px solid #fff;
+    &:hover {
+        border-top: 2px solid rgb(169, 29, 111);
+    }
+}

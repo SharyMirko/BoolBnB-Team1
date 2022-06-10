@@ -29,6 +29,7 @@ Route::middleware('auth')
 
     
 Route::get('/', 'HomeController@index')->name('LandingPage');
+//Route::get('/show', 'HomeController@index')->name('LandingPage');
 
 Route::resource('/apartment', 'Admin\ApartmentController');
 

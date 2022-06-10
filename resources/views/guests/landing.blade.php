@@ -13,7 +13,9 @@
             </div>
             <div class="col">
                 <input type="text" placeholder="Location" name="Landing-search" id="Landing-search">
-                <button class="btn btn-danger"type="submit">Cerca</button>
+                <a href="{{ route('searchPage') }}">
+                    <button class="btn btn-danger"type="submit">Cerca</button>
+                </a>
             </div>
         </div>
     </section>

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Model\PremiumFeature;
+use App\Model\Statistic;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PremiumFeatureController extends Controller
+class StatisticController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PremiumFeatureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\PremiumFeature  $premiumFeature
+     * @param  \App\Model\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function show(PremiumFeature $premiumFeature)
+    public function show(Statistic $statistic)
     {
         //
     }
@@ -52,10 +53,10 @@ class PremiumFeatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\PremiumFeature  $premiumFeature
+     * @param  \App\Model\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function edit(PremiumFeature $premiumFeature)
+    public function edit(Statistic $statistic)
     {
         //
     }
@@ -64,10 +65,10 @@ class PremiumFeatureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\PremiumFeature  $premiumFeature
+     * @param  \App\Model\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PremiumFeature $premiumFeature)
+    public function update(Request $request, Statistic $statistic)
     {
         //
     }
@@ -75,10 +76,10 @@ class PremiumFeatureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\PremiumFeature  $premiumFeature
+     * @param  \App\Model\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PremiumFeature $premiumFeature)
+    public function destroy(Statistic $statistic)
     {
         //
     }

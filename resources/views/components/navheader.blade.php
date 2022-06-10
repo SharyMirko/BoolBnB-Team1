@@ -21,7 +21,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark nav-link-personal" href="#">Home</a>
+                        <a class="nav-link text-dark nav-link-personal" href="{{ route('LandingPage') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark nav-link-personal" href="#">About</a>

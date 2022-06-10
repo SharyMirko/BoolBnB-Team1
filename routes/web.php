@@ -29,7 +29,7 @@ Route::middleware('auth')
 
 Route::get('/', 'HomeController@index')->name('LandingPage');
 
-Route::get('/searching', 'SearchController@index')->name('searchPage');
+Route::get('/searching', 'Admin\SearchController@index')->name('searchPage');
 
 Route::get('{any?}', function () {
     return view('guests.landing');

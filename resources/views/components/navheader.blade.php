@@ -1,5 +1,5 @@
 <header class="fixed-top">
-    <nav class="navbar navbar-expand-md navbar-dark bg-light shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">
 
             <a class="navbar-brand text-dark" href="{{ route('LandingPage') }}">
@@ -67,7 +67,7 @@
                                 {{-- logout --}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                                                                           document.getElementById('logout-form').submit();">
+                                                                                                               document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

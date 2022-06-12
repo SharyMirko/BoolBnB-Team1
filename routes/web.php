@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')
+    ->namespace('Admin')
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        //Route::get('/', 'DashboardController@index')->name('dashboard');
+        //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
+        //Route::resource('/apartment', 'ApartmentController');
+        //Route::resource('/categories', 'CategoryController');
+    });
+
+    
+Route::get('/', 'HomeController@index')->name('LandingPage');
+
+// MOMENTANEO DA MODIFICARE
+Route::get('/show', 'Admin\ServiceController@index')->name('ShowPage');
+
+Route::resource('/apartment', 'Admin\ApartmentController');
+
+
+
+Route::get('{any?}', function () {
+    return view('guests.landing');
+})->where('any', '.*');

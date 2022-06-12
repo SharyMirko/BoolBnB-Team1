@@ -1,0 +1,14 @@
+input {
+   background-color: $white;
+   border: 1px $input-border solid;
+   height: 2.5rem;
+   border-radius: 0.25rem;
+   padding: 0 1rem;
+
+   &::placeholder {
+      color: $body-color;
+      font-size: 1rem;
+      font-weight: 600;
+   }
+}
+

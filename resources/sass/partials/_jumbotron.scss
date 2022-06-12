@@ -1,0 +1,22 @@
+#jumbotron {
+   margin-top: 5rem;
+   height: calc(100vh - 5rem);
+   background: url('img/jumbotron.jpg') center;
+   color: $white;
+
+   h1 {
+      font-size: 3rem;
+   }
+
+   i.fa-search {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 1rem;
+      color: $body-color;
+   }
+
+   input {
+      padding-left: 2.25rem;
+   }
+}

@@ -1,6 +1,6 @@
 <header class="fixed-top">
-   <div class="container-fluid">
-      <nav class="navbar navbar-expand-md navbar-light bg-light py-3 py-lg-0">
+   <div class="container-fluid px-4 py-lg-0">
+      <nav class="navbar navbar-expand-md navbar-light bg-light py-4 py-lg-0">
 
          <a class="navbar-brand text-dark" href="{{ route('LandingPage') }}">
             <img src="{{ asset('img/logo_light.svg') }}" alt="BoolBnB" class="logo">

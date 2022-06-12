@@ -1,6 +1,10 @@
 header {
    background-color: $bg1;
 
+   .navbar {
+      min-height: 5rem;
+   }
+
    .logo {
       height: 1.5rem;
    }

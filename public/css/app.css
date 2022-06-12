@@ -12213,6 +12213,10 @@ header {
   background-color: #f7f7f7;
 }
 
+header .navbar {
+  min-height: 5rem;
+}
+
 header .logo {
   height: 1.5rem;
 }

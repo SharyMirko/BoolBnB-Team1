@@ -6,7 +6,7 @@
 
    {{-- jumboton --}}
    <section id="jumbotron" class="row align-items-center text-center justify-content-center">
-      <div class="col col-lg-4 mx-3">
+      <div class="col col-md-6 col-lg-5 mx-3">
          <h1>Un'esperienza unica</h1>
          <h3 class="my-3">Trova la tua location da sogno</h3>
          <div class="d-flex w-100 align-items-center position-relative">

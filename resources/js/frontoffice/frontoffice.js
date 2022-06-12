@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('../bootstrap');
 
 const LandingPageVue = new Vue({
     el: '#LandingPageVue',

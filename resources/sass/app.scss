@@ -1,27 +1,7 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
 // Bootstrap
+@import '_variables';
 @import '~bootstrap/scss/bootstrap';
+@import '_overrides';
 
-.nav-link-personal {
-    color: #fff;
-    font-weight: bold;
-    font-size: .7rem;
-    border-top: 2px solid #fff;
-    &:hover {
-        border-top: 2px solid #F15E75;
-    }
-}
-
-.btn-danger {
-    background-color: #F15E75;
-    border-color: #F15E75;
-    &:hover {
-        background-color: #F58D9D;
-        border-color: #F58D9D;
-    }
-}
+// partials
+@import '_header';

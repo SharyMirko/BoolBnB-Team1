@@ -1,9 +1,9 @@
 <header class="fixed-top">
-   <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm py-3 py-lg-0">
-      <div class="container">
+   <div class="container-fluid">
+      <nav class="navbar navbar-expand-md navbar-light bg-light py-3 py-lg-0">
 
          <a class="navbar-brand text-dark" href="{{ route('LandingPage') }}">
-            <img src="{{ asset('logo_light.svg') }}" alt="BoolBnB" class="logo">
+            <img src="{{ asset('img/logo_light.svg') }}" alt="BoolBnB" class="logo">
          </a>
 
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,7 +35,7 @@
                        <a class="nav-link nav-link-personal" href="{{ route('login') }}">{{ __('Login') }}</a>
                   </li>
                   @if (Route::has('register'))
-                     <li class="nav-item my-3">
+                     <li class="nav-item">
                         <a class="btn btn-primary " href="{{ route('register') }}">{{ __('Registrati') }}</a>
                      </li>
                   @endif
@@ -78,6 +78,6 @@
                @endguest
             </ul>
          </div>
-      </div>
-   </nav>
+      </nav>
+   </div>
 </header>

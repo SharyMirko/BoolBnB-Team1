@@ -11,13 +11,11 @@
 
    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 </head>
-<body class="pt-5">
+<body>
 
    <x-navheader/>
 
-   <main class="container py-4 mt-5">
-      @yield('content')
-   </main>
+   @yield('content')
 
    <x-foot/>
 

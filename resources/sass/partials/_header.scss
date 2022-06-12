@@ -5,7 +5,7 @@ header {
       height: 1.5rem;
    }
 
-   .nav-item {
+   .nav-item:not(:last-child) {
       margin: 0 0.8rem;
    }
 

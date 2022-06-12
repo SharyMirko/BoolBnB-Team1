@@ -12183,6 +12183,32 @@ fieldset:disabled .btn {
   color: #fff;
 }
 
+input {
+  background-color: #fff;
+  border: 1px #CACDD1 solid;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  padding: 0 1rem;
+}
+
+input::-moz-placeholder {
+  color: #3B4249;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+input:-ms-input-placeholder {
+  color: #3B4249;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+input::placeholder {
+  color: #3B4249;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 header {
   background-color: #f7f7f7;
 }
@@ -12191,7 +12217,7 @@ header .logo {
   height: 1.5rem;
 }
 
-header .nav-item {
+header .nav-item:not(:last-child) {
   margin: 0 0.8rem;
 }
 
@@ -12215,5 +12241,29 @@ header .navbar-light .navbar-nav .nav-link {
 header .navbar-light .navbar-nav .nav-link:hover,
 header .navbar-light .navbar-nav .nav-link:focus {
   color: #F15E75;
+}
+
+#jumbotron {
+  margin-top: 5rem;
+  height: calc(100vh - 5rem);
+  background: url(/images/jumbotron.jpg?d6e4aca7330dab5bdc82fee6de7b45db) center;
+  color: #fff;
+}
+
+#jumbotron h1,
+#jumbotron .h1 {
+  font-size: 3rem;
+}
+
+#jumbotron i.fa-search {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 1rem;
+  color: #3B4249;
+}
+
+#jumbotron input {
+  padding-left: 2.25rem;
 }
 

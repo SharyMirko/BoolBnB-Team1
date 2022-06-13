@@ -8,3 +8,29 @@
 @import './partials/_header';
 @import './partials/_jumbotron';
 
+<<<<<<< HEAD
+=======
+.btn-danger {
+    background-color: #F15E75;
+    border-color: #F15E75;
+    &:hover {
+        background-color: #F58D9D;
+        border-color: #F58D9D;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#sec_scroll_img {
+    max-width: 1920px;
+}
+
+.cont_img_scroll {
+    position: relative;
+    left: -25%;
+}
+>>>>>>> FrontOffice-Search-Page

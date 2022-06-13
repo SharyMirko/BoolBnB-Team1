@@ -8,29 +8,13 @@
 @import './partials/_header';
 @import './partials/_jumbotron';
 
-<<<<<<< HEAD
-=======
-.btn-danger {
-    background-color: #F15E75;
-    border-color: #F15E75;
-    &:hover {
-        background-color: #F58D9D;
-        border-color: #F58D9D;
-    }
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
 }
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-#sec_scroll_img {
-    max-width: 1920px;
-}
-
-.cont_img_scroll {
-    position: relative;
-    left: -25%;
-}
->>>>>>> FrontOffice-Search-Page

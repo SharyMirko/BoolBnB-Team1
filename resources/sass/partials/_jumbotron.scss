@@ -18,5 +18,24 @@
 
    input {
       padding-left: 2.25rem;
+      display: inline-block;
+   }
+
+   ul {
+      list-style: none;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+   }
+
+   li {
+      position: relative;
+      z-index: 99;
+      top: 0;
+      left: -5%;
+      right: 0;
+      background: white;
+      color: black;
+      width: 85%; 
    }
 }

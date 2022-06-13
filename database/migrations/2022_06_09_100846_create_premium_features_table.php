@@ -16,8 +16,8 @@ class CreatePremiumFeaturesTable extends Migration
         Schema::create('premium_features', function (Blueprint $table) {
             $table->id();
             $table->string('feature_name');
-            $table->int('feature_price');
-            $table->tinyInt('feature_duration');     
+            $table->integer('feature_price');
+            $table->tinyInteger('feature_duration');     
             $table->timestamps();
         });
     }

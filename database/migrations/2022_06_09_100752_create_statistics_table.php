@@ -15,8 +15,8 @@ class CreateStatisticsTable extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-            $table->int('apartment_id')->constrained();
-            $table->int('views');
+            $table->integer('apartment_id')->constrained();
+            $table->integer('views');
             $table->timestamps();
         });
     }

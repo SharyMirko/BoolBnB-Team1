@@ -4,7 +4,7 @@
 
 @section('content')
 
-   {{-- jumboton --}}
+   {{-- jumbotron --}}
    <section id="jumbotron" class="row align-items-center text-center justify-content-center g-0">
       <div class="col col-md-6 col-lg-5 mx-3">
          <h1>Un'esperienza unica</h1>

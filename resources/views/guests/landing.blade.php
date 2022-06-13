@@ -5,7 +5,7 @@
 @section('content')
 
    {{-- jumboton --}}
-   <section id="jumbotron" class="row align-items-center text-center justify-content-center">
+   <section id="jumbotron" class="row align-items-center text-center justify-content-center g-0">
       <div class="col col-md-6 col-lg-5 mx-3">
          <h1>Un'esperienza unica</h1>
          <h3 class="my-3">Trova la tua location da sogno</h3>
@@ -18,7 +18,7 @@
    </section>
    {{-- / --}}
 
-   <main class="container py-4 mt-5">
+   <main class="container py-4 mt-5 g-0">
       <section class="container my-4 py-4" id="sec_ap_prem">
          <div class="row py-3">
                <div class="col">

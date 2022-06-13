@@ -12209,6 +12209,11 @@ input::placeholder {
   font-weight: 600;
 }
 
+input:focus,
+input :focus-visible {
+  outline: 1px #F15E75 solid;
+}
+
 header {
   background-color: #f7f7f7;
 }
@@ -12269,20 +12274,5 @@ header .navbar-light .navbar-nav .nav-link:focus {
 
 #jumbotron input {
   padding-left: 2.25rem;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-#sec_scroll_img {
-  max-width: 1920px;
-}
-
-.cont_img_scroll {
-  position: relative;
-  left: -25%;
 }
 

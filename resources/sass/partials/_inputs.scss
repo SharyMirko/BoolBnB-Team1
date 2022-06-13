@@ -10,5 +10,9 @@ input {
       font-size: 1rem;
       font-weight: 600;
    }
+
+   &:focus, :focus-visible {
+      outline: 1px $primary solid;
+   }
 }
 

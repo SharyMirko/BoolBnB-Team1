@@ -1,4 +1,4 @@
-<article class="card">
+<article class="card rounded-3 border-0">
    <div class="img_card position-relative">
       <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
 

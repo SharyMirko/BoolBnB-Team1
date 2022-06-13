@@ -3,6 +3,7 @@
 @section('title', 'Welcome')
 
 @section('content')
+<div class="container mt-10">
 <div class="input-group rounded">
     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
         aria-describedby="search-addon" />
@@ -11,6 +12,7 @@
         <i class="fas fa-search"></i>
     </span>
 </div>
+
 <div class="row py-3 dropdown-filter">
     <div class="col">
         <input type="text" placeholder="Stanze" name="" id="">
@@ -225,5 +227,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

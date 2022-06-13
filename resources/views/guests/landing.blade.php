@@ -35,7 +35,8 @@
             <div class="row py-3">
                 <div class="col text-end">
                     <button class="btn btn-primary">
-                        << /button>
+                     <
+                        </button>
                             <button class="btn btn-primary">></button>
                 </div>
             </div>

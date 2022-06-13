@@ -19,20 +19,103 @@
 </section>
 {{-- / --}}
 
-<main class="container py-4 mt-5">
-   <section class="container my-4 py-4" id="sliderVue">
+<main class="container py-4 mt-5 text-center">
+   <div class="row mx-auto my-auto justify-content-center">
+      <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+
+              <div class="carousel-item active">
+                  <div class="col-4">
+                      <div class="card">
+                          <div class="card-img">
+                              <img src="https://via.placeholder.com/500x400/31f?text=1" class="img-fluid">
+                          </div>
+                          <div class="carousel-caption">Slide 1</div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                  <div class="col-4">
+                      <div class="card">
+                          <div class="card-img">
+                              <img src="https://via.placeholder.com/500x400/e66?text=2" class="img-fluid">
+                          </div>
+                          <div class="carousel-caption">Slide 2</div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                  <div class="col-4">
+                      <div class="card">
+                          <div class="card-img">
+                              <img src="https://via.placeholder.com/500x400/7d2?text=3" class="img-fluid">
+                          </div>
+                          <div class="carousel-caption">Slide 3</div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- <div class="carousel-item">
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-img">
+                              <img src="https://via.placeholder.com/500x400?text=4" class="img-fluid">
+                          </div>
+                          <div class="card-img-overlay">Slide 4</div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-img">
+                              <img src="https://via.placeholder.com/500x400/aba?text=5" class="img-fluid">
+                          </div>
+                          <div class="card-img-overlay">Slide 5</div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-img">
+                              <img src="https://via.placeholder.com/500x400/fc0?text=6" class="img-fluid">
+                          </div>
+                          <div class="card-img-overlay">Slide 6</div>
+                      </div>
+                  </div>
+              </div> -->
+
+          </div>
+
+          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </a>
+      </div>
+   </div>
+   <!-- <section class="container my-4 py-4" id="sliderVue">
+
+
       <div class="row py-3">
          <div class="col">
             <h3>Titolo H3</h3>
          </div>
       </div>
+
       <div class="row py-3">
          <div class="col text-end">
-            <button @click='backward' class="btn btn-primary">
-               < </button>
-                  <button @click='forward' class="btn btn-primary"> > </button>
+            <button @click='backward' class="btn btn-primary"> < </button>
+            <button @click='forward' class="btn btn-primary"> > </button>
          </div>
       </div>
+      
       <div class="row row-cols-3 flex-nowrap overflow-hidden py-3">
          <div v-for='(item, index) in apartments' class="col">
 
@@ -61,7 +144,7 @@
       <div style="text-align:center">
          <span v-for="(dot,index) in apartments" :class="elementOrder == index ? 'opacity-50' : ''" class="dot" onclick="currentSlide()"></span>         
       </div>
-   </section>
+   </section> -->
 
    <section classes="container my-4 py-4" id="sec_loc_prin">
       <div class="row text-center my-3">
@@ -116,4 +199,5 @@
       </div>
    </section>
 </main>
+
 @endsection

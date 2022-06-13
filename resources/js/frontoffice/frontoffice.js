@@ -6,3 +6,5 @@ const LandingPageVue = new Vue({
    el: "#LandingPageVue",
    render: (h) => h(LandingPageVue),
 });
+
+

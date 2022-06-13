@@ -1,8 +1,8 @@
 <header class="fixed-top">
    <div class="container-fluid px-4 py-lg-0">
-      <nav class="navbar navbar-expand-md navbar-light bg-light py-4 py-lg-0">
+      <nav class="navbar navbar-expand-md navbar-light bg-light py-4 py-md-0 align-items-stretch">
 
-         <a class="navbar-brand text-dark" href="{{ route('LandingPage') }}">
+         <a class="navbar-brand text-dark align-self-center" href="{{ route('LandingPage') }}">
             <img src="{{ asset('img/logo_light.svg') }}" alt="BoolBnB" class="logo">
          </a>
 
@@ -12,7 +12,7 @@
                <span class="navbar-toggler-icon"></span>
          </button>
 
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <div class="navbar-collapse align-items-stretch my-3 my-md-0 collapse show" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 
@@ -20,7 +20,7 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto align-items-center">
-               <li class="nav-item">
+               <li class="nav-item ">
                   <a class="nav-link nav-link-personal" href="{{ route('LandingPage') }}">Home</a>
                </li>
                <li class="nav-item">
@@ -35,8 +35,8 @@
                        <a class="nav-link nav-link-personal" href="{{ route('login') }}">{{ __('Login') }}</a>
                   </li>
                   @if (Route::has('register'))
-                     <li class="nav-item">
-                        <a class="btn btn-primary " href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                     <li class="nav-item my-sm-3 my-md-0">
+                        <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                      </li>
                   @endif
                @else

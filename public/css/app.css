@@ -12199,3 +12199,18 @@ fieldset:disabled .btn {
   border-color: #F58D9D;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#sec_scroll_img {
+  max-width: 1920px;
+}
+
+.cont_img_scroll {
+  position: relative;
+  left: -25%;
+}
+

@@ -96,7 +96,7 @@
          <div class="row py-4">
                <h3>Categorie</h3>
          </div>
-         <div class="row row-cols-4 g-4 text-center">
+         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 text-center">
                <div class="col">
                   <a href="#" class="text-muted">
                      <img src="{{ asset('img/cat_appartamenti.png') }}" class="img-fluid w-100" alt="Appartamenti">

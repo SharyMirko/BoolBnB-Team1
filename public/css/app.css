@@ -12284,6 +12284,8 @@ header .navbar-light .navbar-nav .nav-link:focus {
   margin-top: 5rem;
   height: calc(100vh - 5rem);
   background: url(/images/jumbotron.jpg?d6e4aca7330dab5bdc82fee6de7b45db) center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
 }
 

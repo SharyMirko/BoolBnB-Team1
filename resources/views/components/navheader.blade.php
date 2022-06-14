@@ -21,7 +21,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto align-items-center">
                <li class="nav-item ">
-                  <a class="nav-link nav-link-personal" href="{{ route('LandingPage') }}">Home</a>
+                  <a class="nav-link nav-link-personal" href="#">Cerca</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link nav-link-personal" href="#">About</a>
@@ -33,7 +33,7 @@
                <!-- Authentication Links -->
                @guest
                   <li class="nav-item">
-                     <a class="nav-link nav-link-personal" data-bs-toggle="modal" data-bs-target="#loginModal">{{ __('Login') }}</a>
+                     <a href="#" class="nav-link nav-link-personal" data-bs-toggle="modal" data-bs-target="#loginModal">{{ __('Login') }}</a>
                   </li>
                   @if (Route::has('register'))
                      <li class="nav-item my-sm-3 my-md-0">

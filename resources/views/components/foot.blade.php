@@ -22,11 +22,13 @@
          </div>
 
          <div class="col-12 col-sm-3 col-md-2 mb-4">
-            <h5>Login</h5>
+            <h5>Location</h5>
             <nav>
                <ul class="nav flex-column">
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Login</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Registrati</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Roma</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Milano</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Napoli</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Vibo Valentia</a></li>
                </ul>
             </nav>
          </div>

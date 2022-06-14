@@ -15,7 +15,9 @@
 
    <x-navheader/>
 
-   @yield('content')
+   <main>
+      @yield('content')
+   </main>
 
    <x-foot/>
 

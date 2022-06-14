@@ -87,9 +87,9 @@
       <div class="modal-content rounded-3 overflow-hidden">
 
          <div class="modal-body d-flex p-0">
-            <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="d-none d-lg-block img-fluid w-100">
+            <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="d-none d-lg-block img-fluid w-50">
 
-            <form method="POST" action="{{ route('login') }}" class="p-5 rounded-0 d-flex flex-column justify-content-center">
+            <form method="POST" action="{{ route('login') }}" class="flex-grow-1 p-5 rounded-0 d-flex flex-column justify-content-center">
                @csrf
 
                <div class="form-group row mb-2 text-center">
@@ -159,7 +159,7 @@
          <div class="modal-body d-flex p-0">
             <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="d-none d-lg-block img-fluid w-100">
 
-            <form method="POST" action="{{ route('register') }}" class="p-5 rounded-0 d-flex flex-column justify-content-center">
+            <form method="POST" action="{{ route('register') }}" class="flex-grow-1 p-5 rounded-0 d-flex flex-column justify-content-center">
                @csrf
 
                <div class="form-group row text-center">
@@ -246,7 +246,7 @@
          <div class="modal-body d-flex p-0">
             <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="d-none d-lg-block img-fluid w-100">
 
-            <form method="POST" action="{{ route('password.update') }}" class="p-5 rounded-0 d-flex flex-column justify-content-center">
+            <form method="POST" action="{{ route('password.update') }}" class="flex-grow-1 p-5 rounded-0 d-flex flex-column justify-content-center">
                @csrf
 
                <div class="form-group row text-center">

@@ -11,7 +11,7 @@
          <h3 class="my-3">Trova la tua location da sogno</h3>
          <div class="d-flex w-100 align-items-center position-relative">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Location" name="Landing-search" id="Landing-search" class="me-2 flex-grow-1">
+            <input type="text" placeholder="Location" name="Landing-search" id="Landing-search" class="form-control me-2 flex-grow-1">
             <a href="{{ route('apartment.index') }}" class="btn btn-primary d-flex flex-column justify-content-center align-self-stretch"><span>Cerca</span></a>
          </div>
       </div>

@@ -12211,49 +12211,6 @@ a {
   background-color: #f7f7f7;
 }
 
-input [type=text],
-input [type=email],
-input [type=number],
-input [type=password] {
-  background-color: #fff;
-  border: 1px #CACDD1 solid;
-  height: 2.5rem;
-  border-radius: 0.25rem;
-  padding: 0 1rem;
-}
-
-input [type=text]::-moz-placeholder, input [type=email]::-moz-placeholder, input [type=number]::-moz-placeholder, input [type=password]::-moz-placeholder {
-  color: #3B4249;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-input [type=text]:-ms-input-placeholder, input [type=email]:-ms-input-placeholder, input [type=number]:-ms-input-placeholder, input [type=password]:-ms-input-placeholder {
-  color: #3B4249;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-input [type=text]::placeholder,
-input [type=email]::placeholder,
-input [type=number]::placeholder,
-input [type=password]::placeholder {
-  color: #3B4249;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-input [type=text]:focus,
-input [type=text] :focus-visible,
-input [type=email]:focus,
-input [type=email] :focus-visible,
-input [type=number]:focus,
-input [type=number] :focus-visible,
-input [type=password]:focus,
-input [type=password] :focus-visible {
-  outline: 1px #F15E75 solid;
-}
-
 header {
   background-color: #f7f7f7;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);

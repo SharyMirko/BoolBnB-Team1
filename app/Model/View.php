@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PremiumFeature extends Model
+class View extends Model
 {
    protected $fillable = [
-      'name', 'price', 'duration'
+      'apartment_id', 'ip_address'
    ];
 }

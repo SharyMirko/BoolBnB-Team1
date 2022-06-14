@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class StatisticSeeder extends Seeder
+class ApartmentPremiumFeatureSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -139,7 +139,7 @@
                   </button>
 
                   @if (Route::has('password.request'))
-                     <a href="{{ route('password.request') }}">
+                     <a href="{{ route('password.request') }}" data-bs-toggle="modal" data-bs-target="#passwordResetModal">
                         {{ __('Forgot Your Password?') }}
                      </a>
                   @endif
@@ -233,6 +233,61 @@
                </button>
             </form>
 
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Modal Password Reset -->
+<div class="modal fade" id="passwordResetModal" tabindex="-1" aria-labelledby="passwordResetModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-3 overflow-hidden">
+
+         <div class="modal-body d-flex p-0">
+            <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="img-fluid w-50">
+
+            <form method="POST" action="{{ route('password.update') }}" class="w-50 p-5 rounded-0 d-flex flex-column justify-content-center">
+               @csrf
+
+               <div class="form-group row text-center">
+                  <h1>Reset password</h1>
+                  <p>Compila i campi sottostanti per reimpostare la password.</p>
+               </div>
+
+               <div class="form-group row mb-2 text-center">
+                  <div class="col">
+                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+
+                     @error('email')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="form-group row mb-2">
+                  <div class="col">
+                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="{{ __('Password') }}">
+
+                     @error('password')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="form-group row mb-2">
+                  <div class="col">
+                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="{{ __('Confirm Password') }}">
+                  </div>
+               </div>
+
+               <button type="submit" class="btn btn-primary">
+                  {{ __('Reset Password') }}
+               </button>
+            </form>
          </div>
       </div>
    </div>

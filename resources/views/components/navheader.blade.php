@@ -89,7 +89,7 @@
          <div class="modal-body d-flex p-0">
             <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="img-fluid w-50">
 
-            <form method="POST" action="{{ route('login') }}" class="w-50 p-5 rounded-0">
+            <form method="POST" action="{{ route('login') }}" class="w-50 p-5 rounded-0 d-flex flex-column justify-content-center">
                @csrf
 
                <div class="form-group row mb-2 text-center">
@@ -159,7 +159,7 @@
          <div class="modal-body d-flex p-0">
             <img src="{{ asset('img/login_img.jpg') }}" alt="Login" class="img-fluid w-50">
 
-            <form method="POST" action="{{ route('register') }}" class="w-50 p-5 rounded-0">
+            <form method="POST" action="{{ route('register') }}" class="w-50 p-5 rounded-0 d-flex flex-column justify-content-center">
                @csrf
 
                <div class="form-group row text-center">

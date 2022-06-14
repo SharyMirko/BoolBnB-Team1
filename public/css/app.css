@@ -6367,7 +6367,7 @@ fieldset:disabled .btn {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 720px;
+    max-width: 800px;
   }
 }
 

@@ -36,7 +36,7 @@
                      <a href="#" class="nav-link nav-link-personal" data-bs-toggle="modal" data-bs-target="#loginModal">{{ __('Login') }}</a>
                   </li>
                   @if (Route::has('register'))
-                     <li class="nav-item my-sm-3 my-md-0">
+                     <li class="nav-item mt-3 my-md-0">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">{{ __('Register') }}</button>
                      </li>
                   @endif

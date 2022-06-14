@@ -6367,7 +6367,7 @@ fieldset:disabled .btn {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 800px;
+    max-width: 720px;
   }
 }
 
@@ -12211,7 +12211,10 @@ a {
   background-color: #f7f7f7;
 }
 
-input {
+input [type=text],
+input [type=email],
+input [type=number],
+input [type=password] {
   background-color: #fff;
   border: 1px #CACDD1 solid;
   height: 2.5rem;
@@ -12219,26 +12222,35 @@ input {
   padding: 0 1rem;
 }
 
-input::-moz-placeholder {
+input [type=text]::-moz-placeholder, input [type=email]::-moz-placeholder, input [type=number]::-moz-placeholder, input [type=password]::-moz-placeholder {
   color: #3B4249;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
-input:-ms-input-placeholder {
+input [type=text]:-ms-input-placeholder, input [type=email]:-ms-input-placeholder, input [type=number]:-ms-input-placeholder, input [type=password]:-ms-input-placeholder {
   color: #3B4249;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
-input::placeholder {
+input [type=text]::placeholder,
+input [type=email]::placeholder,
+input [type=number]::placeholder,
+input [type=password]::placeholder {
   color: #3B4249;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
-input:focus,
-input :focus-visible {
+input [type=text]:focus,
+input [type=text] :focus-visible,
+input [type=email]:focus,
+input [type=email] :focus-visible,
+input [type=number]:focus,
+input [type=number] :focus-visible,
+input [type=password]:focus,
+input [type=password] :focus-visible {
   outline: 1px #F15E75 solid;
 }
 
@@ -12347,7 +12359,7 @@ header .navbar-light .navbar-nav .nav-link:focus {
   color: #FFBC39;
   top: 1rem;
   right: 1rem;
-  background: url(/images/promo_crown.svg?36875e9abd3dce82f05710da0cf5a1af) center;
+  background: url(/images/promo_crown.svg?b4cbcc7f166b0279c37bf8b9cb8bf10d) center;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 

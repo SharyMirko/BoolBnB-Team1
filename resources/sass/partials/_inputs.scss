@@ -1,4 +1,7 @@
-input {
+input [type=text],
+input [type=email],
+input [type=number],
+input [type=password] {
    background-color: $white;
    border: 1px $input-border solid;
    height: 2.5rem;
@@ -8,7 +11,7 @@ input {
    &::placeholder {
       color: $body-color;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 400;
    }
 
    &:focus, :focus-visible {

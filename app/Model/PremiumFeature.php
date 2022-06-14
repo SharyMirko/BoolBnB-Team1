@@ -9,4 +9,8 @@ class PremiumFeature extends Model
    protected $fillable = [
       'name', 'price', 'duration'
    ];
+
+   public function apartments() {
+      return $this->belongsToMany('App\Model\Apartment');
+   }
 }

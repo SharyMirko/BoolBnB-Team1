@@ -12,5 +12,9 @@ class Apartment extends Model
 
    public function services() {
       return $this->belongsToMany('App\Model\Service');
-  }
+   }
+
+   public function premiumFeatures() {
+      return $this->belongsToMany('App\Model\PremiumFeature');
+   }
 }

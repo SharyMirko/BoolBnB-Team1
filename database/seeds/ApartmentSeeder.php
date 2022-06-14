@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Model\Apartment;
-use App\User;
+use App\Model\User;
 use Faker\Generator as FakerGenerator;
 use Faker\Factory as FakerFactory;
 

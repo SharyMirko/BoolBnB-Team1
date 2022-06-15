@@ -17,9 +17,9 @@
    </section>
 
    <div class="container pb-5">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-         <span>12 risultati</span>
-         <div class="d-flex align-items-center">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+         <span class="mt-4 mt-sm-0 me-4">12 risultati</span>
+         <div class="d-flex align-items-center mt-4 mt-sm-0">
             <span class="me-2">Ordinamento:</span>
             <select name="sort" id="sort" class="form-select">
                <option value="1">Alfabetico</option>

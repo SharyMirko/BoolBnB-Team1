@@ -10,8 +10,8 @@ class Message extends Model
       'apartment_id', 'email_sender', 'text_ms'
    ];
 
-   public function user()
+   public function apartment()
    {
-      return $this->belongsTo('App\Model\User');
+      return $this->belongsTo('App\Model\Apartment');
    }
 }

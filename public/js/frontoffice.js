@@ -27634,7 +27634,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./resources/js/frontoffice/comuni.js":
 /*!********************************************!*\
   !*** ./resources/js/frontoffice/comuni.js ***!
@@ -27680,8 +27679,6 @@ var landinSearch = new Vue({
 
 /***/ }),
 
-=======
->>>>>>> origin/Style
 /***/ "./resources/js/frontoffice/frontoffice.js":
 /*!*************************************************!*\
   !*** ./resources/js/frontoffice/frontoffice.js ***!
@@ -27690,11 +27687,8 @@ var landinSearch = new Vue({
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
-<<<<<<< HEAD
 
 __webpack_require__(/*! ./comuni.js */ "./resources/js/frontoffice/comuni.js");
-=======
->>>>>>> origin/Style
 
 var LandingPageVue = new Vue({
   el: "#LandingPageVue",
@@ -27723,13 +27717,8 @@ var LandingPageVue = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/frontoffice/frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
 module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> origin/Style
 
 
 /***/ })

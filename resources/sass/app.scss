@@ -1,13 +1,18 @@
 // Bootstrap
-@import './partials/_variables';
+@import './partials/_bs-variables';
 @import '~bootstrap/scss/bootstrap';
-@import './partials/_overrides';
+@import './partials/_bs-overrides';
 
 // partials
-@import './partials/_inputs';
+@import './partials/_global';
 @import './partials/_header';
 @import './partials/_jumbotron';
+@import './partials/_card';
+@import './partials/_footer';
 
+<<<<<<< HEAD
 .mt-10 {
   margin-top: 8rem;
 }
+=======
+>>>>>>> origin/Style

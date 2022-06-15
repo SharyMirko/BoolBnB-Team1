@@ -1,0 +1,53 @@
+.card {
+   background-color: $bg1;
+   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+
+   .crown {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      color: $gold;
+      top: 1rem;
+      right: 1rem;
+      background: url('img/promo_crown.svg') center;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+   }
+
+   .user-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: $primary;
+      font-size: 1rem;
+      font-weight: 700;
+      color: $white;
+      border-radius: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      bottom: 1rem;
+      right: 1rem;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+   }
+
+   .geo::before {
+      content: '\f3c5';
+      color: $primary;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+   }
+
+   .category {
+      color: $grey_1;
+      font-size: 1rem;
+      text-transform: capitalize;
+   }
+
+   .price {
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      .price-suffix {
+         font-size: 0.8rem;
+      }
+   }
+}

@@ -12278,6 +12278,44 @@ header .navbar-light .navbar-nav .nav-link:focus {
   color: #F15E75;
 }
 
+#landing-slider {
+  /* medium and up screens */
+}
+
+@media (max-width: 767px) {
+  #landing-slider .carousel-inner .carousel-item > div {
+    display: none;
+  }
+
+  #landing-slider .carousel-inner .carousel-item > div:first-child {
+    display: block;
+  }
+}
+
+#landing-slider .carousel-inner .carousel-item.active,
+#landing-slider .carousel-inner .carousel-item-next,
+#landing-slider .carousel-inner .carousel-item-prev {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  #landing-slider .carousel-inner .carousel-item-end.active,
+  #landing-slider .carousel-inner .carousel-item-next {
+    transform: translateX(33.3333333333%);
+  }
+
+  #landing-slider .carousel-inner .carousel-item-start.active,
+  #landing-slider .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.3333333333%);
+  }
+}
+
+#landing-slider .carousel-inner .carousel-item-end,
+#landing-slider .carousel-inner .carousel-item-start {
+  transform: translateX(0);
+}
+
 #jumbotron {
   height: calc(100vh - 5rem);
   background: url(/images/jumbotron.jpg?d6e4aca7330dab5bdc82fee6de7b45db) center;

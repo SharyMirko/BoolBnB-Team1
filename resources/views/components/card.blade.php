@@ -9,7 +9,7 @@
    <div class="card-body">
       <h5 class="card-title">Appartamento moderno</h5>
       <p class="geo icon">Milano</p>
-      <div class="d-flex justify-content-between align-items-end">
+      <div class="d-flex justify-content-between align-items-end flex-wrap">
          <p class="price m-0">€ 420<span class="price-suffix">/notte</span></p>
          <p class="category m-0">Appartamento</p>
       </div>

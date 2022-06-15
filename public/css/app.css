@@ -3893,12 +3893,12 @@ fieldset:disabled .btn {
 
 .btn-link {
   font-weight: 400;
-  color: #fff;
+  color: #F15E75;
   text-decoration: underline;
 }
 
 .btn-link:hover {
-  color: #fff;
+  color: #c14b5e;
 }
 
 .btn-link:disabled,
@@ -6360,14 +6360,14 @@ fieldset:disabled .btn {
   }
 
   .modal-sm {
-    max-width: 300px;
+    max-width: 360px;
   }
 }
 
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 800px;
+    max-width: 720px;
   }
 }
 
@@ -12177,12 +12177,6 @@ fieldset:disabled .btn {
   }
 }
 
-.btn-primary,
-.btn-primary:hover,
-.btn-primary:focus {
-  color: #fff;
-}
-
 main {
   margin-top: 5rem;
 }
@@ -12209,6 +12203,11 @@ a {
 
 #sec_loc_prin {
   background-color: #f7f7f7;
+}
+
+.btn-custom-outline:hover,
+.btn-custom-outline:focus {
+  color: #fff;
 }
 
 header {
@@ -12346,6 +12345,10 @@ header .navbar-light .navbar-nav .nav-link:focus {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
+.card .filtro-card {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
 .card .crown {
   width: 2.5rem;
   height: 2.5rem;
@@ -12393,6 +12396,18 @@ header .navbar-light .navbar-nav .nav-link:focus {
 
 .card .price .price-suffix {
   font-size: 0.8rem;
+}
+
+#search i.fa-search {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 1rem;
+  color: #3B4249;
+}
+
+#search input {
+  padding-left: 2.25rem;
 }
 
 footer {

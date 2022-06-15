@@ -21,7 +21,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto align-items-center">
                <li class="nav-item ">
-                  <a class="nav-link nav-link-personal" href="#">Cerca</a>
+                  <a class="nav-link nav-link-personal" href="{{ route('apartment.index') }}">Cerca</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link nav-link-personal" href="#">About</a>
@@ -37,7 +37,7 @@
                   </li>
                   @if (Route::has('register'))
                      <li class="nav-item mt-3 my-md-0">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">{{ __('Register') }}</button>
+                        <button class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#registerModal">{{ __('Register') }}</button>
                      </li>
                   @endif
                @else

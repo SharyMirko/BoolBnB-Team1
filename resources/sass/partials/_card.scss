@@ -2,6 +2,10 @@
    background-color: $bg1;
    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 
+   .filtro-card {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);;
+   }
+
    .crown {
       width: 2.5rem;
       height: 2.5rem;

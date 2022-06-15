@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-5">
    <div class="container">
       <div class="row py-5">
 
@@ -11,11 +11,11 @@
             <h5>Categorie</h5>
             <nav>
                <ul class="nav flex-column">
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Appartamenti</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Stanze</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Ville singole</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Villette</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Casali</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Appartamenti</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Stanze</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Ville singole</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Villette</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Casali</a></li>
                </ul>
             </nav>
 
@@ -25,10 +25,10 @@
             <h5>Location</h5>
             <nav>
                <ul class="nav flex-column">
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Roma</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Milano</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Napoli</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Vibo Valentia</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Roma</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Milano</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Napoli</a></li>
+                  <li class="nav-item mb-2"><a href="{{ route('apartment.index') }}" class="nav-link p-0 text-muted">Vibo Valentia</a></li>
                </ul>
             </nav>
          </div>

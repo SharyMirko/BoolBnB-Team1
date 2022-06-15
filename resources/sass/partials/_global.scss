@@ -26,5 +26,8 @@ a {
    background-color: $bg1;
 }
 
-
+.btn-custom-outline:hover,
+.btn-custom-outline:focus {
+   color: $white;
+}
 

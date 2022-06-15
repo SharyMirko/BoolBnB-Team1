@@ -1,7 +1,6 @@
 // Bootstrap
 @import './partials/_bs-variables';
 @import '~bootstrap/scss/bootstrap';
-@import './partials/_bs-overrides';
 
 // partials
 @import './partials/_global';
@@ -9,5 +8,6 @@
 @import './partials/_landing-slider';
 @import './partials/_jumbotron';
 @import './partials/_card';
+@import './partials/_searchPage';
 @import './partials/_footer';
 

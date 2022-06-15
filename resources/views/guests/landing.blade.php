@@ -12,7 +12,7 @@
          <div class="d-flex w-100 align-items-center position-relative">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Location" name="Landing-search" id="Landing-search" class="form-control me-2 flex-grow-1">
-            <a href="{{ route('apartment.index') }}" class="btn btn-primary d-flex flex-column justify-content-center align-self-stretch"><span>Cerca</span></a>
+            <a href="{{ route('apartment.index') }}" class="btn btn-primary text-light">Cerca</a>
          </div>
       </div>
    </section>
@@ -37,28 +37,28 @@
          <div class="row row-cols-1 row-cols-md-2 g-4 text-center">
 
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/roma.png') }}" class="img-fluid w-100" alt="Roma">
                   <p class="landing-category-name">Roma</p>
                </a>
             </div>
 
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/milano.png') }}" class="img-fluid w-100" alt="Milano">
                   <p class="landing-category-name">Milano</p>
                </a>
             </div>
 
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/napoli.png') }}" class="img-fluid w-100" alt="Napoli">
                   <p class="landing-category-name">Napoli</p>
                </a>
             </div>
 
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/vibo.png') }}" class="img-fluid w-100" alt="Vibo Valentia">
                   <p class="landing-category-name">Vibo Valentia</p>
                </a>
@@ -78,25 +78,25 @@
       </div>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 text-center">
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/cat_appartamenti.png') }}" class="img-fluid w-100" alt="Appartamenti">
                   <p class="landing-category-name">Appartamenti</p>
                </a>
             </div>
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/cat_stanze.png') }}" class="img-fluid w-100" alt="Stanze">
                   <p class="landing-category-name">Stanze</p>
                </a>
             </div>
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/cat_casali.png') }}" class="img-fluid w-100" alt="Casali">
                   <p class="landing-category-name">Casali</p>
                </a>
             </div>
             <div class="col">
-               <a href="#" class="text-muted">
+               <a href="{{ route('apartment.index') }}" class="text-muted">
                   <img src="{{ asset('img/cat_ville.png') }}" class="img-fluid w-100" alt="Ville">
                   <p class="landing-category-name">Ville</p>
                </a>

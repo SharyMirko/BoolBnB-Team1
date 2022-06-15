@@ -1,0 +1,13 @@
+#search {
+   i.fa-search {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 1rem;
+      color: $body-color;
+   }
+
+   input {
+      padding-left: 2.25rem;
+   }
+}

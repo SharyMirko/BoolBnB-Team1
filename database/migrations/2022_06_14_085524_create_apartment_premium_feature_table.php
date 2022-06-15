@@ -15,8 +15,8 @@ class CreateApartmentPremiumFeatureTable extends Migration
     {
         Schema::create('apartment_premium_feature', function (Blueprint $table) {
             // $table->id();
-            $table->integer('apartment_id')->constrained();
-            $table->integer('premium_feature_id')->constrained();
+            $table->foreignId('apartment_id')->constrained();
+            $table->foreignId('premium_feature_id')->constrained();
             $table->dateTime('started_at')->default(date('Y-m-d H:i:s'));
             $table->dateTime('expiring_at')->default(date('Y-m-d H:i:s', strtotime(' + 24 hours')));
             // $table->primary(['apartment_id', 'premium_feature_id']);

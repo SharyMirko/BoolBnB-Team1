@@ -15,7 +15,7 @@ class CreateViewsTable extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->integer('apartment_id')->constrained();
+            $table->foreignId('apartment_id')->constrained();
             $table->string('ip_address');
             $table->timestamps();
         });

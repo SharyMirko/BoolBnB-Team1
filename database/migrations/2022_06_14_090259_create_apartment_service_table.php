@@ -14,8 +14,8 @@ class CreateApartmentServiceTable extends Migration
     public function up()
     {
         Schema::create('apartment_service', function (Blueprint $table) {
-         $table->integer('apartment_id')->constrained();
-         $table->integer('service_id')->constrained();
+         $table->foreignId('apartment_id')->constrained();
+         $table->foreignId('service_id')->constrained();
          $table->primary(['apartment_id', 'service_id']);
      });
     }

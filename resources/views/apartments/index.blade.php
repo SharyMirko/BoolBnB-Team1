@@ -46,7 +46,7 @@
       <div class="modal-dialog modal-sm modal-dialog-centered">
          <div class="modal-content">
 
-            <div class="modal-header border-0 px-5 py-4">
+            <div class="modal-header border-0 px-5 pt-4">
                <h2 class="modal-title" id="filtersModalLabel">Filtri di ricerca</h2>
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -104,10 +104,40 @@
                   </div>
 
                   <div class="form-group row my-4">
-                     <div class="col">
-                        <div class="form-check">
-                           <input type="checkbox" class="form-check-input" value="" id="wifi">
-                           <label class="form-check-label" for="wifi">WiFi</label>
+                     <div class="col d-flex justify-content-between">
+
+                        <div class="d-flex flex-column">
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">WiFi</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Sauna</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Portineria</label>
+                           </div>
+                        </div>
+
+                        <div class="d-flex flex-column">
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Posto auto</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Piscina</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Vista panoramica</label>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -136,9 +166,9 @@
 
                </form>
             </div>
-            <div class="modal-footer border-0 justify-content-center">
-               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Reset filtri</button>
-               <button type="button" class="btn btn-primary">Applica filtri</button>
+            <div class="modal-footer border-0 justify-content-center px-5">
+               <button type="button" class="btn btn-primary text-white flex-grow-1">Applica filtri</button>
+               <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1" data-bs-dismiss="modal">Reset filtri</button>
             </div>
          </div>
       </div>

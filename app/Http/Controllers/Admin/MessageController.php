@@ -12,7 +12,7 @@ class MessageController extends Controller
     
     public function index()
     {
-        $message = Message::where('user_id', Auth::user()->id)->all(20);
+        $message = Message::where('user_id', Auth::user()->id)->paginate(20);
 
         return view('admin.messages.index', compact('message'));
     }

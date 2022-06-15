@@ -6,6 +6,9 @@
    <!-- Scripts -->
    <script src="{{ asset('js/backoffice.js') }}" defer></script>
 
+   <!-- Styles -->
+   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 </head>
 <body>

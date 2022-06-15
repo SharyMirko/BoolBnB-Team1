@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model\Statistic;
+use App\View;
 use Faker\Generator as Faker;
 
-$factory->define(Statistic::class, function (Faker $faker) {
+$factory->define(View::class, function (Faker $faker) {
     return [
         //
     ];

@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = [
-        'apartment_id', 'user_id', 'email_guest', 'text_ms'
-    ];
+   protected $fillable = [
+      'apartment_id', 'email_sender', 'text_ms'
+   ];
 
-    public function user() {
-        return $this->belongsTo('App\User');
-    }
+   public function user()
+   {
+      return $this->belongsTo('App\Model\User');
+   }
 }

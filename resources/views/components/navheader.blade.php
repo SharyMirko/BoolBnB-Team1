@@ -19,7 +19,7 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto align-items-center mt-3">
+            <ul class="navbar-nav ms-auto align-items-center mt-3  mt-md-0">
                <li class="nav-item ">
                   <a class="nav-link nav-link-personal" href="{{ route('apartment.index') }}">Cerca</a>
                </li>
@@ -42,15 +42,15 @@
                   @endif
                @else
                   <li class="nav-item dropdown mt-3 my-md-0">
-                     <a id="navbarDropdown" class="btn btn-primary dropdown-toggle text-white fw-bold" href="#" role="button"
+                     <a id="navbarDropdown" class="btn btn-primary dropdown-toggle text-white fw-bold text-upppercase" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} GR
+                        {{ substr(Auth::user()->first_name, 0, 1) }}{{ substr(Auth::user()->last_name, 0, 1) }}
                      </a>
 
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownAuth">
 
                         {{-- dashboard --}}
-                        <a class="dropdown-item" href="#!">
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                            {{ __('My dashboard') }}
                         </a>
 

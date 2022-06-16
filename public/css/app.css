@@ -12386,7 +12386,7 @@ header .dropdown-item:focus {
   color: #FFBC39;
   top: 1rem;
   right: 1rem;
-  background: url(/images/promo_crown.svg?b4cbcc7f166b0279c37bf8b9cb8bf10d) center;
+  background: url(/images/promo_crown.svg?e44e2e696d8918ee4967dd592cd34de7) center;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -12433,6 +12433,40 @@ header .dropdown-item:focus {
   width: 3rem;
   font-size: 1.25rem;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-username {
+  color: #F15E75;
+}
+
+.backoffice-title {
+  border-bottom: 2px #3B4249 solid;
+  padding: 0;
+  padding-bottom: 0.5rem;
+}
+
+.dashboard-list .crown {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  color: #FFBC39;
+  top: 1rem;
+  right: 1rem;
+  background: url(/images/promo_crown.svg?e44e2e696d8918ee4967dd592cd34de7) center;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-list .img-box {
+  width: 15rem;
+  height: 10rem;
+}
+
+.dashboard-list .img-box img {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-list article {
+  background-color: #f7f7f7;
 }
 
 #search i.fa-search {

@@ -1,4 +1,4 @@
-@extends('layouts.frontoffice')
+@extends('layouts.layout')
 
 @section('title', 'Benvenuto')
 

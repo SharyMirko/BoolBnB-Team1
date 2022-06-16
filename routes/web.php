@@ -21,13 +21,13 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        //Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::get('/', 'DashboardController@index')->name('dashboard');
         //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
         //Route::resource('/apartment', 'ApartmentController');
         //Route::resource('/categories', 'CategoryController');
     });
 
-    
+
 Route::get('/', 'HomeController@index')->name('LandingPage');
 
 // MOMENTANEO DA MODIFICARE

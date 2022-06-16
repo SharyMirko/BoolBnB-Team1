@@ -12,7 +12,7 @@
                <span class="navbar-toggler-icon"></span>
          </button>
 
-         <div class="navbar-collapse align-items-stretch my-3 my-md-0 collapse show" id="navbarSupportedContent">
+         <div class="navbar-collapse align-items-stretch my-3 my-md-0 collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 

@@ -7,8 +7,8 @@
       </div>
 
       <div class="col text-end">
-         <a class="btn btn-primary" href="#recipeCarousel" role="button" data-bs-slide="prev"><</a>
-         <a class="btn btn-primary" href="#recipeCarousel" role="button" data-bs-slide="next">></a>
+         <a class="btn btn-primary text-white" href="#recipeCarousel" role="button" data-bs-slide="prev"><</a>
+         <a class="btn btn-primary text-white" href="#recipeCarousel" role="button" data-bs-slide="next">></a>
       </div>
 
    </div>

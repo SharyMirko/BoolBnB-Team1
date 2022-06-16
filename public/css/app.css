@@ -12210,6 +12210,22 @@ a {
   color: #fff;
 }
 
+.geo::before {
+  content: "\F3C5";
+  color: #F15E75;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.price .price-suffix {
+  font-size: 0.8rem;
+}
+
 header {
   background-color: #f7f7f7;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
@@ -12376,26 +12392,33 @@ header .navbar-light .navbar-nav .nav-link:focus {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
-.card .geo::before {
-  content: "\F3C5";
-  color: #F15E75;
-  font-size: 1rem;
-  margin-right: 0.5rem;
-}
-
 .card .category {
   color: #666;
   font-size: 1rem;
   text-transform: capitalize;
 }
 
-.card .price {
-  font-size: 1.5rem;
-  font-weight: 500;
+#price {
+  background-color: #3B4249;
 }
 
-.card .price .price-suffix {
-  font-size: 0.8rem;
+.separator {
+  width: 1px;
+  background-color: #CACDD1;
+  height: 3rem;
+}
+
+.service-list::before {
+  content: "\F00C";
+  color: #666;
+  margin-right: 0.35rem;
+}
+
+#send-msg-mobile {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.25rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 #search i.fa-search {

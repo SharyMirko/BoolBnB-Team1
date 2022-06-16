@@ -29,7 +29,7 @@
          </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
          @for ($i = 0; $i < 12; $i++)
             <div class="col">
                <x-card />
@@ -145,8 +145,8 @@
                   <div class="form-group row mb-2">
                      <div class="col">
                         <div class="mb-3">
-                           <label for="distanceRadius" class="form-label">Raggio di Ricerca</label>
-                           <input type="range" class="form-range" id="distanceRadius">
+                           <label for="distance-radius" class="form-label">Raggio di Ricerca</label>
+                           <input type="range" class="form-range" id="distance-radius">
                            <div class="d-flex justify-content-between">
                               <span>0 km</span>
                               <span>100 km</span>
@@ -154,8 +154,8 @@
                         </div>
 
                         <div class="mb-3">
-                           <label for="price" class="form-label">Prezzo</label>
-                           <input type="range" class="form-range" id="price">
+                           <label for="price-range" class="form-label">Prezzo</label>
+                           <input type="range" class="form-range" id="price-range">
                            <div class="d-flex justify-content-between">
                               <span>0 €</span>
                               <span>1500 €</span>

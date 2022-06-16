@@ -12373,6 +12373,7 @@ header .dropdown-item:focus {
 .card {
   background-color: #f7f7f7;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s;
 }
 
 .card .filtro-card {

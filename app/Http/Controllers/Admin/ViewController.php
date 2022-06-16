@@ -9,37 +9,25 @@ use App\Http\Controllers\Controller;
 
 class ViewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         //
     }
 
+<<<<<<< HEAD:app/Http/Controllers/Admin/ViewController.php
     /**
      * Display the specified resource.
      *
@@ -47,10 +35,15 @@ class ViewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(View $view)
+=======
+    
+    public function show(Statistic $statistic)
+>>>>>>> CRUD:app/Http/Controllers/Admin/StatisticController.php
     {
         //
     }
 
+<<<<<<< HEAD:app/Http/Controllers/Admin/ViewController.php
     /**
      * Show the form for editing the specified resource.
      *
@@ -58,10 +51,15 @@ class ViewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(View $view)
+=======
+    
+    public function edit(Statistic $statistic)
+>>>>>>> CRUD:app/Http/Controllers/Admin/StatisticController.php
     {
         //
     }
 
+<<<<<<< HEAD:app/Http/Controllers/Admin/ViewController.php
     /**
      * Update the specified resource in storage.
      *
@@ -70,10 +68,15 @@ class ViewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, View $view)
+=======
+    
+    public function update(Request $request, Statistic $statistic)
+>>>>>>> CRUD:app/Http/Controllers/Admin/StatisticController.php
     {
         //
     }
 
+<<<<<<< HEAD:app/Http/Controllers/Admin/ViewController.php
     /**
      * Remove the specified resource from storage.
      *
@@ -81,6 +84,10 @@ class ViewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(View $view)
+=======
+    
+    public function destroy(Statistic $statistic)
+>>>>>>> CRUD:app/Http/Controllers/Admin/StatisticController.php
     {
         //
     }

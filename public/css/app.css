@@ -12201,8 +12201,7 @@ a {
   background-color: #f7f7f7;
 }
 
-.btn-custom-outline:hover,
-.btn-custom-outline:focus {
+.btn-custom-outline:hover {
   color: #fff;
 }
 

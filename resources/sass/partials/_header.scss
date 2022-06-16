@@ -14,6 +14,13 @@ header {
       padding: 1.5rem 0;
    }
 
+   #dropdownAuth {
+      position: absolute;
+      inset: 0px 0px auto auto;
+      margin: 0px;
+      transform: translate(0px, 40px);
+   }
+
    @include media-breakpoint-down(md) {
       .nav-item {
          width: 100%;
@@ -23,6 +30,11 @@ header {
 
       .navbar-expand-md .navbar-nav .nav-link {
          padding: 1rem 0;
+      }
+
+      #dropdownAuth {
+         left: 0;
+         right: auto;
       }
    }
 
@@ -63,6 +75,12 @@ header {
    .navbar-light .navbar-nav .nav-link:hover,
    .navbar-light .navbar-nav .nav-link:focus {
       color: $primary;
+   }
+
+   .dropdown-item:hover,
+   .dropdown-item:focus {
+      background-color: $primary;
+      color: $white;
    }
 
 }

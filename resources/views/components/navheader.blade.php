@@ -12,14 +12,14 @@
                <span class="navbar-toggler-icon"></span>
          </button>
 
-         <div class="navbar-collapse align-items-stretch my-3 my-md-0 collapse" id="navbarSupportedContent">
+         <div class="navbar-collapse align-items-stretch collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto align-items-center mt-3">
                <li class="nav-item ">
                   <a class="nav-link nav-link-personal" href="{{ route('apartment.index') }}">Cerca</a>
                </li>
@@ -41,13 +41,13 @@
                      </li>
                   @endif
                @else
-                  <li class="nav-item dropdown">
-                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                  <li class="nav-item dropdown mt-3 my-md-0">
+                     <a id="navbarDropdown" class="btn btn-primary dropdown-toggle text-white fw-bold" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->name }} GR
                      </a>
 
-                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownAuth">
 
                         {{-- dashboard --}}
                         <a class="dropdown-item" href="#!">

@@ -21,8 +21,14 @@ $body-color: #3B4249 !default;
 
 
 // Buttons
-$btn-link-color: #fff !default;
-$btn-link-hover-color: #fff !default;
+$btn-close-width: 0.75rem;
+
+
+// Modal
+$modal-lg: 720px;
+$modal-sm: 360px;
+
+
 
 /* altri colori
 --filtro-card: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);

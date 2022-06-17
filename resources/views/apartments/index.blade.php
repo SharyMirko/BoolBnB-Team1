@@ -1,229 +1,176 @@
 @extends('layouts.frontoffice')
 
-@section('title', 'Welcome')
+@section('title', 'Cerca')
 
 @section('content')
-<div class="input-group rounded">
-    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-        aria-describedby="search-addon" />
-    <button>filtro</button>
-    <span class="input-group-text border-0" id="search-addon">
-        <i class="fas fa-search"></i>
-    </span>
-</div>
-<div class="row py-3 dropdown-filter">
-    <div class="col">
-        <input type="text" placeholder="Stanze" name="" id="">
-        <input type="text" placeholder="Letti" name="" id="">
-        <input type="text" placeholder="Bagni" name="" id="">
-        <input type="text" placeholder="Mq" name="" id="">
-    </div>
-    <div class="col">
-        <input type="checkbox" name="" id="">WiFi
-        <input type="checkbox" name="" id="">Sauna
-        <input type="checkbox" name="" id="">Portineria
-        <input type="checkbox" name="" id="">Posto Auto
-        <input type="checkbox" name="" id="">Piscina
-        <input type="checkbox" name="" id="">Vista Panoramica
-    </div>
-    <div class="col">
-        <label for="customRange1" class="form-label">Raggio di Ricerca</label>
-        <input type="range" class="form-range" id="customRange1">
-        <label for="customRange1" class="form-label">Prezzo</label>
-        <input type="range" class="form-range" id="customRange1">
-    </div>
-    <div class="col">
-        <button class="btn btn-primary">Applica Filtri</button>
-        <button class="btn btn-info">Reset Filtri</button>
-    </div>
-</div>
-<div class="row row-cols-3 py-3">
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="crown position-absolute top-0 end-0">&#128081;</div>
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
+   <section id="search" class="container py-5">
+      <div class="d-flex w-100 align-items-center position-relative">
+         <i class="fas fa-search"></i>
+         <input type="text" placeholder="Location" name="Landing-search" id="Landing-search" class="form-control flex-grow-1">
+
+         <button type="button" class="btn-custom-outline btn btn-outline-primary mx-2 " data-bs-toggle="modal" data-bs-target="#filtersModal">
+            <i class="fa-solid fa-sliders"></i>
+         </button>
+
+         <a href="{{ route('apartment.index') }}" class="btn btn-primary text-light">Cerca</a>
+      </div>
+   </section>
+
+   <div class="container pb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+         <span class="mt-4 mt-sm-0 me-4">12 risultati</span>
+         <div class="d-flex align-items-center mt-4 mt-sm-0">
+            <span class="me-2">Ordinamento:</span>
+            <select name="sort" id="sort" class="form-select">
+               <option value="1">Alfabetico</option>
+               <option value="2">Prezzo crescente</option>
+               <option value="2">Prezzo decrescente</option>
+            </select>
+         </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+         @for ($i = 0; $i < 12; $i++)
+            <div class="col">
+               <x-card />
             </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
+         @endfor
+      </div>
+   </div>
+
+
+
+
+   <!-- Modal Filters -->
+   <div class="modal fade" id="filtersModal" tabindex="-1" aria-labelledby="filtersModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+         <div class="modal-content">
+
+            <div class="modal-header border-0 px-5 pt-4">
+               <h2 class="modal-title" id="filtersModalLabel">Filtri di ricerca</h2>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="crown position-absolute top-0 end-0">&#128081;</div>
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
+
+            <div class="modal-body px-5">
+               <form action="" class="d-flex flex-column justify-content-center">
+                  @csrf
+
+                  <div class="form-group row mb-2">
+                     <div class="col">
+                        <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area') }}" required autocomplete="area" autofocus placeholder="{{ __('Area') }}">
+
+                        @error('area')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                        @enderror
+                     </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                     <div class="col">
+                        <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ old('rooms_n') }}" required autocomplete="rooms_n" autofocus placeholder="{{ __('Rooms') }}">
+
+                        @error('rooms_n')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                        @enderror
+                     </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                     <div class="col">
+                        <input id="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ old('beds_n') }}" required autocomplete="beds_n" autofocus placeholder="{{ __('Beds') }}">
+
+                        @error('beds_n')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                        @enderror
+                     </div>
+                  </div>
+
+                  <div class="form-group row">
+                     <div class="col">
+                        <input id="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ old('bathrooms_n') }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('Beds') }}">
+
+                        @error('bathrooms_n')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                        @enderror
+                     </div>
+                  </div>
+
+                  <div class="form-group row my-4">
+                     <div class="col d-flex justify-content-between">
+
+                        <div class="d-flex flex-column">
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">WiFi</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Sauna</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Portineria</label>
+                           </div>
+                        </div>
+
+                        <div class="d-flex flex-column">
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Posto auto</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Piscina</label>
+                           </div>
+
+                           <div class="form-check">
+                              <input type="checkbox" class="form-check-input" value="" id="wifi">
+                              <label class="form-check-label" for="wifi">Vista panoramica</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                     <div class="col">
+                        <div class="mb-3">
+                           <label for="distanceRadius" class="form-label">Raggio di Ricerca</label>
+                           <input type="range" class="form-range" id="distanceRadius">
+                           <div class="d-flex justify-content-between">
+                              <span>0 km</span>
+                              <span>100 km</span>
+                           </div>
+                        </div>
+
+                        <div class="mb-3">
+                           <label for="price" class="form-label">Prezzo</label>
+                           <input type="range" class="form-range" id="price">
+                           <div class="d-flex justify-content-between">
+                              <span>0 €</span>
+                              <span>1500 €</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+               </form>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
+            <div class="modal-footer border-0 justify-content-center px-5">
+               <button type="button" class="btn btn-primary text-white flex-grow-1">Applica filtri</button>
+               <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1" data-bs-dismiss="modal">Reset filtri</button>
             </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="crown position-absolute top-0 end-0">&#128081;</div>
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row row-cols-3 py-3">
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row row-cols-3 py-3">
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="img_card position-relative">
-                <img src="https://picsum.photos/400/300" class="card-img-top" alt="lorem_picsum">
-                <div class="price_night position-absolute bottom-0 start-0 text-light">--db value-- / notte</div>
-                <div class="user_img position-absolute bottom-0 end-0 text-light">CB</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a class="navbar-brand text-dark" href="{{ route('ShowPage') }}">
-                        Titolo card
-                    </a>
-                </h5>
-                <div class="card-text">
-                    <p>Luogo</p>
-                    <p>Tipo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+         </div>
+      </div>
+   </div>
 @endsection

@@ -32,6 +32,7 @@ class ApartmentSeeder extends Seeder
             'beds_n'        => rand(1, 4),
             'bathrooms_n'   => rand(1, 2),
             'area'          => rand(40, 200),
+            'price'         => rand(300, 2000)*100,
             'address'       => $faker->Address(),
             'latitude'      => rand(-90 * $pow, 90 * $pow) / $pow,
             'longitude'     => rand(-180 * $pow, 180 * $pow) / $pow,

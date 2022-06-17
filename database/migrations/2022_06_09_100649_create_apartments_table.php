@@ -25,6 +25,7 @@ class CreateApartmentsTable extends Migration
             $table->tinyInteger('beds_n');
             $table->tinyInteger('bathrooms_n');
             $table->integer('area');
+            $table->integer('price');
             $table->string('address');
             $table->decimal('latitude', 8, 6);
             $table->decimal('longitude', 9, 6);

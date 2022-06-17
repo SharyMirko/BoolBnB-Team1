@@ -4,10 +4,10 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class View extends Model
 {
    protected $fillable = [
-      'apartment_id', 'email_sender', 'text_ms'
+      'apartment_id', 'ip_address'
    ];
 
    public function apartment()

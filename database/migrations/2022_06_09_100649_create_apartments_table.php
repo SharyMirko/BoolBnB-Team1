@@ -18,15 +18,16 @@ class CreateApartmentsTable extends Migration
             $table->string('title')->unique();
             $table->string('thumb', 255);
             $table->text('description');
-            //$table->foreignId('category_id')->constrained();
+            $table->string('category');
+            $table->foreignId('user_id')->constrained();
+            //$table->foreignId('category_id')->constrained();  //TODO: if we want to use category in another table
             $table->tinyInteger('rooms_n');
             $table->tinyInteger('beds_n');
             $table->tinyInteger('bathrooms_n');
             $table->integer('area');
             $table->string('address');
-            $table->decimal('latitude', 11, 8);
-            $table->decimal('longitude', 10, 8);
-           // $table->foreignId('services_id')->constrained();
+            $table->decimal('latitude', 8, 6);
+            $table->decimal('longitude', 9, 6);
             $table->boolean('visible')->default(1);
             $table->timestamps();
         });

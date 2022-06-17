@@ -6,15 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
 {
-    protected $fillable = [
-        'title', 'thumb', 'description', 'category_id', 'rooms_n', 'beds_n', 'bathrooms_n', 'area', 'address', 'latitude', 'longitude', 'service_id', 'visible'
-    ];
+   protected $fillable = [
+      'title', 'thumb', 'description', 'category', 'user_id', 'rooms_n', 'beds_n', 'bathrooms_n', 'area', 'address', 'latitude', 'longitude', 'visible'
+   ];
 
-    public function users() {
-        return $this->hasMany('App\User');
-    }
+   public function user()
+   {
+      return $this->belongsTo('App\Model\User');
+   }
+   public function views()
+   {
+      return $this->hasMany('App\Model\View');
+   }
 
-    public function statistics() {
-        return $this->hasOne('App\Model\Statistic');
-    }
+   public function messages()
+   {
+      return $this->hasMany('App\Model\Message');
+   }
+
+   public function services() {
+      return $this->belongsToMany('App\Model\Service');
+   }
+
+   public function premiumFeatures() {
+      return $this->belongsToMany('App\Model\PremiumFeature');
+   }
 }

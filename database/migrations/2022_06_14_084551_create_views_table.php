@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatisticsTable extends Migration
+class CreateViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateStatisticsTable extends Migration
      */
     public function up()
     {
-        Schema::create('statistics', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->integer('apartment_id')->constrained();
-            $table->integer('views');
+            $table->foreignId('apartment_id')->constrained();
+            $table->string('ip_address');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateStatisticsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statistics');
+        Schema::dropIfExists('views');
     }
 }

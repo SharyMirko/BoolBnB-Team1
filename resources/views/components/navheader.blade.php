@@ -203,6 +203,14 @@
                      </div>
                   </div>
 
+                  <div class="form-group row">
+                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                     <div class="col-md-6">
+                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                     </div>
+                  </div>
+
                   <div class="form-group row mb-2">
                      <div class="col">
                         <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="{{ __('First name') }}">

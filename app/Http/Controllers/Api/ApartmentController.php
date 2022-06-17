@@ -28,11 +28,9 @@ class ApartmentController extends Controller
 
 
       $apiApartments = Apartment::with([
-         'user',
-         'services' => function ($query) {$query->select('name');}
+         'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
+         'services' => function ($query2) {$query2->select('id', 'name');}
       ])->paginate(20);
-
-
 
 
 

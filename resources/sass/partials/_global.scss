@@ -1,0 +1,48 @@
+main {
+   margin-top: 5rem;
+}
+
+.frontend-section-title {
+   color: $body-color;
+   padding-bottom: 0.5rem;
+}
+
+a {
+   text-decoration: none;
+}
+
+.landing-category-name {
+   font-weight: 400;
+   font-size: 1.2rem;
+   color: $body-color;
+}
+
+.icon::before {
+   font-family: "Font Awesome 6 Free";
+   font-weight: 900;
+}
+
+#sec_loc_prin {
+   background-color: $bg1;
+}
+
+.btn-custom-outline:hover {
+   color: $white;
+}
+
+.geo::before {
+   content: '\f3c5';
+   color: $primary;
+   font-size: 1rem;
+   margin-right: 0.5rem;
+}
+
+
+.price {
+   font-size: 1.5rem;
+   font-weight: 500;
+
+   .price-suffix {
+      font-size: 0.8rem;
+   }
+}

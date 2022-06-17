@@ -1,70 +1,95 @@
-<header class="fixed-top">
-   <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-      <div class="container">
+@extends('layouts.layout')
 
-         <a class="navbar-brand" href="{{ route('guestsHome') }}">
-            {{ config('app.name', 'Laravel') }}
-         </a>
+@section('title', 'Dashboard')
 
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
-               <!-- Authentication Links -->
-               @guest
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                  </li>
-                  @if (Route::has('register'))
-                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                     </li>
-                  @endif
-               @else
-                  <li class="nav-item d-block dropdown">
-                     {{-- posts btn --}}
-                     <a href="{{ route('admin.posts.index') }}" aria-controls="posts" class="btn btn-light me-2">My posts</a>
-                  </li>
-                  <li class="nav-item d-block dropdown">
-                     {{-- categories btn --}}
-                     <a href="{{ route('admin.categories.index') }}" aria-controls="categories" class="btn btn-light me-2">Categories</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                     </a>
-
-                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                        {{-- dashboard --}}
-                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                           {{ __('My dashboard') }}
-                        </a>
-
-                        {{-- logout --}}
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                           {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                           @csrf
-                        </form>
-
-                     </div>
-                  </li>
-               @endguest
-            </ul>
+@section('content')
+   <div class="container py-5">
+      <div class="row g-0">
+         <div class="col-12 text-center">
+            <h1 class="mb-5">Bentornato, <span class="dashboard-username text-capitalize">{{ Auth::user()->first_name }}</span></h1>
+            <a href="#" class="btn btn-primary text-white">+ Aggiungi appartamento</a>
          </div>
       </div>
-   </nav>
-</header>
+
+      {{-- versione desktop --}}
+      <div class="row g-0 mt-5 dashboard-list d-none d-md-block">
+         <h3 class="backoffice-title">I miei appartamenti</h3>
+
+         @for ($i = 0; $i < 4; $i++)
+            <div class="d-flex align-items-center py-4">
+               <div class="img-box position-relative">
+                  <img src="https://picsum.photos/240/160?random=<?= rand(1, 500) ?>" class="rounded-3 w-100 h-100" alt="lorem_picsum">
+                  <div class="crown"></div>
+               </div>
+
+               <div class="ms-3">
+                  <p class="category m-0">Appartamento</p>
+                  <h4 class="my-2">Appartamento moderno</h4>
+                  <p class="geo icon">Milano</p>
+                  <p class="price m-0">€ 420<span class="price-suffix">/notte</span></p>
+               </div>
+
+               <div class="ms-auto d-flex flex-column">
+                  <div class="d-flex flex-column mb-4">
+                     <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
+                     <a href="#" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
+                     <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
+                  </div>
+      
+                  <div class="d-flex">
+                     <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
+                     <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
+                     <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pause"></i></a>
+                     <a href="#" class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a>
+                  </div>
+               </div>
+            </div>
+            
+            @if ($i != 3)
+               <hr class="m-0">
+            @endif
+
+         @endfor
+      </div>
+      {{-- / --}}
+
+      {{-- evrsione mobile --}}
+      <div class="row row-cols-1 d-md-none gy-4 gx-0 mt-3">
+         <h3 class="backoffice-title">I miei appartamenti</h3>
+         @for ($i = 0; $i < 4; $i++)
+            <div class="col">
+               <article class="card rounded-3 border-0">
+                  <a class="m-0 p-0 d-block" href="#">
+                     <img src="https://picsum.photos/240/160?random=<?= rand(1, 500) ?>" class="card-img-top position-relative w-100" alt="lorem_picsum">
+
+                     <div class="crown"></div>
+      
+                     <div class="card-body p-4">
+                        <p class="category  text-muted">Appartamento</p>
+                        <h4 class="text-muted">Appartamento moderno</h4>
+                        <p class="geo icon  text-muted">Milano</p>
+                        <p class="price  text-muted">€ 420<span class="price-suffix">/notte</span></p>
+            
+                        <div class="d-flex flex-column">
+                           <div class="d-flex flex-column mb-4">
+                              <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
+                              <a href="#" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
+                              <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
+                           </div>
+            
+                           <div class="d-flex">
+                              <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
+                              <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
+                              <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pause"></i></a>
+                              <a href="#" class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a>
+                           </div>
+                        </div>
+                     </div> 
+                  </a>
+               </article>
+            </div>
+         @endfor
+      </div>
+      {{-- / --}}
+   </div>
+@endsection

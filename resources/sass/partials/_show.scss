@@ -1,0 +1,22 @@
+#price {
+   background-color: $body-color;
+}
+
+.separator {
+   width: 1px;
+   background-color: $input-border;
+   height: 3rem;
+}
+
+.service-list::before {
+   content: '\f00c';
+   color: $grey_1;
+   margin-right: 0.35rem;
+}
+
+#send-msg-mobile {
+   height: 3rem;
+   width: 3rem;
+   font-size: 1.25rem;
+   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}

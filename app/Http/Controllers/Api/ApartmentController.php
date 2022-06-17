@@ -17,13 +17,17 @@ class ApartmentController extends Controller
    {
       // $attributes = $request->all();
 
-      $apiApartments = Apartment::join('users', 'apartments.user_id', 'users.id')
-                                 ->join('apartment_service', 'apartments.id', 'apartment_service.apartment_id')
-                                 ->join('services', 'services.id', 'apartment_service.service_id')
-                                 ->select('apartments.*', 'users.first_name', 'users.last_name', 'services.name as services')
-                                 ->orderBy('id', 'asc')
-                                 ->with(['services'])->paginate(20);;
+      // $apiApartments = Apartment::join('users', 'apartments.user_id', 'users.id')
+      //                            ->join('apartment_service', 'apartments.id', 'apartment_service.apartment_id')
+      //                            ->join('services', 'services.id', 'apartment_service.service_id')
+      //                            ->select('apartments.*', 'users.first_name', 'users.last_name', 'services.name as services')
+      //                            ->first()
+      //                            ->orderBy('id', 'asc')
+      //                            ->with(['services'])
+      //                            ->paginate(20);
 
+
+      $apiApartments = Apartment::with(['user', 'services'])->paginate(20);
 
       return response()->json([
          'success'   => true,

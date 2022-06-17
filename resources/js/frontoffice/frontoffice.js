@@ -28,3 +28,32 @@ items.forEach((el) => {
       next = next.nextElementSibling
    }
 })
+
+// form register validation
+
+const FormRegisterVue = new Vue({
+   el: "#registerModal",
+   data: {
+      email: "",
+      password: "",
+      password_confirmation: "",
+      name: "",
+      last_name: "",
+      date:"",
+      valid: false,
+   },
+   methods: {  
+      register: function () {
+         //validate email
+         let btn = document.querySelector("#btnReg");
+         if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && 
+         this.password.length > 5 &&
+         this.password_confirmation === this.password &&
+         this.name.length > 2 &&
+         this.last_name.length > 2 &&
+         this.date != "") {
+            btn.disabled = false;
+         } 
+      }
+   }
+});

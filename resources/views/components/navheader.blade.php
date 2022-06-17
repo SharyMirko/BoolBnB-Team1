@@ -170,7 +170,7 @@
                   <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
                </div>
 
-               <form method="POST" action="{{ route('register') }}" class="flex-grow-1 px-3 pb-3 rounded-0 d-flex flex-column justify-content-center">
+               <form method="POST" @change="register" action="{{ route('register') }}" class="flex-grow-1 px-3 pb-3 rounded-0 d-flex flex-column justify-content-center" id="formReg">
                   @csrf
 
                   <div class="form-group row text-center">
@@ -181,7 +181,7 @@
 
                   <div class="form-group row mb-2">
                      <div class="col">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                        <input id="email" v-model="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
 
                         @error('email')
                            <span class="invalid-feedback" role="alert">
@@ -193,7 +193,19 @@
 
                   <div class="form-group row mb-2">
                      <div class="col">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
+                        <input id="password" v-model="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
+
+                        @error('password')
+                           <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                           </span>
+                        @enderror
+                     </div>
+                  </div>
+                  <div class="form-group row mb-2">
+                     <div class="col">
+                        
+                        <input id="password_confirm" v-model="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="{{ __('Conferma la password') }}">
 
                         @error('password')
                            <span class="invalid-feedback" role="alert">
@@ -203,17 +215,10 @@
                      </div>
                   </div>
 
-                  <div class="form-group row">
-                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                     <div class="col-md-6">
-                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                     </div>
-                  </div>
 
                   <div class="form-group row mb-2">
                      <div class="col">
-                        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="{{ __('First name') }}">
+                        <input id="first_name" v-model="name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="{{ __('First name') }}">
 
                         @error('first_name')
                            <span class="invalid-feedback" role="alert">
@@ -225,7 +230,7 @@
 
                   <div class="form-group row mb-2">
                      <div class="col">
-                        <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus placeholder="{{ __('Last name') }}">
+                        <input id="last_name" v-model="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus placeholder="{{ __('Last name') }}">
 
                         @error('last_name')
                            <span class="invalid-feedback" role="alert">
@@ -237,7 +242,7 @@
 
                   <div class="form-group row mb-2">
                      <div class="col">
-                        <input id="date_of_birth" type="text" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus placeholder="{{ __('Birth date') }}" onfocus="(this. type='date')">
+                        <input id="date_of_birth" v-model="date" type="text" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus placeholder="{{ __('Birth date') }}" onfocus="(this. type='date')">
 
                         @error('date_of_birth')
                            <span class="invalid-feedback" role="alert">
@@ -247,7 +252,7 @@
                      </div>
                   </div>
 
-                  <button type="submit" class="btn btn-primary d-block w-100 mb-3">
+                  <button type="submit" id="btnReg" disabled="true" class="btn btn-primary d-block w-100 mb-3">
                      {{ __('Register') }}
                   </button>
                </form>

@@ -27678,6 +27678,29 @@ items.forEach(function (el) {
     el.appendChild(cloneChild.children[0]);
     next = next.nextElementSibling;
   }
+}); // form register validation
+
+var FormRegisterVue = new Vue({
+  el: "#registerModal",
+  data: {
+    email: "",
+    password: "",
+    password_confirmation: "",
+    name: "",
+    last_name: "",
+    date: "",
+    valid: false
+  },
+  methods: {
+    register: function register() {
+      //validate email
+      var btn = document.querySelector("#btnReg");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password && this.name.length > 2 && this.last_name.length > 2 && this.date != "") {
+        btn.disabled = false;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -27700,8 +27723,8 @@ items.forEach(function (el) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/frontoffice/frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

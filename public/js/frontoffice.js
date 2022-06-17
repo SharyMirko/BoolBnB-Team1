@@ -27634,6 +27634,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/frontoffice/comuni.js":
+/*!********************************************!*\
+  !*** ./resources/js/frontoffice/comuni.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./resources/js/frontoffice/frontoffice.js":
 /*!*************************************************!*\
   !*** ./resources/js/frontoffice/frontoffice.js ***!
@@ -27643,8 +27654,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./comuni.js */ "./resources/js/frontoffice/comuni.js");
+
 var LandingPageVue = new Vue({
-  el: '#LandingPageVue',
+  el: "#LandingPageVue",
   render: function render(h) {
     return h(LandingPageVue);
   }
@@ -27687,8 +27700,8 @@ items.forEach(function (el) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

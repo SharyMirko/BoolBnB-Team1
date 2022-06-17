@@ -12212,12 +12212,12 @@ a {
   margin-right: 0.5rem;
 }
 
-.price {
+.price-text {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.price .price-suffix {
+.price-text .price-suffix {
   font-size: 0.8rem;
 }
 
@@ -12422,7 +12422,7 @@ header .dropdown-item:focus {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-#price {
+#price-show {
   background-color: #3B4249;
 }
 

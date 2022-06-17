@@ -26,7 +26,7 @@
                   <p class="category m-0">Appartamento</p>
                   <h4 class="my-2">Appartamento moderno</h4>
                   <p class="geo icon">Milano</p>
-                  <p class="price m-0">€ 420<span class="price-suffix">/notte</span></p>
+                  <p class="price-text m-0">€ 420<span class="price-suffix">/notte</span></p>
                </div>
 
                <div class="ms-auto d-flex flex-column">

@@ -7,7 +7,7 @@
       <div class="row g-0">
          <div class="col-12 text-center">
             <h1 class="mb-5">Bentornato, <span class="dashboard-username text-capitalize">{{ Auth::user()->first_name }}</span></h1>
-            <a href="#" class="btn btn-primary text-white">+ Aggiungi appartamento</a>
+            <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary text-white">+ Aggiungi appartamento</a>
          </div>
       </div>
 
@@ -35,7 +35,7 @@
                      <a href="#" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
                      <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
                   </div>
-      
+
                   <div class="d-flex">
                      <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
                      <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
@@ -44,7 +44,7 @@
                   </div>
                </div>
             </div>
-            
+
             @if ($i != 3)
                <hr class="m-0">
             @endif
@@ -63,20 +63,20 @@
                      <img src="https://picsum.photos/240/160?random=<?= rand(1, 500) ?>" class="card-img-top position-relative w-100" alt="lorem_picsum">
 
                      <div class="crown"></div>
-      
+
                      <div class="card-body p-4">
                         <p class="category  text-muted">Appartamento</p>
                         <h4 class="text-muted">Appartamento moderno</h4>
                         <p class="geo icon  text-muted">Milano</p>
                         <p class="price  text-muted">€ 420<span class="price-suffix">/notte</span></p>
-            
+
                         <div class="d-flex flex-column">
                            <div class="d-flex flex-column mb-4">
                               <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
                               <a href="#" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
                               <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
                            </div>
-            
+
                            <div class="d-flex">
                               <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
                               <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
@@ -84,7 +84,7 @@
                               <a href="#" class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a>
                            </div>
                         </div>
-                     </div> 
+                     </div>
                   </a>
                </article>
             </div>

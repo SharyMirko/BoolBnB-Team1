@@ -31,15 +31,7 @@
                      @enderror
                   </div>
 
-                  <div class="col-4 col-md-5 col-lg-4">
-                     <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ $area ?? old('area') }}" required autocomplete="area" autofocus placeholder="Mq">
-
-                     @error('area')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                        </span>
-                     @enderror
-                  </div>
+                 
                </div>
 
                <div class="form-group row mb-2 gx-2">
@@ -106,37 +98,7 @@
                   </div>
                </div>
 
-               <div class="form-group row row-cols-1 row-cols-md-3 mb-2 g-2">
-                  <div class="col">
-                     <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ $rooms_n ?? old('rooms_n') }}" required autocomplete="rooms_n" autofocus placeholder="{{ __('Rooms') }}">
-
-                     @error('rooms_n')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                        </span>
-                     @enderror
-                  </div>
-
-                  <div class="col">
-                     <input id="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ $beds_n ?? old('beds_n') }}" required autocomplete="beds_n" autofocus placeholder="{{ __('Beds') }}">
-
-                     @error('beds_n')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                        </span>
-                     @enderror
-                  </div>
-
-                  <div class="col">
-                     <input id="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ $bathrooms_n ?? old('bathrooms_n') }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('Bathrooms') }}">
-
-                     @error('bathrooms_n')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                        </span>
-                     @enderror
-                  </div>
-               </div>
+            
 
                <div class="form-group row mb-2 text-center">
                   <div class="col">
@@ -215,8 +177,7 @@
                            </span>
                      @enderror
 
-                     <input type="text" class="form-control" name="latitude" id="latitude" value="41.444960" placeholder="41.444960" required>
-                     <input type="text" class="form-control" name="longitude" id="longitude" value="87.195976" placeholder="87.195976" required>
+                    
 
                   </div>
                </div>

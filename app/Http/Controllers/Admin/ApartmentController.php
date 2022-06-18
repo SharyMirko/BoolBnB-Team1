@@ -5,64 +5,74 @@ namespace App\Http\Controllers\Admin;
 use App\Model\Apartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
-    
-    public function index()
-    {
-        $apartmentData = Apartment::paginate(12);
 
-        return view('apartments.index', compact('apartmentData'));
-    }
+   public function index()
+   {
+      $apartmentData = Apartment::paginate(12);
 
-    
-    public function create()
-    {
-        $apartmentData = Apartment::all();
+      return view('apartments.index', compact('apartmentData'));
+   }
 
-        return view ('apartments.create', compact('apartmentData'));
-    }
 
-    
-    public function store(Request $request)
-    {
-        $apartmentForm = $request->all();
+   public function create()
+   {
+      //   $apartmentData = Apartment::all();
 
-        $apartment = new Apartment();
-        $apartment->fill($apartmentForm);
-        $apartment->save();
+      //   return view ('apartments.create', compact('apartmentData'));
+      return view ('apartments.create');
+   }
 
-        return redirect()->route('apartments.show');
-    }
 
-    
-    public function show(Apartment $apartment)
-    {
-        return view('apartments.show', compact('apartment'));
-    }
+   public function store(Request $request)
+   {
+      $formData = $request->all();
 
-    
-    public function edit(Apartment $apartment)
-    {
-        return view('apartments.edit', compact('apartment'));
-    }
+      $thumb_path = Storage::put('uploads', $formData['thumb']);
 
-    
-    public function update(Request $request, Apartment $apartment)
-    {
-        $apartmentForm = $request->all();
+      $apartment = [
+         'user_id' => Auth::user()->id,
+         'thumb' => $thumb_path
+      ] + $formData;
 
-        $apartment->update($apartmentForm);
+      //  dd($apartment);
 
-        return redirect()->route('apartments.show');
-    }
+      $newApartment = Apartment::create($apartment);
 
-    
-    public function destroy(Apartment $apartment)
-    {
-        $apartment->delete();
+      return redirect()->route('admin.apartments.show', $newApartment->id);
+   }
 
-        return redirect()->route('apartments.index');
-    }
+
+   public function show(Apartment $apartment)
+   {
+      return view('apartments.show', compact('apartment'));
+   }
+
+
+   public function edit(Apartment $apartment)
+   {
+      return view('apartments.edit', compact('apartment'));
+   }
+
+
+   public function update(Request $request, Apartment $apartment)
+   {
+      $apartmentForm = $request->all();
+
+      $apartment->update($apartmentForm);
+
+      return redirect()->route('apartments.show');
+   }
+
+
+   public function destroy(Apartment $apartment)
+   {
+      $apartment->delete();
+
+      return redirect()->route('apartments.index');
+   }
 }

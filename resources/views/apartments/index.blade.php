@@ -12,7 +12,7 @@
             <i class="fa-solid fa-sliders"></i>
          </button>
 
-         <a href="{{ route('apartment.index') }}" class="btn btn-primary text-light">Cerca</a>
+         <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary text-light">Cerca</a>
       </div>
    </section>
 

@@ -21,7 +21,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto align-items-center mt-3  mt-md-0">
                <li class="nav-item ">
-                  <a class="nav-link nav-link-personal" href="{{ route('apartments.index') }}">Cerca</a>
+                  <a class="nav-link nav-link-personal" href="{{ route('admin.apartments.index') }}">Cerca</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link nav-link-personal" href="#">About</a>
@@ -204,7 +204,7 @@
                   </div>
                   <div class="form-group row mb-2">
                      <div class="col">
-                        
+
                         <input id="password_confirm" v-model="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="{{ __('Conferma la password') }}">
 
                         @error('password')

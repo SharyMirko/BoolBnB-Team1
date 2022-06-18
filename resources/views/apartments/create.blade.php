@@ -12,6 +12,8 @@
          @csrf
 
          <div class="row g-0">
+
+         {{-- colonna sx --}}
             <div class="col-12 col-md-7">
                <h4 class="mb-3">Dati generali</h4>
    
@@ -28,8 +30,18 @@
                            </span>
                      @enderror
                   </div>
+
+                  <div class="col-4 col-md-5 col-lg-4">
+                     <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ $area ?? old('area') }}" required autocomplete="area" autofocus placeholder="Mq">
+
+                     @error('area')
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
+                  </div>
                </div>
-   
+
                <div class="form-group row mb-2 gx-2">
                   <div class="col-8 col-md-7 col-lg-8">
                      <select name="category" v-model="category" class="form-select @error('category') is-invalid @enderror" id="category">
@@ -39,14 +51,14 @@
                         @endforeach
              
                      </select>
-   
+
                      @error('category')
                            <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>
                      @enderror
                   </div>
-   
+
                   <div class="col-4 col-md-5 col-lg-4">
                      <input id="price" v-model="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $price ?? old('price') }}" required autocomplete="price" autofocus placeholder="€ {{ __('Price') }}/notte">
    
@@ -93,7 +105,39 @@
                      @enderror
                   </div>
                </div>
-   
+
+               <div class="form-group row row-cols-1 row-cols-md-3 mb-2 g-2">
+                  <div class="col">
+                     <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ $rooms_n ?? old('rooms_n') }}" required autocomplete="rooms_n" autofocus placeholder="{{ __('Rooms') }}">
+
+                     @error('rooms_n')
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
+                  </div>
+
+                  <div class="col">
+                     <input id="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ $beds_n ?? old('beds_n') }}" required autocomplete="beds_n" autofocus placeholder="{{ __('Beds') }}">
+
+                     @error('beds_n')
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
+                  </div>
+
+                  <div class="col">
+                     <input id="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ $bathrooms_n ?? old('bathrooms_n') }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('Bathrooms') }}">
+
+                     @error('bathrooms_n')
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
+                  </div>
+               </div>
+
                <div class="form-group row mb-2 text-center">
                   <div class="col">
                      <textarea class="form-control @error('description') is-invalid @enderror" v-model="description" id="description" name="description" rows="10" cols="50" autofocus placeholder="{{ __('Description') }}" required></textarea>
@@ -105,35 +149,35 @@
                      @enderror
                   </div>
                </div>
-   
+
                {{-- checkbox --}}
                <div class="form-group my-4">
                   <h4 class="mb-3">Servizi</h4>
                   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-2 row-cols-lg-3 g-0">
-   
+
                      <div class="col d-flex flex-column ">
                         <div class="form-check">
                            <input type="checkbox" v-model="service[0]" name="service[]" class="form-check-input" value="{{$serviceData[0]['id']}}" id="{{$serviceData[0]['name']}}">
                            <label class="form-check-label" for="{{$serviceData[0]['name']}}">{{$serviceData[0]['name']}}</label>
                         </div>
-   
+
                         <div class="form-check">
                            <input type="checkbox"  v-model="service[1]" name="service[]" class="form-check-input" value="{{$serviceData[1]['id']}}" id="{{$serviceData[1]['name']}}">
                            <label class="form-check-label" for="{{$serviceData[1]['name']}}">{{$serviceData[1]['name']}}</label>
                         </div>
-   
+
                         <div class="form-check">
                            <input type="checkbox"  v-model="service[2]" name="service[]" class="form-check-input" value="{{$serviceData[2]['id']}}" id="{{$serviceData[2]['name']}}">
                            <label class="form-check-label" for="{{$serviceData[2]['name']}}">{{$serviceData[2]['name']}}</label>
                         </div>
                      </div>
-   
+
                      <div class="col d-flex flex-column">
                         <div class="form-check">
                            <input type="checkbox"  v-model="service[3]" name="service[]" class="form-check-input" value="{{$serviceData[3]['id']}}" id="{{$serviceData[3]['name']}}">
                            <label class="form-check-label" for="{{$serviceData[3]['name']}}">{{$serviceData[3]['name']}}</label>
                         </div>
-   
+
                         <div class="form-check">
                            <input type="checkbox"  v-model="service[4]" name="service[]" class="form-check-input" value="{{$serviceData[4]['id']}}" id="{{$serviceData[4]['name']}}">
                            <label class="form-check-label" for="{{$serviceData[4]['name']}}">{{$serviceData[4]['name']}}</label>
@@ -145,7 +189,8 @@
                </div>
                {{-- / --}}
             </div>
-   
+
+            {{-- colonna dx --}}
             <div class="col-12 col-md-5 gx-5">
                <h4 class="mb-3">Location</h4>
                <div class="form-group row mb-2">
@@ -169,6 +214,10 @@
                               <strong>{{ $message }}</strong>
                            </span>
                      @enderror
+
+                     <input type="text" class="form-control" name="latitude" id="latitude" value="41.444960" placeholder="41.444960" required>
+                     <input type="text" class="form-control" name="longitude" id="longitude" value="87.195976" placeholder="87.195976" required>
+
                   </div>
                </div>
                
@@ -183,6 +232,13 @@
                   <div class="col">
                      <div class="d-flex align-items-center justify-content-between mb-3">
                         <h4>Foto</h4>
+
+
+                        <input class="form-control" type="file" id="thumb" name="thumb" accept="image/*">
+                        @error('thumb')
+                              <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+
                         <button type="submit" class="btn btn-primary text-white"><i class="fa-solid fa-plus"></i></button>
                      </div>
                   </div>

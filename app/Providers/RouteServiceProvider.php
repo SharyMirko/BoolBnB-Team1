@@ -73,12 +73,12 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::group([
-            'middleware' => ['api', 'cors'],
+            'middleware' => ['api'],
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ], function ($router) {
              //Add you routes here, for example:
-             Route::apiResource('/admin/apartments','Admin\ApartmentsController');
+     Route::apiResource('/admin/apartments','Admin\ApartmentController'); 
         });
     }
 }

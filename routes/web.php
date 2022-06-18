@@ -31,11 +31,10 @@ Route::middleware('auth')
 Route::get('/', 'HomeController@index')->name('LandingPage');
 
 // MOMENTANEO DA MODIFICARE
-Route::get('/show', 'Admin\ServiceController@index')->name('ShowPage');
-
-Route::resource('/apartment', 'Admin\ApartmentController');
-
-
+/* Route::get('/show', 'Admin\ServiceController@index')->name('ShowPage');
+ */
+/* Route::resource('/apartment', 'Admin\ApartmentController');
+ */
 
 Route::get('{any?}', function () {
     return view('guests.landing');

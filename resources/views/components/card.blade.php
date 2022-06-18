@@ -1,5 +1,5 @@
 <article class="card rounded-3 border-0">
-   <a class="m-0 p-0 d-block" href="{{ route('ShowPage') }}">
+   <a class="m-0 p-0 d-block" href="#">
       <div class="card-img-top position-relative">
          <div class="position-absolute w-100 h-100 filtro-card"></div>
          <img src="https://picsum.photos/400/300?random=<?= rand(1, 500) ?>" class="card-img-top" alt="lorem_picsum">

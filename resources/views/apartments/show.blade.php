@@ -62,10 +62,7 @@
             <div class="row mb-5 g-0">
                <h4 class="mb-3">Descrizione</h4>
                <div>
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum amet facere suscipit expedita, rem dolore tempora minima provident id dolorem dicta consequatur, ab corporis aperiam velit eum impedit distinctio iste!
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum amet facere suscipit expedita, rem dolore tempora minima provident id dolorem dicta consequatur, ab corporis aperiam velit eum impedit distinctio iste!
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum amet facere suscipit expedita, rem dolore tempora minima provident id dolorem dicta consequatur, ab corporis aperiam velit eum impedit distinctio iste!
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum amet facere suscipit expedita, rem dolore tempora minima provident id dolorem dicta consequatur, ab corporis aperiam velit eum impedit distinctio iste!
+                  {{ $apartment->description }}
                </div>
             </div>
             <div class="row mb-5 g-0">
@@ -103,25 +100,17 @@
             <form action="">
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
 
-                     @error('email')
-                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                           </span>
-                     @enderror
+                     
                   </div>
                </div>
 
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <textarea class="form-control @error('text_ms') is-invalid @enderror" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
+                     <textarea class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
 
-                     @error('text_ms')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                        </span>
-                     @enderror
+                    
                   </div>
                </div>
 
@@ -162,25 +151,17 @@
                <form action="">
                   <div class="form-group row mb-2 text-center">
                      <div class="col">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
 
-                        @error('email')
-                              <span class="invalid-feedback" role="alert">
-                                 <strong>{{ $message }}</strong>
-                              </span>
-                        @enderror
+                        
                      </div>
                   </div>
 
                   <div class="form-group row mb-2 text-center">
                      <div class="col">
-                        <textarea class="form-control @error('text_ms') is-invalid @enderror" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
+                        <textarea class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
 
-                        @error('text_ms')
-                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                           </span>
-                        @enderror
+                        
                      </div>
                   </div>
 

@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\backoffice\backoffice.js */"./resources/js/backoffice/backoffice.js");
+module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/backoffice/backoffice.js */"./resources/js/backoffice/backoffice.js");
 
 
 /***/ })

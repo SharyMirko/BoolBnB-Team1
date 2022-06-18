@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
 use App\Model\Apartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Service;
+use App\Model\Category;
+
 
 class ApartmentController extends Controller
 {
@@ -20,15 +24,18 @@ class ApartmentController extends Controller
     public function create()
     {
         $apartmentData = Apartment::all();
+        $serviceData = Service::all();
+        $categoryData = Category::all();
+        $user_id = Auth::id();
 
-        return view ('apartments.create', compact('apartmentData'));
+        return view ('apartments.create', compact('apartmentData', 'serviceData', 'categoryData', 'user_id'));
     }
 
     
     public function store(Request $request)
     {
+       /*  dd($request->all()); */
         $apartmentForm = $request->all();
-
         $apartment = new Apartment();
         $apartment->fill($apartmentForm);
         $apartment->save();

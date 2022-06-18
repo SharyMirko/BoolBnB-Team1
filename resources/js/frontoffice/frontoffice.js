@@ -1,5 +1,9 @@
+const { default: Axios } = require("axios");
+
 require("../bootstrap");
-require("./comuni.js");
+
+import { default as ttServices } from '@tomtom-international/web-sdk-services';
+import { default as ttMaps } from '@tomtom-international/web-sdk-maps';
 
 const LandingPageVue = new Vue({
    el: "#LandingPageVue",
@@ -28,3 +32,71 @@ items.forEach((el) => {
       next = next.nextElementSibling
    }
 })
+
+// form register validation
+
+const FormRegisterVue = new Vue({
+   el: "#registerModal",
+   data: {
+      email: "",
+      password: "",
+      password_confirmation: "",
+      name: "",
+      last_name: "",
+      date:"",
+      valid: false,
+   },
+   methods: {  
+      register: function () {
+         //validate email
+         let btn = document.querySelector("#btnReg");
+         if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && 
+         this.password.length > 5 &&
+         this.password_confirmation === this.password &&
+         this.name.length > 2 &&
+         this.last_name.length > 2 &&
+         this.date != "") {
+            btn.disabled = false;
+         } 
+      }
+   }
+});
+
+// form create
+
+const FormCreateVue = new Vue({
+   el: "#createModal",
+   data: {
+      title: "",
+      category: "",
+      price: "",
+      description: "",
+      address:"",
+      service: [],
+      area: "",
+      city: "",
+      beds_n: "",
+      bathrooms_n: "",
+      rooms_n: "",
+      hiddenlat: "",
+      hiddenlon: "",
+   },
+   methods: {
+      create: function () {
+      },
+      addressSearch: function() {
+         // API request to get address
+         ttServices.services.geocode({
+            key: 'SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE',
+            query: this.address + " " + this.city
+          }).then(
+            function(response) {
+               FormCreateVue.hiddenlat = response.results[0].position.lat;
+               FormCreateVue.hiddenlon = response.results[0].position.lng;
+               console.log(response.results[0]);
+            });
+
+
+        }
+},
+});

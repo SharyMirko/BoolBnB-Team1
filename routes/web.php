@@ -34,7 +34,9 @@ Route::get('/', 'HomeController@index')->name('LandingPage');
 Route::get('/show', 'Admin\ServiceController@index')->name('ShowPage');
 
 Route::resource('/apartment', 'Admin\ApartmentController');
-
+Route::options('/{path}', function(){ 
+    return '';
+})->where('path', '.*');
 
 
 Route::get('{any?}', function () {

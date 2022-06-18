@@ -27639,9 +27639,43 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   !*** ./resources/js/frontoffice/comuni.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
 
+var landinSearch = new Vue({
+  el: "#jumbotron",
+  data: {
+    search: "",
+    comuni: [],
+    resultComuni: []
+  },
+  methods: {
+    searchComuni: function searchComuni() {
+      if (this.search.length > 0) {
+        for (i = 0; i < this.comuni.length; i++) {
+          if (this.comuni[i].substr(0, this.search.length).toUpperCase() == this.search.toUpperCase()) {
+            if (!this.resultComuni.includes(this.comuni[i])) {
+              this.resultComuni.unshift(this.comuni[i]);
+            }
+          }
+        }
+      }
+    },
+    setComune: function setComune(comune) {
+      this.search = comune;
+      this.resultComuni = [];
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    Axios.get("https://comuni-ita.herokuapp.com/api/province?onlyname=true").then(function (response) {
+      _this.comuni = response.data;
+    });
+  }
+});
 
 /***/ }),
 

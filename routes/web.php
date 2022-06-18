@@ -23,7 +23,7 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard');
         //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
-        //Route::resource('/apartment', 'ApartmentController');
+        Route::resource('/apartments', 'ApartmentController');
         //Route::resource('/categories', 'CategoryController');
     });
 

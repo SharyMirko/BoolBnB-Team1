@@ -21,7 +21,7 @@
             <div class="d-flex align-items-start mb-5">
                <div class="flex-grow-1">
                   <h1>Appartamento moderno</h1>
-                  <p class="price my-2 d-md-none">€ 420<span class="price-suffix">/notte</span></p>
+                  <p class="price-text my-2 d-md-none">€ 420<span class="price-suffix">/notte</span></p>
                   <p class="geo icon">Via Verdi 23, Milano, MI</p>
                </div>
                <div class="p-2 bg-secondary text-white rounded fw-bold">CB</div>
@@ -99,7 +99,7 @@
 
          {{-- form invio messaggio --}}
          <div class="d-none d-md-block col-md-4 col-lg-3 mt-5">
-            <div class="price m-0 py-2 px-3 text-white rounded-3 mb-2" id="price">€ 420<span class="price-suffix">/notte</span></div>
+            <div class="price m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ 420<span class="price-suffix">/notte</span></div>
             <form action="">
                <div class="form-group row mb-2 text-center">
                   <div class="col">

@@ -16,7 +16,7 @@ class CreateApartmentsTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->string('thumb', 255);
+            $table->string('thumb', 255)->nullable();
             $table->text('description');
             $table->string('category');
             $table->foreignId('user_id')->constrained();
@@ -28,6 +28,7 @@ class CreateApartmentsTable extends Migration
             $table->string('address');
             $table->decimal('latitude', 8, 6);
             $table->decimal('longitude', 9, 6);
+            $table->integer('price')->nullable();
             $table->boolean('visible')->default(1);
             $table->timestamps();
         });

@@ -2481,7 +2481,7 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.6;
   color: #3B4249;
-  background-color: #fff;
+  background-color: #f7f7f7;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -12212,13 +12212,19 @@ a {
   margin-right: 0.5rem;
 }
 
-.price {
+.price-text {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.price .price-suffix {
+.price-text .price-suffix {
   font-size: 0.8rem;
+}
+
+.backoffice-title {
+  border-bottom: 2px #3B4249 solid;
+  padding: 0;
+  padding-bottom: 0.5rem;
 }
 
 header {
@@ -12416,7 +12422,7 @@ header .dropdown-item:focus {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-#price {
+#price-show {
   background-color: #3B4249;
 }
 
@@ -12441,12 +12447,6 @@ header .dropdown-item:focus {
 
 .dashboard-username {
   color: #F15E75;
-}
-
-.backoffice-title {
-  border-bottom: 2px #3B4249 solid;
-  padding: 0;
-  padding-bottom: 0.5rem;
 }
 
 .dashboard-list .crown {

@@ -27757,6 +27757,18 @@ var FormCreateVue = new Vue({
     }
   }
 });
+var longitude = document.getElementById("longitude");
+var latitude = document.getElementById("latitude");
+var center = [longitude.innerHTML, latitude.innerHTML];
+var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.map({
+  key: 'SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE',
+  container: 'map',
+  center: center,
+  zoom: 15
+});
+var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.Marker({
+  draggable: false
+}).setLngLat(center).addTo(map);
 
 /***/ }),
 

@@ -70,24 +70,16 @@
                   <h4 class="mb-3">Servizi</h4>
                   <div class="row row-cols-2 row-cols-sm-4">
                      <div class="col">
-                        <p class="service-list icon">4 Posti letto</p>
-                        <p class="service-list icon">2 bagni</p>
-                        <p class="service-list icon">WiFi</p>
-                     </div>
-                     <div class="col">
-                        <p class="service-list icon">Sauna</p>
-                        <p class="service-list icon">Piscina</p>
-                        <p class="service-list icon">Posto auto</p>
-                     </div>
-                     <div class="col">
-                        <p class="service-list icon">Portineria</p>
+                        @foreach ($services as $service)
+                        <p class="service-list icon">{{$service->name}}</p>
+                        @endforeach
                      </div>
                   </div>
                </div>
             </div>
             <div class="row w-100 g-0">
                <h4 class="mb-3">Location</h4>
-               <iframe class="w-100 rounded-3 border overflow-hidden" height="500" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.04318883717!2d9.188104899999999!3d45.46893389999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6b25e5ea1e3%3A0xf48cc86e39a35fe4!2sVia%20Giuseppe%20Verdi%2C%2023%2C%2020121%20Milano%20MI!5e0!3m2!1sit!2sit!4v1655374106036!5m2!1sit!2sit" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               <div id='map' class='map'></div>
             </div>
          </div>
          {{-- / --}}
@@ -129,6 +121,8 @@
             </button>
          </div>
       </div>
+      <div id="latitude">{{ $apartment->latitude}}</div>
+      <div id="longitude">{{ $apartment->longitude}}</div>
    </section>
 
 

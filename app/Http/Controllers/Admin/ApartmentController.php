@@ -54,8 +54,7 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $services = $apartment->services()->where('apartment_id', $apartment->id)->get();
-        dd($services);
-        return view('apartments.show', compact('apartment'));
+        return view('apartments.show', compact('apartment', 'services'));
     }
 
 

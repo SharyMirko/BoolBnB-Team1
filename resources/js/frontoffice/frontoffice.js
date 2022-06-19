@@ -95,8 +95,18 @@ const FormCreateVue = new Vue({
                FormCreateVue.hiddenlon = response.results[0].position.lng;
                console.log(response.results[0]);
             });
-
-
         }
 },
 });
+let longitude = document.getElementById("longitude");
+let latitude = document.getElementById("latitude");
+var center = [longitude.innerHTML, latitude.innerHTML];
+let map = ttMaps.map({
+   key: 'SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE',
+   container: 'map',
+   center: center,
+    zoom: 15,
+});
+let marker = new ttMaps.Marker({
+   draggable: false
+}).setLngLat(center).addTo(map);

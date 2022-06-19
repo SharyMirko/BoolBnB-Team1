@@ -44,7 +44,7 @@ class ApartmentController extends Controller
         $apartment->fill($apartmentForm);
         $apartment->save();
 
-        return redirect()->route('admin.apartments.index');
+        return redirect()->route('admin.apartments.show', $apartment->id);
     }
 
 

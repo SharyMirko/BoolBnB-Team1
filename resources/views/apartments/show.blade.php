@@ -20,9 +20,9 @@
          <div class="col-12 col-md-8 col-lg-9">
             <div class="d-flex align-items-start mb-5">
                <div class="flex-grow-1">
-                  <h1>Appartamento moderno</h1>
-                  <p class="price-text my-2 d-md-none">€ 420<span class="price-suffix">/notte</span></p>
-                  <p class="geo icon">Via Verdi 23, Milano, MI</p>
+                  <h1>{{ $apartment->title }}</h1>
+                  <p class="price-text my-2 d-md-none">€{{ $apartment->price }}<span class="price-suffix">/notte</span></p>
+                  <p class="geo icon">{{ $apartment->address }}</p>
                </div>
                <div class="p-2 bg-secondary text-white rounded fw-bold">CB</div>
                {{-- <div class="col-1"></div> --}}
@@ -32,7 +32,7 @@
                   <div class="d-flex ">
                      <div class="flex-grow-1">
                         <i class="fa-solid fa-bed fs-3"></i>
-                        <div>4 posti letto</div>
+                        <div>{{ $apartment->beds_n }}</div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -41,7 +41,7 @@
                   <div class="d-flex">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-bath fs-3"></i>
-                        <div>2 bagni</div>
+                        <div>{{ $apartment->bathrooms_n }}</div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -50,7 +50,7 @@
                   <div class="d-flex">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-vector-square fs-3"></i>
-                        <div>166 mq</div>
+                        <div>{{ $apartment->area }} mq</div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -96,7 +96,7 @@
 
          {{-- form invio messaggio --}}
          <div class="d-none d-md-block col-md-4 col-lg-3 mt-5">
-            <div class="price m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ 420<span class="price-suffix">/notte</span></div>
+            <div class="price m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
             <form action="">
                <div class="form-group row mb-2 text-center">
                   <div class="col">

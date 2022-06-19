@@ -37,12 +37,15 @@ class ApartmentController extends Controller
 
 
     public function store(Request $request)
-    {
-       /*  dd($request->all()); */
+    { 
         $apartmentForm = $request->all();
         $apartment = new Apartment();
         $apartment->fill($apartmentForm);
         $apartment->save();
+        foreach ($request['service'] as $service) {
+        $apartment->services()->attach(['service_id' => $service], ['apartment_id' => $apartment->id]);
+        }
+       
 
         return redirect()->route('admin.apartments.show', $apartment->id);
     }
@@ -50,8 +53,9 @@ class ApartmentController extends Controller
 
     public function show(Apartment $apartment)
     {
-/*         dd($apartment);
- */        return view('apartments.show', compact('apartment'));
+        $services = $apartment->services()->where('apartment_id', $apartment->id)->get();
+        dd($services);
+        return view('apartments.show', compact('apartment'));
     }
 
 

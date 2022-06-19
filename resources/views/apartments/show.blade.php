@@ -79,7 +79,7 @@
             </div>
             <div class="row w-100 g-0">
                <h4 class="mb-3">Location</h4>
-               <div id='map' class='map'></div>
+               <div id='map' class="map w-100 rounded-3 border overflow-hidden" ></div>
             </div>
          </div>
          {{-- / --}}

@@ -39,7 +39,7 @@
                      <select name="category" v-model="category" class="form-select @error('category') is-invalid @enderror" id="category">
                         <option selected disabled hidden value="">Seleziona categoria</option>
                         @foreach ($categoryData as $category)
-                           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                           <option value="{{ $category->name }}">{{ $category->name }}</option>
                         @endforeach
 
                      </select>

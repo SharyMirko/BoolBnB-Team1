@@ -11,11 +11,17 @@
    </div>
 
    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" role="listbox">        
+      <div class="carousel-inner" role="listbox">   
+              
          @for ($i = 0; $i < 7; $i++) 
+        @php
+            //get random apartment
+            $apartment = $apartments->random();
+        @endphp
             <div class="carousel-item @if($i != 0)  @else active @endif row row-cols-1 row-cols-md-3 p-1">
                <div class="col">
-                  <x-card />
+                  
+                  <x-card :item="$apartment"/>
                </div>
             </div>
          @endfor

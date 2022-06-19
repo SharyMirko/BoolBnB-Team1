@@ -21,7 +21,8 @@
 
    {{-- landing slider appartamenti in evidenza --}}
    <section class="container py-5 pt-5" id="sec_ap_prem">
-      <x-landingSlider />
+      <x-landingSlider :apartments="$apartments" />
+
    </section>
    {{-- / --}}
 

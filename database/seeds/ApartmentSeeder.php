@@ -19,29 +19,29 @@ class ApartmentSeeder extends Seeder
             'city' => 'Milano',
             'addresses' => [
                [
-                  'name'         => 'Via verdi 23',
-                  'latitude'     => '42.57',
-                  'longitude'    => '50.32'
+                  'name'         => 'Via Domodossola 16',
+                  'latitude'     => '45.481446',
+                  'longitude'    => '9.159714'
                ],
                [
-                  'name'         => 'Corso Milano 18',
-                  'latitude'     => '33.48',
-                  'longitude'    => '74.50'
+                  'name'         => 'Via Enrico Sertoli 9',
+                  'latitude'     => '45.518885',
+                  'longitude'    => '9.149829'
                ],
                [
-                  'name'         => 'Corso Como 2',
-                  'latitude'     => '33.48',
-                  'longitude'    => '74.50'
+                  'name'         => 'Via Valtorta 21',
+                  'latitude'     => '45.500572',
+                  'longitude'    => '9.223390'
                ],
                [
-                  'name'         => 'Via salsa 21',
-                  'latitude'     => '42.57',
-                  'longitude'    => '50.32'
+                  'name'         => 'Via Medici 4',
+                  'latitude'     => '45.461267',
+                  'longitude'    => '9.181219'
                ],
                [
-                  'name'         => 'Viale Marco 5',
-                  'latitude'     => '33.48',
-                  'longitude'    => '74.50'
+                  'name'         => 'Via Benaco 1',
+                  'latitude'     => '45.445213',
+                  'longitude'    => '9.211745'
                ],
             ]
          ],
@@ -49,39 +49,92 @@ class ApartmentSeeder extends Seeder
             'city' => 'Venezia',
             'addresses' => [
                [
-                  'name'         => 'Ciccio bello',
-                  'latitude'     => '44.55',
-                  'longitude'    => '55.33'
+                  'name'         => 'Calle de la Laca 2463',
+                  'latitude'     => '45.430851',
+                  'longitude'    => '12.324675'
                ],
                [
-                  'name'         => 'ha la bua',
-                  'latitude'     => '33.44',
-                  'longitude'    => '77.33'
+                  'name'         => 'Campiello Sant\'Agostin 2348',
+                  'latitude'     => '45.438398',
+                  'longitude'    => '12.328158'
                ],
                [
-                  'name'         => 'e vuole te',
-                  'latitude'     => '33.88',
-                  'longitude'    => '74.00'
+                  'name'         => 'Corte del Cazza 1340',
+                  'latitude'     => '45.441025',
+                  'longitude'    => '12.327094'
                ],
                [
-                  'name'         => 'lo impasti',
-                  'latitude'     => '55.55',
-                  'longitude'    => '50.05'
+                  'name'         => 'Calle del Vin 4647',
+                  'latitude'     => '45.434535',
+                  'longitude'    => '12.342648'
                ],
                [
-                  'name'         => 'lo inforni',
-                  'latitude'     => '31.32',
-                  'longitude'    => '74.47'
+                  'name'         => 'Calle Michelangelo 948',
+                  'latitude'     => '45.425022',
+                  'longitude'    => '12.338527'
                ],
             ]
          ],
-         // 'Roma' => [
-         //    ['Via verdi 23', '42.57', '50.32'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         //    ['Via verdi 23', '42.57', '50.32'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         // ],
+         [
+            'city' => 'Roma',
+            'addresses' => [
+               [
+                  'name'         => 'Via Cristoforo Colombo 124',
+                  'latitude'     => '41.866708',
+                  'longitude'    => '12.497014'
+               ],
+               [
+                  'name'         => 'Via dei Liguri 7',
+                  'latitude'     => '41.897486',
+                  'longitude'    => '12.516408'
+               ],
+               [
+                  'name'         => 'Via Attilio Benigni 7',
+                  'latitude'     => '41.931362',
+                  'longitude'    => '12.560604'
+               ],
+               [
+                  'name'         => 'Piazza della Trinità dei Monti 6',
+                  'latitude'     => '41.906493',
+                  'longitude'    => '12.483737'
+               ],
+               [
+                  'name'         => 'Via dei Polacchi 23',
+                  'latitude'     => '41.895249',
+                  'longitude'    => '12.479231'
+               ],
+            ]
+         ],
+         [
+            'city' => 'gdfagadf',
+            'addresses' => [
+               [
+                  'name'         => 'Via Cristoforo Colombo 124',
+                  'latitude'     => '41.866708',
+                  'longitude'    => '12.497014'
+               ],
+               [
+                  'name'         => 'Via dei Liguri 7',
+                  'latitude'     => '41.897486',
+                  'longitude'    => '12.516408'
+               ],
+               [
+                  'name'         => 'Via Attilio Benigni 7',
+                  'latitude'     => '41.931362',
+                  'longitude'    => '12.560604'
+               ],
+               [
+                  'name'         => 'Piazza della Trinità dei Monti 6',
+                  'latitude'     => '41.906493',
+                  'longitude'    => '12.483737'
+               ],
+               [
+                  'name'         => 'Via dei Polacchi 23',
+                  'latitude'     => '41.895249',
+                  'longitude'    => '12.479231'
+               ],
+            ]
+         ],
          // 'Napoli' => [
          //    ['Via verdi 23' => [
          //          '42.57', '50.32'
@@ -96,7 +149,7 @@ class ApartmentSeeder extends Seeder
       ];
 
 
-      for ($i = 0; $i < 5; $i++) {
+      for ($i = 0; $i < 20; $i++) {
          $title = $faker->words(rand(2, 4), true);
 
          $randCityVal = array_rand($cities);

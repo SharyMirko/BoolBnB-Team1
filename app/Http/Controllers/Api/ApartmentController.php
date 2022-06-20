@@ -25,19 +25,45 @@ class ApartmentController extends Controller
       //                            ->with(['services'])
       //                            ->orderBy('id', 'asc')
       //                            ->paginate(20);
-
+       
+      $allparam = [
+         ['rooms_n', '=', $_GET['rooms']],
+         ['beds_n', '=', $_GET['beds']],
+         ['category', '=', $_GET['category']],
+         ['city', '=', $_GET['city']],
+      ];
 
       $apiApartments = Apartment::with([
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
          'services' => function ($query2) {$query2->select('id', 'name');}
       ])->paginate(20);
+         // create API response
+         $response = [
+            'success' => true,
+            'data' => $apiApartments,
+            'message' => 'List of Apartments'
+         ];
+
+
+         if(isset($_GET['rooms']) && isset($_GET['beds']) && isset($_GET['category']) && isset($_GET['city'])){
+            $filter = Apartment::with([
+               'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
+               'services' => function ($query2) {$query2->select('id', 'name');}
+            ])->where($allparam)->paginate(20);
+            return response()->json([
+               'success'   => true,
+               'response'  => $filter
+            ]);
+         } else {
+            return response()->json([
+               'success'   => true,
+               'response'  => $apiApartments
+            ]);
+         } 
 
 
 
-      return response()->json([
-         'success'   => true,
-         'response'  => $apiApartments
-      ]);
+     
    }
 
    /**

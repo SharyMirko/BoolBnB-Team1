@@ -151,9 +151,9 @@ class ApartmentSeeder extends Seeder
          $baseLorPicUrl = 'https://picsum.photos/400/300?random=';
          $pow = pow(10, 6);
          Apartment::create([
-            'user_id'      => User::inRandomOrder()->first()->id,
-            'title'        => $title,
-            'thumb'        => $baseLorPicUrl . rand(1, 500),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'title' => $title,
+            'thumb' => $baseLorPicUrl . rand(1, 500),
             'description'  => $faker->words(rand(5, 20), true),
             'category'     => $category[array_rand($category)],
             'rooms_n'      => rand(1, 9),

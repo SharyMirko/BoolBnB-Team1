@@ -8,9 +8,26 @@ use App\Http\Controllers\Controller;
 use App\Model\Service;
 use App\Model\Category;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Validation\Rule;
 
 class ApartmentController extends Controller
 {
+    private function validation($arg)
+    {
+        return [
+            'title'         => 'required|min:5|max:255',
+            'thumb'         => 'nullable|max:255',
+            'description'   => 'nullable|min:25|max:255',
+            'category'      => 'required',
+            'rooms_n'       => 'required|numeric',
+            'beds_n'        => 'required|numeric',
+            'bathrooms_n'   => 'required|numeric',
+            'area'          => 'required|numeric',
+            'city'          => 'required|min:4|max:255',
+            'price'         => 'required|numeric',
+            'address'       => 'required|string'
+        ];
+    }
 
     public function index()
     {
@@ -27,25 +44,30 @@ class ApartmentController extends Controller
         $categoryData = Category::all();
         $user_id = FacadesAuth::id();
 
-        return view ('apartments.create', [
-         'apartmentData' => $apartmentData,
-         'serviceData'   => $serviceData,
-         'categoryData'  => $categoryData,
-         'user_id'       => $user_id
-      ]);
+        return view('apartments.create', [
+            'apartmentData' => $apartmentData,
+            'serviceData' => $serviceData,
+            'categoryData' => $categoryData,
+            'user_id' => $user_id
+        ]);
     }
 
 
     public function store(Request $request)
-    { 
+    {
+
+        // $request->validate($this->validation);
+
         $apartmentForm = $request->all();
+
         $apartment = new Apartment();
         $apartment->fill($apartmentForm);
         $apartment->save();
+
         foreach ($request['service'] as $service) {
-        $apartment->services()->attach(['service_id' => $service], ['apartment_id' => $apartment->id]);
+            $apartment->services()->attach(['service_id' => $service], ['apartment_id' => $apartment->id]);
         }
-       
+
 
         return redirect()->route('admin.apartments.show', $apartment->id);
     }
@@ -66,6 +88,9 @@ class ApartmentController extends Controller
 
     public function update(Request $request, Apartment $apartment)
     {
+
+        // $request->validate($this->validation);
+
         $apartmentForm = $request->all();
 
         $apartment->update($apartmentForm);

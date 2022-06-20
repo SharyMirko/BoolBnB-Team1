@@ -12,12 +12,12 @@
          @csrf
 
          <div class="row g-0">
-
-         {{-- colonna sx --}}
+            {{-- colonna sx --}}
             <div class="col-12 col-md-7">
                <h4 class="mb-3">Dati generali</h4>
 
-               <div class="form-group row mb-2">
+               {{-- titolo e area --}}
+               <div class="form-group row mb-2 gx-2">
                   <div class="col">
                      <input type="hidden" value="{{ $user_id }}" name="user_id">
                      <input type="hidden" v-model="hiddenlat" name="latitude">
@@ -30,10 +30,19 @@
                            </span>
                      @enderror
                   </div>
+                  <div class="col-4 col-md-5 col-lg-4">
+                     <input id="area" v-model="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ $area ?? old('area') }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
 
-
+                     @error('area')
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
+                  </div>
                </div>
+               {{-- / --}}
 
+               {{-- categoria e prezzo --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col-8 col-md-7 col-lg-8">
                      <select name="category" v-model="category" class="form-select @error('category') is-invalid @enderror" id="category">
@@ -41,7 +50,6 @@
                         @foreach ($categoryData as $category)
                            <option value="{{ $category->name }}">{{ $category->name }}</option>
                         @endforeach
-
                      </select>
 
                      @error('category')
@@ -60,6 +68,11 @@
                         </span>
                      @enderror
                   </div>
+               </div>
+               {{-- / --}}
+
+               {{-- stanze, bagni, letti --}}
+               <div class="form-group row mb-2 gx-2">
                   <div class="col-4 col-md-5 col-lg-4">
                      <input id="rooms_n" v-model="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ $rooms_n ?? old('rooms_n') }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}">
 
@@ -87,19 +100,10 @@
                         </span>
                      @enderror
                   </div>
-                  <div class="col-4 col-md-5 col-lg-4">
-                     <input id="area" v-model="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ $area ?? old('area') }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
-
-                     @error('area')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                        </span>
-                     @enderror
-                  </div>
                </div>
+               {{-- / --}}
 
-
-
+               {{-- descrizione --}}
                <div class="form-group row mb-2 text-center">
                   <div class="col">
                      <textarea class="form-control @error('description') is-invalid @enderror" v-model="description" id="description" name="description" rows="10" cols="50" autofocus placeholder="{{ __('Description') }}" required></textarea>
@@ -111,6 +115,7 @@
                      @enderror
                   </div>
                </div>
+               {{-- / --}}
 
                {{-- checkbox --}}
                <div class="form-group my-4">
@@ -167,41 +172,25 @@
                   </div>
                </div>
 
-               <div class="form-group row mb-2">
+               <div class="form-group row mb-5">
                   <div class="col">
-                     <input id="address" v-model="address" @keyup="addressSearch" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $address ?? old('address') }}" required autocomplete="address" autofocus placeholder="{{ __('Indirizzo') }}">
+                     <input id="address" v-model="address" @change="addressSearch" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $address ?? old('address') }}" required autocomplete="address" autofocus placeholder="{{ __('Indirizzo') }}">
 
                      @error('address')
                            <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>
                      @enderror
-
-
-
-                  </div>
-               </div>
-
-
-               <div class="form-group row mb-3 g-0">
-                  <div class="col">
-                     <iframe class="w-100 rounded-3 border overflow-hidden" height="308" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.04318883717!2d9.188104899999999!3d45.46893389999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6b25e5ea1e3%3A0xf48cc86e39a35fe4!2sVia%20Giuseppe%20Verdi%2C%2023%2C%2020121%20Milano%20MI!5e0!3m2!1sit!2sit!4v1655374106036!5m2!1sit!2sit" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                   </div>
                </div>
 
                <div class="form-group row">
                   <div class="col">
-                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h4>Foto</h4>
-
-
-                        <input class="form-control" type="file" id="thumb" name="thumb" accept="image/*">
-                        @error('thumb')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-
-                        <button type="submit" class="btn btn-primary text-white"><i class="fa-solid fa-plus"></i></button>
-                     </div>
+                     <h4 class="mb-3">Foto</h4>
+                     <input class="form-control" type="file" id="thumb" name="thumb" accept="image/*">
+                     @error('thumb')
+                           <div class="alert alert-danger">{{ $message }}</div>
+                     @enderror
                   </div>
                </div>
             </div>

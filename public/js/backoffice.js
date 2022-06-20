@@ -93,7 +93,17 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-
+//eliminazione appartamento da dashboard
+var btnDel = document.querySelectorAll('.btn-del');
+var indexForm = document.querySelector('#indexForm');
+btnDel.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    if (this.dataset.type == 'apartment') {
+      indexForm.action = this.dataset.baseurl + '/' + this.dataset.id;
+    } else {//nothing
+    }
+  });
+});
 
 /***/ }),
 
@@ -104,7 +114,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/backoffice/backoffice.js */"./resources/js/backoffice/backoffice.js");
+module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\backoffice\backoffice.js */"./resources/js/backoffice/backoffice.js");
 
 
 /***/ })

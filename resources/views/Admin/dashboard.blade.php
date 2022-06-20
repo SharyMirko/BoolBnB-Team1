@@ -30,8 +30,8 @@
                </div>
 
                <div class="ms-3">
-                  <p class="category m-0">{{$apart->category}}</p>
-                  <h4 class="my-2">{{$apart->title}}</h4>
+                  <p class="category m-0 text-capitalize">{{$apart->category}}</p>
+                  <h4 class="my-2 text-capitalize">{{$apart->title}}</h4>
                   <p class="geo icon">{{$apart->address}}</p>
                   <p class="price-text m-0">€ {{$apart->price}}<span class="price-suffix">/notte</span></p>
                </div>
@@ -46,10 +46,8 @@
                   <div class="d-flex">
                      <a href="{{ route('admin.apartments.show', $apart->id) }}" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
                      <a href="{{ route('admin.apartments.edit', $apart->id) }}" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
-                     <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pause"></i></a>
-                     {{-- <a href="{{ route('admin.apartments.destroy', $apart->id) }}" class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a> --}}
 
-                     <!-- Popup Trigger -->
+                     <!-- Elimina appartamento, popup trigger -->
                      <button type="button" data-baseurl="{{ route('admin.apartments.index') }}" data-id="{{ $apart->id }}" data-type="apartment" class="btn btn-danger text-white btn-del" data-bs-toggle="modal" data-bs-target="#delPopup" title="Elimina appartamento"><i class="fa-solid fa-trash-can"></i></button>
                      <!-- / -->
                   </div>

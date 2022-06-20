@@ -53,10 +53,15 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"
                                 id="dropdownAuth">
 
-                                {{-- dashboard --}}
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                    {{ __('My dashboard') }}
-                                </a>
+                                 {{-- dashboard --}}
+                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                    {{ __('Dashboard') }}
+                                 </a>
+
+                                 {{-- aggiungi appartaemnto --}}
+                                 <a class="dropdown-item" href="{{ route('admin.apartments.create') }}">
+                                    {{ __('Add apartments') }}
+                                 </a>
 
                                 {{-- logout --}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"

@@ -3,15 +3,8 @@
 @section('title', 'Appartamento moderno')
 
 @section('content')
-   <section class="container-fluid overflow-hidden py-4 py-md-5" id="sec_scroll_img">
-      <div class="row row-cols-1 row-cols-md-3 flex-nowrap cont_img_scroll g-3">
-            <div class="col"><img src="https://picsum.photos/1200/800?random=<?= rand(1, 500) ?>" class="img-fluid" alt="lorem_picsum">
-            </div>
-            <div class="col"><img src="https://picsum.photos/1200/800?random=<?= rand(1, 500) ?>" class="img-fluid" alt="lorem_picsum">
-            </div>
-            <div class="col"><img src="https://picsum.photos/1200/800?random=<?= rand(1, 500) ?>" class="img-fluid" alt="lorem_picsum">
-            </div>
-      </div>
+   <section class="container-fluid g-0 mb-4" id="sec_scroll_img">
+      <img src="{{ $apartment->thumb }}" class="w-100 h-100" alt="{{ $apartment->title }}">
    </section>
 
    <section class="container" id="sec_ap_descr">
@@ -20,7 +13,7 @@
          <div class="col-12 col-md-8 col-lg-9">
             <div class="d-flex align-items-start mb-5">
                <div class="flex-grow-1">
-                  <h1>{{ $apartment->title }}</h1>
+                  <h1 class="text-capitalize">{{ $apartment->title }}</h1>
                   <p class="price-text my-2 d-md-none">€{{ $apartment->price }}<span class="price-suffix">/notte</span></p>
                   <p class="geo icon">{{ $apartment->address }}</p>
                </div>
@@ -88,21 +81,17 @@
 
          {{-- form invio messaggio --}}
          <div class="d-none d-md-block col-md-4 col-lg-3 mt-5">
-            <div class="price m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
+            <div class="price-text m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
             <form action="">
                <div class="form-group row mb-2 text-center">
                   <div class="col">
                      <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
-
-                     
                   </div>
                </div>
 
                <div class="form-group row mb-2 text-center">
                   <div class="col">
                      <textarea class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
-
-                    
                   </div>
                </div>
 
@@ -147,7 +136,7 @@
                      <div class="col">
                         <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
 
-                        
+
                      </div>
                   </div>
 
@@ -155,7 +144,7 @@
                      <div class="col">
                         <textarea class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
 
-                        
+
                      </div>
                   </div>
 

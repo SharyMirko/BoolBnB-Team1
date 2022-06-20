@@ -164,6 +164,7 @@ class ApartmentSeeder extends Seeder
             'address'      => $randAddress['name'],
             'latitude'     => $randAddress['latitude'],
             'longitude'    => $randAddress['longitude'],
+            'price'        => rand(100, 1000),
             'visible'      => rand(0, 1)
          ]);
       }

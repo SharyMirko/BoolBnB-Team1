@@ -41,7 +41,7 @@
                   <div class="d-flex">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-bath fs-3"></i>
-                        <div>{{ $apartment->bathrooms_n }}</div>
+                        <div>{{ $apartment->rooms_n }}</div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>

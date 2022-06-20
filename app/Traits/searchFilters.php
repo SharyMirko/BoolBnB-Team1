@@ -28,21 +28,7 @@ trait searchFilters {
         if ($request->rooms) {
             $ApartmentQuery->where('rooms_n', $request->rooms);
         }
-       /*  if ($request->services) {
-            $ApartmentQuery->where('name', $request->services);
-        } */
-
-        /* if ($request->services) {
-            $services = $request->services;
-            foreach ($services as $service) {
-                $ApartmentQuery->whereHas('services', function($query) use ($service) {
-                    $query->where('name', $service);
-                });
-            }
-        } */
-
-/*         dd($request);
- */
+      
         return $ApartmentQuery;
     }
 }

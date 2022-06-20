@@ -27671,10 +27671,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tomtom-international/web-sdk-maps */ "./node_modules/@tomtom-international/web-sdk-maps/dist/maps.min.js");
 /* harmony import */ var _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
     Axios = _require["default"];
 
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -27685,7 +27688,7 @@ var LandingPageVue = new Vue({
   }
 }); // Landing Slider
 
-var items = document.querySelectorAll('.carousel .carousel-item');
+var items = document.querySelectorAll(".carousel .carousel-item");
 items.forEach(function (el) {
   var minPerSlide = 3;
   var next = el.nextElementSibling;
@@ -27747,7 +27750,7 @@ var FormCreateVue = new Vue({
     addressSearch: function addressSearch() {
       // API request to get address
       _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
-        key: 'SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE',
+        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
         query: this.address + " " + this.city
       }).then(function (response) {
         FormCreateVue.hiddenlat = response.results[0].position.lat;
@@ -27757,12 +27760,96 @@ var FormCreateVue = new Vue({
     }
   }
 });
+var SearchVue = new Vue({
+  el: "#searchApp",
+  data: {
+    location: "",
+    results: [],
+    nRes: 0,
+    link: "apartments/",
+    loading: false,
+    nBeds: "",
+    services: [],
+    nRooms: ""
+  },
+  methods: {
+    search: function search() {
+      Axios.get("/api/api-artments?city=" + this.location).then(function (response) {
+        SearchVue.results = response.data.response.data;
+        SearchVue.nRes = response.data.response.data.length;
+      });
+    },
+    applyFilter: function applyFilter() {
+      if (SearchVue.nBeds != "" && SearchVue.nRooms != "") {
+        Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(function (response) {
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+
+      if (SearchVue.nBeds != "") {
+        Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds).then(function (response) {
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+
+      if (SearchVue.nRooms != "") {
+        Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(function (response) {
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+
+      if (SearchVue.services.length > 0) {
+        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(function (response) {
+          console.log(SearchVue.services[0]);
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+
+      if (SearchVue.services.length > 0 && SearchVue.nBeds != "" && SearchVue.nRooms != "") {
+        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms + "&beds=" + this.nBeds).then(function (response) {
+          console.log(SearchVue.services[0]);
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+
+      if (SearchVue.services.length > 0 && SearchVue.nBeds != "") {
+        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&beds=" + this.nBeds).then(function (response) {
+          console.log(SearchVue.services[0]);
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+
+      if (SearchVue.services.length > 0 && SearchVue.nRooms != "") {
+        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms).then(function (response) {
+          console.log(SearchVue.services[0]);
+          SearchVue.results = response.data.response.data;
+          SearchVue.nRes = response.data.response.data.length;
+        });
+      }
+    },
+    setService: function setService(e) {
+      if (e.target.checked) {
+        SearchVue.services.push(e.target.value);
+      }
+
+      if (e.target.checked == false) {
+        SearchVue.services.splice(Object(lodash__WEBPACK_IMPORTED_MODULE_2__["indexOf"])(SearchVue.services, e.target.value), 1);
+      }
+    }
+  }
+});
 var longitude = document.getElementById("longitude");
 var latitude = document.getElementById("latitude");
 var center = [longitude.innerHTML, latitude.innerHTML];
 var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.map({
-  key: 'SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE',
-  container: 'map',
+  key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+  container: "map",
   center: center,
   zoom: 15
 });

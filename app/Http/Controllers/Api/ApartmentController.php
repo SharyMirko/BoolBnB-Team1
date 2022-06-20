@@ -35,6 +35,18 @@ class ApartmentController extends Controller
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
          'services' => function ($query2) {$query2->select('id', 'name');}
       ])->paginate(20);
+      if(isset($request->services)){
+         
+         foreach($filter as $key => $apart){
+           if(!$apart->services->contains($request->services)){
+             unset($filter[$key]);
+           }
+         }
+      }
+
+
+
+
          return response()->json([
             'success'   => true,
             'response'  => $filter,

@@ -20,6 +20,7 @@ class ApartmentSeeder extends Seeder
       for ($i = 0; $i < 20; $i++) {
          $title = $faker->words(rand(2, 4), true);
          $category = ['appartamenti', 'stanze', 'casali', 'ville'];
+         $city = ['Milano', 'Venezia', 'Roma', 'Napoli'];
          $baseLorPicUrl = 'https://picsum.photos/400/300?random=';
          $pow = pow(10, 6);
          Apartment::create([
@@ -32,6 +33,7 @@ class ApartmentSeeder extends Seeder
             'beds_n'        => rand(1, 4),
             'bathrooms_n'   => rand(1, 2),
             'area'          => rand(40, 200),
+            'city'          => $city[array_rand($city)],
             'address'       => $faker->Address(),
             'latitude'      => rand(-90 * $pow, 90 * $pow) / $pow,
             'longitude'     => rand(-180 * $pow, 180 * $pow) / $pow,

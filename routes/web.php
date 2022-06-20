@@ -17,25 +17,18 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware('auth')
-    ->namespace('Admin')
-    ->name('admin.')
-    ->prefix('admin')
-    ->group(function () {
-        Route::get('/', 'DashboardController@index')->name('dashboard');
-        //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
-        Route::resource('/apartments', 'ApartmentController');
-        //Route::resource('/categories', 'CategoryController');
-    });
-
+   ->namespace('Admin')
+   ->name('admin.')
+   ->prefix('admin')
+   ->group(function () {
+      Route::get('/', 'DashboardController@index')->name('dashboard');
+      //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
+      Route::resource('/apartments', 'ApartmentController');
+      //Route::resource('/categories', 'CategoryController');
+   });
 
 Route::get('/', 'HomeController@index')->name('LandingPage');
 
-// MOMENTANEO DA MODIFICARE
-/* Route::get('/show', 'Admin\ServiceController@index')->name('ShowPage');
- */
-Route::resource('/apartments', 'Admin\ApartmentController');
-
-
 Route::get('{any?}', function () {
-    return view('guests.landing');
+   return view('guests.landing');
 })->where('any', '.*');

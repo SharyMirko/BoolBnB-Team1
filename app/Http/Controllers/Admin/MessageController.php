@@ -6,15 +6,23 @@ use App\Model\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Model\Apartment;
 
 class MessageController extends Controller
 {
     
     public function index()
     {
-        $message = Message::where('user_id', Auth::user()->id)->paginate(20);
+        $userApart = Apartment::where('user_id', Auth::user()->id)->get();
+        $userIdAparts = [];
+        foreach ($userApart as $apart) {
+            $userIdAparts[] = $apart->id;
+        }
+        
+       $messagges = Message::whereIn('apartment_id', $userIdAparts)->paginate(20);
+       
 
-        return view('admin.messages.index', compact('message'));
+        return view('admin.messages.index', compact('messagges', 'userApart'));
     }
 
     
@@ -32,7 +40,7 @@ class MessageController extends Controller
         $message->fill($messageForm);
         $message->save();
 
-        return redirect()->route('apartments.show');
+        return redirect()->route('apartments.show', $request->apartment_id)->with('inviato', 'Il tuo messaggio è stato inviato');
     }
 
     

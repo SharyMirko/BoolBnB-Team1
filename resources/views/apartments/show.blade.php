@@ -4,6 +4,11 @@
 
 @section('content')
    <section class="container-fluid overflow-hidden py-4 py-md-5" id="sec_scroll_img">
+      @if(session()->has('inviato'))
+    <div class="alert alert-success">
+        {{ session()->get('inviato') }}
+    </div>
+@endif
       <div class="row row-cols-1 row-cols-md-3 flex-nowrap cont_img_scroll g-3">
             <div class="col"><img src="https://picsum.photos/1200/800?random=<?= rand(1, 500) ?>" class="img-fluid" alt="lorem_picsum">
             </div>
@@ -89,10 +94,16 @@
          {{-- form invio messaggio --}}
          <div class="d-none d-md-block col-md-4 col-lg-3 mt-5">
             <div class="price m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
-            <form action="">
+            <form method="POST" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
+               @csrf
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     <input name="apartment_id" type="hidden" value="{{$apartment->id}}">
+                     @if(Auth::check())
+                     <input id="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     @else
+                     <input id="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     @endif
 
                      
                   </div>
@@ -111,6 +122,7 @@
                </button>
             </form>
          </div>
+       
          {{-- / --}}
 
 

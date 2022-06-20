@@ -15,7 +15,7 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
-        "psy/psysh": "@dev"
+        "psy/psysh": "0.11.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

@@ -15,7 +15,8 @@ class ApartmentSeeder extends Seeder
 
       $category = ['appartamenti', 'stanze', 'casali', 'ville'];
       $cities = [
-         ['name' => 'Milano',
+         [
+            'city' => 'Milano',
             'addresses' => [
                [
                   'name'         => 'Via verdi 23',
@@ -44,13 +45,36 @@ class ApartmentSeeder extends Seeder
                ],
             ]
          ],
-         // 'Venezia' => [
-         //    ['Via verdi 23', '42.57', '50.32'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         //    ['Via verdi 23', '42.57', '50.32'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         // ],
+         [
+            'city' => 'Venezia',
+            'addresses' => [
+               [
+                  'name'         => 'Ciccio bello',
+                  'latitude'     => '44.55',
+                  'longitude'    => '55.33'
+               ],
+               [
+                  'name'         => 'ha la bua',
+                  'latitude'     => '33.44',
+                  'longitude'    => '77.33'
+               ],
+               [
+                  'name'         => 'e vuole te',
+                  'latitude'     => '33.88',
+                  'longitude'    => '74.00'
+               ],
+               [
+                  'name'         => 'lo impasti',
+                  'latitude'     => '55.55',
+                  'longitude'    => '50.05'
+               ],
+               [
+                  'name'         => 'lo inforni',
+                  'latitude'     => '31.32',
+                  'longitude'    => '74.47'
+               ],
+            ]
+         ],
          // 'Roma' => [
          //    ['Via verdi 23', '42.57', '50.32'],
          //    ['Corso Como 2', '33.48', '74.50'],
@@ -72,11 +96,15 @@ class ApartmentSeeder extends Seeder
       ];
 
 
-      for ($i = 0; $i < 20; $i++) {
+      for ($i = 0; $i < 5; $i++) {
          $title = $faker->words(rand(2, 4), true);
 
          $randCityVal = array_rand($cities);
-         $randCity = $cities[$randCityVal];
+         $randCity = $cities[$randCityVal]; // prendo un array city
+
+         $arrAddress = $randCity['addresses']; // definisco l'array addresses
+         $randAddressVal = array_rand($arrAddress);
+         $randAddress = $arrAddress[$randAddressVal]; // ho preso un array address random
 
          $baseLorPicUrl = 'https://picsum.photos/400/300?random=';
          $pow = pow(10, 6);
@@ -90,10 +118,10 @@ class ApartmentSeeder extends Seeder
             'beds_n' => rand(1, 4),
             'bathrooms_n' => rand(1, 2),
             'area' => rand(40, 200),
-            'city'      => 0,
-            'address'   => 0,
-            'latitude'  => 0,
-            'longitude' => 0,
+            'city'      => $randCity['city'],
+            'address'   => $randAddress['name'],
+            'latitude'  => $randAddress['latitude'],
+            'longitude' => $randAddress['longitude'],
             'visible' => rand(0, 1)
          ]);
       }

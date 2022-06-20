@@ -6,8 +6,10 @@ use App\Model\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class ApartmentController extends Controller
 {
+   use \App\Traits\searchFilters;
    /**
     * Display a listing of the resource.
     *
@@ -15,25 +17,8 @@ class ApartmentController extends Controller
     */
    public function index(Request $request)
    {
-      // $attributes = $request->all();
-
-      // $apiApartments = Apartment::join('users', 'apartments.user_id', 'users.id')
-      //                            ->join('apartment_service', 'apartments.id', 'apartment_service.apartment_id')
-      //                            ->join('services', 'services.id', 'apartment_service.service_id')
-      //                            ->select('apartments.*', 'users.first_name', 'users.last_name')
-      //                            ->first()
-      //                            ->with(['services'])
-      //                            ->orderBy('id', 'asc')
-      //                            ->paginate(20);
-       
-      $allparam = [
-         ['rooms_n', '=', $_GET['rooms']],
-         ['beds_n', '=', $_GET['beds']],
-         ['category', '=', $_GET['category']],
-         ['city', '=', $_GET['city']],
-      ];
-
-      $apiApartments = Apartment::with([
+      
+     /*  $apiApartments = Apartment::with([
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
          'services' => function ($query2) {$query2->select('id', 'name');}
       ])->paginate(20);
@@ -42,27 +27,19 @@ class ApartmentController extends Controller
             'success' => true,
             'data' => $apiApartments,
             'message' => 'List of Apartments'
-         ];
+         ]; */
+         $filter = $this->composeQuery($request);
+         $sql_string = $filter->toSql();
 
-
-         if(isset($_GET['rooms']) && isset($_GET['beds']) && isset($_GET['category']) && isset($_GET['city'])){
-            $filter = Apartment::with([
-               'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
-               'services' => function ($query2) {$query2->select('id', 'name');}
-            ])->where($allparam)->paginate(20);
-            return response()->json([
-               'success'   => true,
-               'response'  => $filter
-            ]);
-         } else {
-            return response()->json([
-               'success'   => true,
-               'response'  => $apiApartments
-            ]);
-         } 
-
-
-
+        $filter = $filter->with([
+         'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
+         'services' => function ($query2) {$query2->select('id', 'name');}
+      ])->paginate(20);
+         return response()->json([
+            'success'   => true,
+            'response'  => $filter,
+            'sql' => $sql_string
+         ]);
      
    }
 

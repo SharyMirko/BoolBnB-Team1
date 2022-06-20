@@ -64,7 +64,7 @@
                   <div class="row row-cols-2 row-cols-sm-4">
                      <div class="col">
                         @foreach ($services as $service)
-                        <p class="service-list icon">{{$service->name}}</p>
+                           <p class="service-list icon">{{$service->name}}</p>
                         @endforeach
                      </div>
                   </div>

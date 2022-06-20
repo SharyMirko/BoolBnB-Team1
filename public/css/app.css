@@ -338,7 +338,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: #6c757d;
+  color: #3B4249;
   text-align: left;
 }
 
@@ -2258,7 +2258,7 @@ progress {
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #6c757d;
+  color: #3B4249;
 }
 
 .form-control {
@@ -8650,7 +8650,7 @@ fieldset:disabled .btn {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: #3B4249 !important;
 }
 
 .text-black-50 {
@@ -12242,6 +12242,10 @@ header .logo {
 
 header .navbar-expand-md .navbar-nav .nav-link {
   padding: 1.5rem 0;
+}
+
+header #navbarDropdown {
+  text-transform: uppercase;
 }
 
 header #dropdownAuth {

@@ -155,7 +155,7 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="btn btn-primary d-block w-100 mb-3">
+                            <button type="submit" class="btn btn-primary text-white d-block w-100 mb-3">
                                 {{ __('Login') }}
                             </button>
 
@@ -293,7 +293,7 @@
                         </div>
 
                         <button type="submit" id="btnReg" disabled="true"
-                            class="btn btn-primary d-block w-100 mb-3">
+                            class="btn btn-primary text-white d-block w-100 mb-3">
                             {{ __('Register') }}
                         </button>
                     </form>
@@ -365,7 +365,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary text-white">
                             {{ __('Reset Password') }}
                         </button>
                     </form>

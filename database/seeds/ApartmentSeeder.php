@@ -106,46 +106,35 @@ class ApartmentSeeder extends Seeder
             ]
          ],
          [
-            'city' => 'gdfagadf',
+            'city' => 'Napoli',
             'addresses' => [
                [
-                  'name'         => 'Via Cristoforo Colombo 124',
-                  'latitude'     => '41.866708',
-                  'longitude'    => '12.497014'
+                  'name'         => 'Via Toledo 148',
+                  'latitude'     => '40.845170',
+                  'longitude'    => '14.249083'
                ],
                [
-                  'name'         => 'Via dei Liguri 7',
-                  'latitude'     => '41.897486',
-                  'longitude'    => '12.516408'
+                  'name'         => 'Via Chiaia 179',
+                  'latitude'     => '40.837638',
+                  'longitude'    => '14.245822'
                ],
                [
-                  'name'         => 'Via Attilio Benigni 7',
-                  'latitude'     => '41.931362',
-                  'longitude'    => '12.560604'
+                  'name'         => 'Via Francesco Caracciolo 11',
+                  'latitude'     => '40.831274',
+                  'longitude'    => '14.221789'
                ],
                [
-                  'name'         => 'Piazza della Trinità dei Monti 6',
-                  'latitude'     => '41.906493',
-                  'longitude'    => '12.483737'
+                  'name'         => 'Via Nicola Antonio Porpora 13',
+                  'latitude'     => '40.856361',
+                  'longitude'    => '14.230075'
                ],
                [
-                  'name'         => 'Via dei Polacchi 23',
-                  'latitude'     => '41.895249',
-                  'longitude'    => '12.479231'
+                  'name'         => 'Via Torino 108',
+                  'latitude'     => '40.858544',
+                  'longitude'    => '14.270493'
                ],
             ]
          ],
-         // 'Napoli' => [
-         //    ['Via verdi 23' => [
-         //          '42.57', '50.32'
-         //       ]
-         //    ],
-
-         //    ['Corso Como 2', '33.48', '74.50'],
-         //    ['Via verdi 23', '42.57', '50.32'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         //    ['Corso Como 2', '33.48', '74.50'],
-         // ],
       ];
 
 
@@ -162,20 +151,20 @@ class ApartmentSeeder extends Seeder
          $baseLorPicUrl = 'https://picsum.photos/400/300?random=';
          $pow = pow(10, 6);
          Apartment::create([
-            'user_id' => User::inRandomOrder()->first()->id,
-            'title' => $title,
-            'thumb' => $baseLorPicUrl . rand(1, 500),
-            'description' => $faker->words(rand(5, 20), true),
-            'category' => $category[array_rand($category)],
-            'rooms_n' => rand(1, 9),
-            'beds_n' => rand(1, 4),
-            'bathrooms_n' => rand(1, 2),
-            'area' => rand(40, 200),
-            'city'      => $randCity['city'],
-            'address'   => $randAddress['name'],
-            'latitude'  => $randAddress['latitude'],
-            'longitude' => $randAddress['longitude'],
-            'visible' => rand(0, 1)
+            'user_id'      => User::inRandomOrder()->first()->id,
+            'title'        => $title,
+            'thumb'        => $baseLorPicUrl . rand(1, 500),
+            'description'  => $faker->words(rand(5, 20), true),
+            'category'     => $category[array_rand($category)],
+            'rooms_n'      => rand(1, 9),
+            'beds_n'       => rand(1, 4),
+            'bathrooms_n'  => rand(1, 2),
+            'area'         => rand(40, 200),
+            'city'         => $randCity['city'],
+            'address'      => $randAddress['name'],
+            'latitude'     => $randAddress['latitude'],
+            'longitude'    => $randAddress['longitude'],
+            'visible'      => rand(0, 1)
          ]);
       }
    }

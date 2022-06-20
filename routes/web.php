@@ -28,6 +28,8 @@ Route::middleware('auth')
    });
 
 Route::get('/', 'HomeController@index')->name('LandingPage');
+Route::resource('/apartments', 'Admin\ApartmentController');
+
 
 Route::get('{any?}', function () {
    return view('guests.landing');

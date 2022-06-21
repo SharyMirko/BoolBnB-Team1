@@ -12458,12 +12458,20 @@ header .dropdown-item:focus {
      object-fit: cover;
 }
 
+#map {
+  height: 30rem;
+}
+
 #latitude {
   display: none;
 }
 
 #longitude {
   display: none;
+}
+
+.city {
+  margin-left: 1.25rem;
 }
 
 .dashboard-username {

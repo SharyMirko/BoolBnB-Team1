@@ -27894,8 +27894,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

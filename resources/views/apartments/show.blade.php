@@ -20,9 +20,9 @@
                   <h1 class="text-capitalize">{{ $apartment->title }}</h1>
                   <p class="price-text my-2 d-md-none">€{{ $apartment->price }}<span class="price-suffix">/notte</span></p>
                   <p class="geo icon mb-0">{{ $apartment->address }}</p>
-                  <p class="">{{ $apartment->city }}</p>
+                  <p class="city">{{ $apartment->city }}</p>
                </div>
-               <div class="p-2 bg-secondary text-white rounded fw-bold">CB</div>
+               <div class="p-2 bg-secondary text-white rounded fw-bold">{{ substr($apartment->user->first_name, 0,1) }}{{ substr($apartment->user->last_name, 0,1) }}</div>
                {{-- <div class="col-1"></div> --}}
             </div>
             <div class="row row-cols-2 row-cols-lg-4 mb-5 align-items-center g-0">
@@ -76,8 +76,10 @@
                </div>
             </div>
             <div class="row w-100 g-0">
-               <h4 class="mb-3">Location</h4>
-               <div id='map' class="map w-100 rounded-3 border overflow-hidden" ></div>
+               <div class="col">
+                  <h4 class="mb-3">Location</h4>
+                  <div id='map' class="w-100 rounded-3 overflow-hidden"></div>
+               </div>
             </div>
          </div>
          {{-- / --}}

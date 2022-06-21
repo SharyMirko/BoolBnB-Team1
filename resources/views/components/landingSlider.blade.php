@@ -20,13 +20,11 @@
         @endphp
             <div class="carousel-item @if($i != 0)  @else active @endif row row-cols-1 row-cols-md-3 p-1">
                <div class="col">
-                  
                   <x-card :item="$apartment"/>
                </div>
             </div>
          @endfor
       </div>
    </div>
-
 </div>
 

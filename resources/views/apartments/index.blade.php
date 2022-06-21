@@ -87,7 +87,7 @@
                         <form action="" class="d-flex flex-column justify-content-center">
                             @csrf
 
-                            
+
 
                             <div class="form-group row mb-2">
                                 <div class="col">
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
 
-                            
+
 
                             <div class="form-group row my-4">
                                 <div class="col d-flex justify-content-between">
@@ -157,7 +157,7 @@
                                             <label class="form-check-label" for="Piscina">Piscina</label>
                                         </div>
 
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                         </form>
                     </div>
                     <div class="modal-footer border-0 justify-content-center px-5">
-                        <button type="button" @click="applyFilter" class="btn btn-primary text-white flex-grow-1">Applica filtri</button>
+                        <button type="button" @click="applyFilter" class="btn btn-primary text-white flex-grow-1" data-bs-dismiss="modal">Applica filtri</button>
                         <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1"
                             data-bs-dismiss="modal">Reset filtri</button>
                     </div>

@@ -39,7 +39,8 @@
                         </div>
                         <div class="card-body text-muted">
                            <h5 class="card-title">@{{ apart.title }}</h5>
-                           <p class="geo icon">@{{ apart.address }}</p>
+                           <p class="geo icon mb-0">@{{ apart.address }}</p>
+                           <p class="city">@{{ apart.city }}</p>
                            <div class="d-flex justify-content-between align-items-end flex-wrap">
                               <p class="price-text m-0">€ @{{ apart.price }}<span class="price-suffix">/notte</span></p>
                               <p class="category m-0">@{{ apart.category }}</p>

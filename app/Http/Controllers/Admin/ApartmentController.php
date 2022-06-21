@@ -12,6 +12,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
+   private function validation()
+   {
+      return [
+         'title'         => 'required|min:5|max:255',
+         'thumb'         => 'nullable|max:255',
+         'description'   => 'nullable|min:25|max:255',
+         'category'      => 'required',
+         'rooms_n'       => 'required|numeric',
+         'beds_n'        => 'required|numeric',
+         'bathrooms_n'   => 'required|numeric',
+         'area'          => 'required|numeric',
+         'city'          => 'required|min:4|max:255',
+         'price'         => 'required|numeric',
+         'address'       => 'required|string'
+      ];
+   }
 
    public function index()
    {
@@ -20,6 +36,7 @@ class ApartmentController extends Controller
       return view('apartments.index', compact('apartmentData'));
    }
 
+      // $request->validate($this->validation);
 
    public function create()
    {
@@ -36,6 +53,7 @@ class ApartmentController extends Controller
       ]);
    }
 
+   
 
    public function store(Request $request)
    {
@@ -59,6 +77,7 @@ class ApartmentController extends Controller
       return view('apartments.show', compact('apartment', 'services'));
    }
 
+      // $request->validate($this->validation);
 
    public function edit(Apartment $apartment)
    {

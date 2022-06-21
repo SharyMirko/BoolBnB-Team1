@@ -6,8 +6,10 @@ use App\Model\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class ApartmentController extends Controller
 {
+   use \App\Traits\searchFilters;
    /**
     * Display a listing of the resource.
     *
@@ -15,29 +17,42 @@ class ApartmentController extends Controller
     */
    public function index(Request $request)
    {
-      // $attributes = $request->all();
-
-      // $apiApartments = Apartment::join('users', 'apartments.user_id', 'users.id')
-      //                            ->join('apartment_service', 'apartments.id', 'apartment_service.apartment_id')
-      //                            ->join('services', 'services.id', 'apartment_service.service_id')
-      //                            ->select('apartments.*', 'users.first_name', 'users.last_name')
-      //                            ->first()
-      //                            ->with(['services'])
-      //                            ->orderBy('id', 'asc')
-      //                            ->paginate(20);
-
-
-      $apiApartments = Apartment::with([
+      
+     /*  $apiApartments = Apartment::with([
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
          'services' => function ($query2) {$query2->select('id', 'name');}
       ])->paginate(20);
+         // create API response
+         $response = [
+            'success' => true,
+            'data' => $apiApartments,
+            'message' => 'List of Apartments'
+         ]; */
+         $filter = $this->composeQuery($request);
+         $sql_string = $filter->toSql();
+
+        $filter = $filter->with([
+         'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
+         'services' => function ($query2) {$query2->select('id', 'name');}
+      ])->paginate(20);
+      if(isset($request->services)){
+         
+         foreach($filter as $key => $apart){
+           if(!$apart->services->contains($request->services)){
+             unset($filter[$key]);
+           }
+         }
+      }
 
 
 
-      return response()->json([
-         'success'   => true,
-         'response'  => $apiApartments
-      ]);
+
+         return response()->json([
+            'success'   => true,
+            'response'  => $filter,
+            'sql' => $sql_string
+         ]);
+     
    }
 
    /**

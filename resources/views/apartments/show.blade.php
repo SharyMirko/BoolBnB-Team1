@@ -6,7 +6,11 @@
    <section class="container-fluid g-0 mb-4" id="sec_scroll_img">
       <img src="{{ $apartment->thumb }}" class="w-100 h-100" alt="{{ $apartment->title }}">
    </section>
-
+   @if(session()->has('inviato'))
+   <div class="alert alert-success">
+       {{ session()->get('inviato') }}
+   </div>
+@endif
    <section class="container" id="sec_ap_descr">
       <div class="row g-0 g-md-5">
          {{-- descrizione --}}
@@ -34,7 +38,7 @@
                   <div class="d-flex">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-bath fs-3"></i>
-                        <div>{{ $apartment->bathrooms_n }}</div>
+                        <div>{{ $apartment->rooms_n }}</div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -82,10 +86,16 @@
          {{-- form invio messaggio --}}
          <div class="d-none d-md-block col-md-4 col-lg-3 mt-5">
             <div class="price-text m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
-            <form action="">
+            <form method="POST" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
+               @csrf
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     <input name="apartment_id" type="hidden" value="{{$apartment->id}}">
+                     @if(Auth::check())
+                     <input id="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     @else
+                     <input id="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     @endif
                   </div>
                </div>
 
@@ -100,6 +110,7 @@
                </button>
             </form>
          </div>
+       
          {{-- / --}}
 
 

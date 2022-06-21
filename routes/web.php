@@ -24,12 +24,14 @@ Route::middleware('auth')
       Route::get('/', 'DashboardController@index')->name('dashboard');
       //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
       Route::resource('/apartments', 'ApartmentController');
+      Route::resource('/messages', 'MessageController');
       //Route::resource('/categories', 'CategoryController');
    });
 
 Route::get('/', 'HomeController@index')->name('LandingPage');
 Route::resource('/apartments', 'Admin\ApartmentController');
-
+Route::resource('/messages', 'Admin\MessageController');
+Route::get('/messages', 'Admin\MessageController@index')->name('messages');
 
 Route::get('{any?}', function () {
    return view('guests.landing');

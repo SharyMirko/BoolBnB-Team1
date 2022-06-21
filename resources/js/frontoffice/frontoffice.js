@@ -3,6 +3,7 @@ const { default: Axios } = require("axios");
 require("../bootstrap");
 
 import { default as ttServices } from "@tomtom-international/web-sdk-services";
+import { default as tt } from "@tomtom-international/web-sdk-services";
 import { default as ttMaps } from "@tomtom-international/web-sdk-maps";
 import { indexOf } from "lodash";
 
@@ -99,6 +100,10 @@ const FormCreateVue = new Vue({
    },
 });
 
+
+// Serve per la ricerca nell'Index
+
+
 const SearchVue = new Vue({
    el: "#searchApp",
    data: {
@@ -121,14 +126,26 @@ const SearchVue = new Vue({
             }
          );
       },
+
+      distance: function (lat1, long1, lat2, long2){
+         tt.services.calculateRoute({
+            key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+            locations: lat1.toString() + ',' + long1.toString() + ':' + lat2.toString() + ',' + long2.toString(), /* `${lat1},${long1}\:${lat2},${long2}` */
+            }).then(function(routeData) {
+               console.log(routeData.toGeoJson().features[0].properties.summary.lengthInMeters);
+               return routeData.toGeoJson().features
+            });
+      },
+
       applyFilter: function () {
-         if(SearchVue.nBeds != "" && SearchVue.nRooms != ""){
-            Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(
-               (response) => {
-                  SearchVue.results = response.data.response.data;
-                  SearchVue.nRes = response.data.response.data.length;
-               }
-            );
+               if(SearchVue.nBeds != "" && SearchVue.nRooms != ""){
+                  this.distance(45.7 , 30.52 , 80.71 , 91.14); /* '4.8,52.3:4.87,52.37' */
+                  Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(
+                     (response) => {
+                        SearchVue.results = response.data.response.data;
+                        SearchVue.nRes = response.data.response.data.length;
+                     }
+                  );
                }
                
                if (SearchVue.nBeds != "") {
@@ -199,6 +216,10 @@ const SearchVue = new Vue({
       }
    },
 );
+
+
+// Serve a creare mappa nello Show
+
 
 let longitude = document.getElementById("longitude");
 let latitude = document.getElementById("latitude");

@@ -122,93 +122,92 @@ const SearchVue = new Vue({
             (response) => {
                SearchVue.results = response.data.response.data;
                SearchVue.nRes = response.data.response.data.length;
-               
+
             }
          );
       },
-
-      distance: function (lat1, long1, lat2, long2){
+      distance: function(a, b, c, d){ /* '4.8,52.3:4.87,52.37' */
          tt.services.calculateRoute({
             key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-            locations: lat1.toString() + ',' + long1.toString() + ':' + lat2.toString() + ',' + long2.toString(), /* `${lat1},${long1}\:${lat2},${long2}` */
+            locations: `${a},${b}:${c},${d}`, /* `${lat1},${long1}\:${lat2},${long2}` */
             }).then(function(routeData) {
                console.log(routeData.toGeoJson().features[0].properties.summary.lengthInMeters);
                return routeData.toGeoJson().features
             });
       },
-
       applyFilter: function () {
-               if(SearchVue.nBeds != "" && SearchVue.nRooms != ""){
-                  this.distance(45.7 , 30.52 , 80.71 , 91.14); /* '4.8,52.3:4.87,52.37' */
-                  Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(
-                     (response) => {
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               }
-               
-               if (SearchVue.nBeds != "") {
-                  Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds).then(
-                     (response) => {
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               } 
-               
-               if (SearchVue.nRooms != "") {
-                  Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
-                     (response) => {
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               }
-               
-               if(SearchVue.services.length > 0){
-                  Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(
-                     (response) => {
-                        console.log(SearchVue.services[0]);
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               }
+         this.distance('9.035596245431645','45.628535789797134', '9.192151415513356', '45.517986439899055')
+            if(SearchVue.nBeds != "" && SearchVue.nRooms != ""){
 
-               if (SearchVue.services.length > 0 && SearchVue.nBeds != "" && SearchVue.nRooms != "") {
-                  Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms  + "&beds=" + this.nBeds).then(
-                     (response) => {
-                        console.log(SearchVue.services[0]);
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               }
-               if (SearchVue.services.length > 0 && SearchVue.nBeds != "") {
-                  Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&beds=" + this.nBeds).then(
-                     (response) => {
-                        console.log(SearchVue.services[0]);
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               }
-               if (SearchVue.services.length > 0 && SearchVue.nRooms != "") {
-                  Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms).then(
-                     (response) => {
-                        console.log(SearchVue.services[0]);
-                        SearchVue.results = response.data.response.data;
-                        SearchVue.nRes = response.data.response.data.length;
-                     }
-                  );
-               }
+               Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(
+                  (response) => {
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
+
+            if (SearchVue.nBeds != "") {
+               Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds).then(
+                  (response) => {
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
+
+            if (SearchVue.nRooms != "") {
+               Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
+                  (response) => {
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
+
+            if(SearchVue.services.length > 0){
+               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(
+                  (response) => {
+                     console.log(SearchVue.services[0]);
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
+
+            if (SearchVue.services.length > 0 && SearchVue.nBeds != "" && SearchVue.nRooms != "") {
+               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms  + "&beds=" + this.nBeds).then(
+                  (response) => {
+                     console.log(SearchVue.services[0]);
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
+            if (SearchVue.services.length > 0 && SearchVue.nBeds != "") {
+               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&beds=" + this.nBeds).then(
+                  (response) => {
+                     console.log(SearchVue.services[0]);
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
+            if (SearchVue.services.length > 0 && SearchVue.nRooms != "") {
+               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms).then(
+                  (response) => {
+                     console.log(SearchVue.services[0]);
+                     SearchVue.results = response.data.response.data;
+                     SearchVue.nRes = response.data.response.data.length;
+                  }
+               );
+            }
          },
          setService: function (e) {
             if(e.target.checked){
                SearchVue.services.push(e.target.value);
-              
-            } 
+
+            }
             if(e.target.checked == false){
                SearchVue.services.splice(indexOf(SearchVue.services, e.target.value), 1);
             }

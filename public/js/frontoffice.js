@@ -27781,10 +27781,11 @@ var SearchVue = new Vue({
         SearchVue.nRes = response.data.response.data.length;
       });
     },
-    distance: function distance(lat1, long1, lat2, long2) {
+    distance: function distance(a, b, c, d) {
+      /* '4.8,52.3:4.87,52.37' */
       _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
         key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-        locations: lat1.toString() + ',' + long1.toString() + ':' + lat2.toString() + ',' + long2.toString()
+        locations: "".concat(a, ",").concat(b, ":").concat(c, ",").concat(d)
         /* `${lat1},${long1}\:${lat2},${long2}` */
 
       }).then(function (routeData) {
@@ -27793,10 +27794,9 @@ var SearchVue = new Vue({
       });
     },
     applyFilter: function applyFilter() {
-      if (SearchVue.nBeds != "" && SearchVue.nRooms != "") {
-        this.distance(45.7, 30.52, 80.71, 91.14);
-        /* '4.8,52.3:4.87,52.37' */
+      this.distance('9.035596245431645', '45.628535789797134', '9.192151415513356', '45.517986439899055');
 
+      if (SearchVue.nBeds != "" && SearchVue.nRooms != "") {
         Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(function (response) {
           SearchVue.results = response.data.response.data;
           SearchVue.nRes = response.data.response.data.length;
@@ -27894,8 +27894,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -148,7 +148,7 @@ class ApartmentSeeder extends Seeder
          $randAddressVal = array_rand($arrAddress);
          $randAddress = $arrAddress[$randAddressVal]; // ho preso un array address random
 
-         $baseLorPicUrl = 'https://picsum.photos/400/300?random=';
+         $baseLorPicUrl = 'https://picsum.photos/1920/1080?random=';
          $pow = pow(10, 6);
          Apartment::create([
             'user_id' => User::inRandomOrder()->first()->id,

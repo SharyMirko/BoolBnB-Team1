@@ -7,7 +7,7 @@
         <section id="search" class="container py-5">
             <div class="d-flex w-100 align-items-center position-relative">
                 <i class="fas fa-search"></i>
-                <input type="text" v-model="location" @keyup="search" placeholder="Location" name="Landing-search"
+                <input type="text" v-model="location" placeholder="Location" name="Landing-search"
                     id="Landing-search" class="form-control flex-grow-1">
 
                 <button type="button" class="btn-custom-outline btn btn-outline-primary mx-2 " data-bs-toggle="modal"
@@ -15,58 +15,39 @@
                     <i class="fa-solid fa-sliders"></i>
                 </button>
 
-                <a href="{{ route('apartments.index') }}" class="btn btn-primary text-light">Cerca</a>
+                <button @click="search" class="btn btn-primary text-light">Cerca</button>
             </div>
         </section>
 
         <div class="container pb-5">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-                <span class="mt-4 mt-sm-0 me-4">@{{ nRes }} risultati</span>
-                <div class="d-flex align-items-center mt-4 mt-sm-0">
-                    <span class="me-2">Ordinamento:</span>
-                    <select name="sort" id="sort" class="form-select">
-                        <option value="1">Alfabetico</option>
-                        <option value="2">Prezzo crescente</option>
-                        <option value="2">Prezzo decrescente</option>
-                    </select>
-                </div>
+               <span class="mt-4 mt-sm-0 me-4">@{{ nRes }} risultati</span>
             </div>
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-
-
-                <article v-for="apart in results" class="card rounded-3 border-0">
-                    <a class="m-0 p-0 d-block" v-bind:href="link + apart.id">
+               <div class="col" v-for="apart in results">
+                  <article class="card rounded-3 border-0">
+                     <a class="m-0 p-0 d-block" v-bind:href="link + apart.id">
                         <div class="card-img-top position-relative">
-                            <div class="position-absolute w-100 h-100 filtro-card"></div>
-                            <img src="https://picsum.photos/400/300?random=<?= rand(1, 500) ?>" class="card-img-top"
-                                alt="lorem_picsum">
+                           <div class="position-absolute w-100 h-100 filtro-card"></div>
+                           <img :src="apart.thumb" class="card-img-top"
+                              alt="lorem_picsum">
 
-                            <div class="crown"></div>
+                           <div class="crown"></div>
 
-                            <div class="user-avatar position-absolute"><span class="m-0 p-0">CB</span></div>
+                           <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div>
                         </div>
                         <div class="card-body text-muted">
-                            <h5 class="card-title">@{{ apart.title }}</h5>
-                            <p class="geo icon">@{{ apart.address }}</p>
-                            <div class="d-flex justify-content-between align-items-end flex-wrap">
-                                <p class="price-text m-0">€ @{{ apart.price }}<span class="price-suffix">/notte</span></p>
-                                <p class="category m-0">@{{ apart.category }}</p>
-                            </div>
+                           <h5 class="card-title">@{{ apart.title }}</h5>
+                           <p class="geo icon">@{{ apart.address }}</p>
+                           <div class="d-flex justify-content-between align-items-end flex-wrap">
+                              <p class="price-text m-0">€ @{{ apart.price }}<span class="price-suffix">/notte</span></p>
+                              <p class="category m-0">@{{ apart.category }}</p>
+                           </div>
                         </div>
-                    </a>
-                </article>
-
-
-
-
-                {{-- @foreach ($apartmentData as $item)
-                    <div class="col">
-                        <x-card :item="$item" />
-                    </div>
-                @endforeach --}}
-
+                     </a>
+                  </article>
+               </div>
             </div>
         </div>
 
@@ -86,8 +67,6 @@
                     <div class="modal-body px-5">
                         <form action="" class="d-flex flex-column justify-content-center">
                             @csrf
-
-
 
                             <div class="form-group row mb-2">
                                 <div class="col">
@@ -118,8 +97,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-
 
                             <div class="form-group row my-4">
                                 <div class="col d-flex justify-content-between">
@@ -156,8 +133,6 @@
                                                 id="wifi">
                                             <label class="form-check-label" for="Piscina">Piscina</label>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>

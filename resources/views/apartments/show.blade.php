@@ -19,7 +19,8 @@
                <div class="flex-grow-1">
                   <h1 class="text-capitalize">{{ $apartment->title }}</h1>
                   <p class="price-text my-2 d-md-none">€{{ $apartment->price }}<span class="price-suffix">/notte</span></p>
-                  <p class="geo icon">{{ $apartment->address }}</p>
+                  <p class="geo icon mb-0">{{ $apartment->address }}</p>
+                  <p class="">{{ $apartment->city }}</p>
                </div>
                <div class="p-2 bg-secondary text-white rounded fw-bold">CB</div>
                {{-- <div class="col-1"></div> --}}

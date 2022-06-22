@@ -239,3 +239,13 @@ let marker = new ttMaps.Marker({
 })
    .setLngLat(center)
    .addTo(map);
+
+
+   // partenza pensiero della ricerca degli appartamenti vicini TODO:
+   // const currentLocation = (coordinate zona ricercata);
+   // let arrAppVicini = [];
+   // array.forEach(element => {
+   //    if (this.distance(currentLocation, element) <= 20000) {
+   //       arrAppVicini.push(element);
+   //    }
+   // });

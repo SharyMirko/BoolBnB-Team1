@@ -6,7 +6,7 @@
 
          <div class="crown"></div>
 
-         <div class="user-avatar position-absolute"><span class="m-0 p-0">{{ substr($item->user->first_name, 0,1) }}{{ substr($item->user->last_name, 0,1) }}</span></div>
+         {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">{{ substr($item->user->first_name, 0,1) }}{{ substr($item->user->last_name, 0,1) }}</span></div> --}}
       </div>
       <div class="card-body text-muted">
          <h5 class="card-title text-capitalize">{{$item->title}}</h5>

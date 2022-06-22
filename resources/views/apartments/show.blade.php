@@ -22,7 +22,7 @@
                   <p class="geo icon mb-0">{{ $apartment->address }}</p>
                   <p class="city">{{ $apartment->city }}</p>
                </div>
-               <div class="p-2 bg-secondary text-white rounded fw-bold">{{ substr($apartment->user->first_name, 0,1) }}{{ substr($apartment->user->last_name, 0,1) }}</div>
+               {{-- <div class="p-2 bg-secondary text-white rounded fw-bold">{{ substr($apartment->user->first_name, 0,1) }}{{ substr($apartment->user->last_name, 0,1) }}</div> --}}
                {{-- <div class="col-1"></div> --}}
             </div>
             <div class="row row-cols-2 row-cols-lg-4 mb-5 align-items-center g-0">

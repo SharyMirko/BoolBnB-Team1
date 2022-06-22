@@ -35,7 +35,7 @@
 
                            <div class="crown"></div>
 
-                           <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div>
+                           {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div> --}}
                         </div>
                         <div class="card-body text-muted">
                            <h5 class="card-title">@{{ apart.title }}</h5>

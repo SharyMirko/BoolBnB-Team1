@@ -23,10 +23,10 @@ trait searchFilters {
         }
 
         if ($request->beds) {
-            $ApartmentQuery->where('beds_n', $request->beds);
+            $ApartmentQuery->where('beds_n', '>=', $request->beds);
         }
         if ($request->rooms) {
-            $ApartmentQuery->where('rooms_n', $request->rooms);
+            $ApartmentQuery->where('rooms_n', '>=', $request->rooms);
         }
       
         return $ApartmentQuery;

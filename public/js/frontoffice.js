@@ -27765,6 +27765,7 @@ var FormCreateVue = new Vue({
 var SearchVue = new Vue({
   el: "#searchApp",
   data: {
+    results2: [],
     location: "",
     results: [],
     nRes: 0,
@@ -27773,84 +27774,90 @@ var SearchVue = new Vue({
     nBeds: "",
     services: [],
     nRooms: "",
-    maxDistance: 20000
+    maxDistance: 20000,
+    nRes2: 0
   },
   methods: {
     search: function search() {
-      Axios.get("/api/api-artments?city=" + this.location).then(function (response) {
-        SearchVue.results = response.data.response.data;
-        SearchVue.nRes = response.data.response.data.length;
+      _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
+        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+        query: this.location
+      }).then(function (response) {
+        SearchVue.lat = response.results[0].position.lat;
+        SearchVue.lon = response.results[0].position.lng;
       });
-    },
-    applyFilter: function applyFilter() {
-      if (
-      /*SearchVue.nBeds != "" &&*/
-      SearchVue.nRooms != "") {
-        Axios.get("/api/api-artments?" + "beds=" + this.nBeds + "&rooms=" + this.nRooms).then(function (response) {
-          response.data.response.data.forEach(function (apartment) {
+      Axios.get("/api/api-artments?city=" + this.location).then(function (response) {
+        var asparagi = response.data.response.data;
+        asparagi.forEach(function (apartment, i) {
+          setTimeout(function () {
             _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
               key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-              locations: apartment.longitude + ',' + apartment.latitude + ':' + '9.18' + ',' + '45.48'
+              locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
             }).then(function (routeData) {
               var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+              console.log('ciao');
 
               if (dist < SearchVue.maxDistance) {
+                apartment.splice(0, 1);
                 SearchVue.results.push(apartment);
               }
 
               ;
               SearchVue.nRes = SearchVue.results.length;
             });
-          });
+          }, i * 300);
         });
+      });
+    },
+    applyFilter: function applyFilter() {
+      this.loading = false;
+
+      if (SearchVue.results.length != 0) {
+        SearchVue.results = [];
       }
 
-      if (SearchVue.nBeds != "") {
-        Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds).then(function (response) {
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
-        });
-      } // if (SearchVue.nRooms != "") {
-      //    Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
-      //       (response) => {
-      //          SearchVue.results = response.data.response.data;
-      //          SearchVue.nRes = response.data.response.data.length;
-      //       }
-      //    );
-      // }
+      _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
+        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+        query: this.location
+      }).then(function (response) {
+        SearchVue.lat = response.results[0].position.lat;
+        SearchVue.lon = response.results[0].position.lng;
+      });
+      var tenuta = "";
 
-
-      if (SearchVue.services.length > 0) {
-        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(function (response) {
-          console.log(SearchVue.services[0]);
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
-        });
+      if (SearchVue.services[0] == undefined) {
+        SearchVue.services.push('');
+      } else {
+        for (var i = 0; i < SearchVue.services.length; i++) {
+          tenuta += "&services=" + SearchVue.services[i];
+        }
       }
 
-      if (SearchVue.services.length > 0 && SearchVue.nBeds != "" && SearchVue.nRooms != "") {
-        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms + "&beds=" + this.nBeds).then(function (response) {
-          console.log(SearchVue.services[0]);
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
-        });
-      }
+      console.log(tenuta);
+      Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + tenuta + "&beds=" + this.nBeds).then(function (response) {
+        console.log(response.data.response.data);
+        var lest = Object.entries(response.data.response.data);
+        console.log(lest);
+        lest.forEach(function (apartment, i) {
+          setTimeout(function () {
+            _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
+              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+              locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
+            }).then(function (routeData) {
+              var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+              console.log('ciao');
 
-      if (SearchVue.services.length > 0 && SearchVue.nBeds != "") {
-        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&beds=" + this.nBeds).then(function (response) {
-          console.log(SearchVue.services[0]);
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
-        });
-      }
+              if (dist < parseInt(SearchVue.maxDistance)) {
+                apartment.splice(0, 1);
+                SearchVue.results.push(apartment);
+              }
 
-      if (SearchVue.services.length > 0 && SearchVue.nRooms != "") {
-        Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms).then(function (response) {
-          console.log(SearchVue.services[0]);
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
+              ;
+              SearchVue.nRes = SearchVue.results.length;
+            });
+          }, i * 300);
         });
-      }
+      });
     },
     setService: function setService(e) {
       if (e.target.checked) {
@@ -27860,6 +27867,22 @@ var SearchVue = new Vue({
       if (e.target.checked == false) {
         SearchVue.services.splice(Object(lodash__WEBPACK_IMPORTED_MODULE_2__["indexOf"])(SearchVue.services, e.target.value), 1);
       }
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (window.location.search) {
+      this.loading = true;
+      /*             let test = window.location.search.slice(0, 1)
+       */
+
+      var test = window.location.search.replace("?city=", '');
+      this.location = test;
+      Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(function (response) {
+        _this.results2 = response.data.response.data;
+        _this.nRes2 = _this.results2.length;
+      });
     }
   }
 }); // Serve a creare mappa nello Show
@@ -27875,7 +27898,14 @@ var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___defaul
 });
 var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.Marker({
   draggable: false
-}).setLngLat(center).addTo(map);
+}).setLngLat(center).addTo(map); // partenza pensiero della ricerca degli appartamenti vicini TODO:
+// const currentLocation = (coordinate zona ricercata);
+// let arrAppVicini = [];
+// array.forEach(element => {
+//    if (this.distance(currentLocation, element) <= 20000) {
+//       arrAppVicini.push(element);
+//    }
+// });
 
 /***/ }),
 
@@ -27897,8 +27927,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/frontoffice/frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

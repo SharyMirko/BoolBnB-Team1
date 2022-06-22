@@ -5,7 +5,7 @@ require("../bootstrap");
 import { default as ttServices } from "@tomtom-international/web-sdk-services";
 import { default as tt } from "@tomtom-international/web-sdk-services";
 import { default as ttMaps } from "@tomtom-international/web-sdk-maps";
-import { forEach, indexOf } from "lodash";
+import { forEach, indexOf, isSet } from "lodash";
 
 const LandingPageVue = new Vue({
    el: "#LandingPageVue",
@@ -81,6 +81,7 @@ const FormCreateVue = new Vue({
       rooms_n: "",
       hiddenlat: "",
       hiddenlon: "",
+     
    },
    methods: {
       create: function () {},
@@ -107,6 +108,7 @@ const FormCreateVue = new Vue({
 const SearchVue = new Vue({
    el: "#searchApp",
    data: {
+      results2: [],
       location: "",
       results: [],
       nRes: 0,
@@ -115,98 +117,93 @@ const SearchVue = new Vue({
       nBeds: "",
       services: [],
       nRooms: "",
-      maxDistance: 20000
+      maxDistance: 20000,
+      nRes2: 0,
+
    },
    methods: {
       search() {
+         ttServices.services
+            .geocode({
+               key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+               query: this.location,
+            })
+            .then(function (response) {
+               SearchVue.lat = response.results[0].position.lat;
+               SearchVue.lon = response.results[0].position.lng;
+            });
          Axios.get("/api/api-artments?city=" + this.location).then(
-            (response) => {
-               SearchVue.results = response.data.response.data;
-               SearchVue.nRes = response.data.response.data.length;
+            (response) =>{
+               let asparagi = response.data.response.data;
+              asparagi.forEach((apartment, i) => {
+                  setTimeout(() => {
+                     tt.services.calculateRoute({
+                        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                        locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
+                     })
+                     .then(function(routeData) {
+                        let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+                        console.log('ciao');
+                        if(dist < SearchVue.maxDistance){
+                           apartment.splice(0, 1)
+                           SearchVue.results.push(apartment);
+                        };
 
-            }
-         );
+                        SearchVue.nRes = SearchVue.results.length;
+                     })}, i * 300
+                    )
+
+               });
+            });
       },
       applyFilter() {
-            if(/*SearchVue.nBeds != "" &&*/ SearchVue.nRooms != ""){
-               Axios.get("/api/api-artments?" + "beds=" + this.nBeds + "&rooms=" + this.nRooms)
-                  .then((response) => {
-
-                     response.data.response.data.forEach(apartment => {
-
+         this.loading = false;
+         if(SearchVue.results.length != 0) {
+            SearchVue.results = [];
+         }
+         ttServices.services
+            .geocode({
+               key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+               query: this.location,
+            })
+            .then(function (response) {
+               SearchVue.lat = response.results[0].position.lat;
+               SearchVue.lon = response.results[0].position.lng;
+            });
+            let tenuta = "";
+            if(SearchVue.services[0] == undefined) {
+               SearchVue.services.push('')
+            } else {
+               for (let i = 0; i < SearchVue.services.length; i++) {
+                  tenuta += "&services=" + SearchVue.services[i]
+               }
+            }
+            console.log(tenuta)
+            Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + tenuta + "&beds=" + this.nBeds).then(
+               (response) => {
+                  console.log(response.data.response.data)
+                  let lest = Object.entries(response.data.response.data);
+                  console.log(lest)
+                 lest.forEach((apartment, i) => {
+                     setTimeout(() => {
                         tt.services.calculateRoute({
                            key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-                           locations: apartment.longitude + ',' + apartment.latitude + ':' + '9.18' + ',' + '45.48',
+                           locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                         })
                         .then(function(routeData) {
                            let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-
-                           if(dist < SearchVue.maxDistance){
+                           console.log('ciao');
+                           if(dist < parseInt(SearchVue.maxDistance)){
+                              apartment.splice(0, 1);
                               SearchVue.results.push(apartment);
                            };
 
                            SearchVue.nRes = SearchVue.results.length;
-                        });
+                        })}, i * 300
+                       )
 
-                     });
                   });
-            }
-
-            if (SearchVue.nBeds != "") {
-               Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds).then(
-                  (response) => {
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
-            }
-
-            // if (SearchVue.nRooms != "") {
-            //    Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
-            //       (response) => {
-            //          SearchVue.results = response.data.response.data;
-            //          SearchVue.nRes = response.data.response.data.length;
-            //       }
-            //    );
-            // }
-
-            if(SearchVue.services.length > 0){
-               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(
-                  (response) => {
-                     console.log(SearchVue.services[0]);
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
-            }
-
-            if (SearchVue.services.length > 0 && SearchVue.nBeds != "" && SearchVue.nRooms != "") {
-               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms  + "&beds=" + this.nBeds).then(
-                  (response) => {
-                     console.log(SearchVue.services[0]);
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
-            }
-            if (SearchVue.services.length > 0 && SearchVue.nBeds != "") {
-               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&beds=" + this.nBeds).then(
-                  (response) => {
-                     console.log(SearchVue.services[0]);
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
-            }
-            if (SearchVue.services.length > 0 && SearchVue.nRooms != "") {
-               Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0] + "&rooms=" + this.nRooms).then(
-                  (response) => {
-                     console.log(SearchVue.services[0]);
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
-            }
+               });
          },
          setService(e) {
             if(e.target.checked){
@@ -217,9 +214,23 @@ const SearchVue = new Vue({
                SearchVue.services.splice(indexOf(SearchVue.services, e.target.value), 1);
             }
          }
-      }
+      },
+      mounted: function mounted () {
+         if(window.location.search) {
+            this.loading = true
+/*             let test = window.location.search.slice(0, 1)
+ */            let test = window.location.search.replace("?city=", '')
+            this.location = test;
+            Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
+               (response) =>{
+                  this.results2 = response.data.response.data
+                  this.nRes2 = this.results2.length
+
+               })
+         }
+         
    },
-);
+});
 
 
 // Serve a creare mappa nello Show

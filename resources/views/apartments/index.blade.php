@@ -26,7 +26,7 @@
             </div>
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-              
+
                 <div class="col" v-if="loading" v-for="apart in results2">
                     <article class="card rounded-3 border-0">
                        <a class="m-0 p-0 d-block" v-bind:href="link + apart.id">
@@ -34,9 +34,9 @@
                              <div class="position-absolute w-100 h-100 filtro-card"></div>
                              <img :src="apart.thumb" class="card-img-top"
                                 alt="lorem_picsum">
-  
+
                              <div class="crown"></div>
-  
+
                              {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div> --}}
                           </div>
                           <div class="card-body text-muted">
@@ -51,8 +51,8 @@
                        </a>
                     </article>
                  </div>
-              
-              
+
+
                 <div class="col" v-for="apart in results">
                   <article class="card rounded-3 border-0">
                      <a class="m-0 p-0 d-block" v-bind:href="link + apart[0].id">
@@ -99,10 +99,10 @@
 
                             <div class="form-group row mb-2">
                                 <div class="col">
-                                    <input id="rooms_n" v-model="nRooms" type="number"
+                                    <input id="rooms_n" v-model="nRooms" type="number" min="0"
                                         class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n"
                                         value="{{ old('rooms_n') }}" required autocomplete="rooms_n" autofocus
-                                        placeholder="{{ __('Rooms') }}">
+                                        placeholder="{{ __('Rooms') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 
                                     @error('rooms_n')
                                         <span class="invalid-feedback" role="alert">
@@ -114,10 +114,10 @@
 
                             <div class="form-group row mb-2">
                                 <div class="col">
-                                    <input id="beds_n" v-model="nBeds" type="number"
+                                    <input id="beds_n" v-model="nBeds" type="number" min="0"
                                         class="form-control @error('beds_n') is-invalid @enderror" name="beds_n"
                                         value="{{ old('beds_n') }}" required autocomplete="beds_n" autofocus
-                                        placeholder="{{ __('Beds') }}">
+                                        placeholder="{{ __('Beds') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 
                                     @error('beds_n')
                                         <span class="invalid-feedback" role="alert">
@@ -183,8 +183,7 @@
                     </div>
                     <div class="modal-footer border-0 justify-content-center px-5">
                         <button type="button" @click="applyFilter" class="btn btn-primary text-white flex-grow-1" data-bs-dismiss="modal">Applica filtri</button>
-                        <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1"
-                            data-bs-dismiss="modal">Reset filtri</button>
+                        <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1">Reset filtri</button>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
     <section id="jumbotron" class="row align-items-center text-center justify-content-center g-0 mb-4">
         <div class="col col-md-6 col-lg-5 mx-3">
             <h1>Un'esperienza unica</h1>
-            <h3 class="my-3">Trova la tua location Aldesca</h3>
+            <h3 class="my-3">Trova la tua location da sogno</h3>
             <div class="d-flex w-100 align-items-center position-relative">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Location" name="Landing-search" id="Landing-search"

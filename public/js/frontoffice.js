@@ -27781,11 +27781,11 @@ var SearchVue = new Vue({
         SearchVue.nRes = response.data.response.data.length;
       });
     },
-    distance: function distance(a, b, c, d) {
+    distance: function distance(long1, lat1, long2, lat2) {
       /* '4.8,52.3:4.87,52.37' */
       _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
         key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-        locations: "".concat(a, ",").concat(b, ":").concat(c, ",").concat(d)
+        locations: "".concat(long1, ",").concat(lat1, ":").concat(long2, ",").concat(lat2)
         /* `${lat1},${long1}\:${lat2},${long2}` */
 
       }).then(function (routeData) {
@@ -27794,7 +27794,7 @@ var SearchVue = new Vue({
       });
     },
     applyFilter: function applyFilter() {
-      this.distance('9.035596245431645', '45.628535789797134', '9.192151415513356', '45.517986439899055');
+      this.distance('9.181219', '45.461267', '9.159714', '45.481446');
 
       if (SearchVue.nBeds != "" && SearchVue.nRooms != "") {
         Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(function (response) {
@@ -27872,7 +27872,14 @@ var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___defaul
 });
 var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.Marker({
   draggable: false
-}).setLngLat(center).addTo(map);
+}).setLngLat(center).addTo(map); // partenza pensiero della ricerca degli appartamenti vicini TODO:
+// const currentLocation = (coordinate zona ricercata);
+// let arrAppVicini = [];
+// array.forEach(element => {
+//    if (this.distance(currentLocation, element) <= 20000) {
+//       arrAppVicini.push(element);
+//    }
+// });
 
 /***/ }),
 
@@ -27894,8 +27901,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! C:\Boolean\PHP\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -126,17 +126,17 @@ const SearchVue = new Vue({
             }
          );
       },
-      distance: function(a, b, c, d){ /* '4.8,52.3:4.87,52.37' */
+      distance: function(long1, lat1, long2, lat2){ /* '4.8,52.3:4.87,52.37' */
          tt.services.calculateRoute({
             key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-            locations: `${a},${b}:${c},${d}`, /* `${lat1},${long1}\:${lat2},${long2}` */
+            locations: `${long1},${lat1}:${long2},${lat2}`, /* `${lat1},${long1}\:${lat2},${long2}` */
             }).then(function(routeData) {
                console.log(routeData.toGeoJson().features[0].properties.summary.lengthInMeters);
                return routeData.toGeoJson().features
             });
       },
       applyFilter: function () {
-         this.distance('9.035596245431645','45.628535789797134', '9.192151415513356', '45.517986439899055')
+         this.distance('9.181219','45.461267', '9.159714', '45.481446')
             if(SearchVue.nBeds != "" && SearchVue.nRooms != ""){
 
                Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(
@@ -234,3 +234,13 @@ let marker = new ttMaps.Marker({
 })
    .setLngLat(center)
    .addTo(map);
+
+
+   // partenza pensiero della ricerca degli appartamenti vicini TODO:
+   // const currentLocation = (coordinate zona ricercata);
+   // let arrAppVicini = [];
+   // array.forEach(element => {
+   //    if (this.distance(currentLocation, element) <= 20000) {
+   //       arrAppVicini.push(element);
+   //    }
+   // });

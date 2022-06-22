@@ -5,7 +5,7 @@ require("../bootstrap");
 import { default as ttServices } from "@tomtom-international/web-sdk-services";
 import { default as tt } from "@tomtom-international/web-sdk-services";
 import { default as ttMaps } from "@tomtom-international/web-sdk-maps";
-import { indexOf } from "lodash";
+import { forEach, indexOf } from "lodash";
 
 const LandingPageVue = new Vue({
    el: "#LandingPageVue",
@@ -115,9 +115,10 @@ const SearchVue = new Vue({
       nBeds: "",
       services: [],
       nRooms: "",
+      maxDistance: 20000
    },
    methods: {
-      search: function () {
+      search() {
          Axios.get("/api/api-artments?city=" + this.location).then(
             (response) => {
                SearchVue.results = response.data.response.data;
@@ -126,25 +127,29 @@ const SearchVue = new Vue({
             }
          );
       },
-      distance: function(a, b, c, d){ /* '4.8,52.3:4.87,52.37' */
-         tt.services.calculateRoute({
-            key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-            locations: `${a},${b}:${c},${d}`, /* `${lat1},${long1}\:${lat2},${long2}` */
-            }).then(function(routeData) {
-               console.log(routeData.toGeoJson().features[0].properties.summary.lengthInMeters);
-               return routeData.toGeoJson().features
-            });
-      },
-      applyFilter: function () {
-         this.distance('9.035596245431645','45.628535789797134', '9.192151415513356', '45.517986439899055')
-            if(SearchVue.nBeds != "" && SearchVue.nRooms != ""){
+      applyFilter() {
+            if(/*SearchVue.nBeds != "" &&*/ SearchVue.nRooms != ""){
+               Axios.get("/api/api-artments?" + "beds=" + this.nBeds + "&rooms=" + this.nRooms)
+                  .then((response) => {
 
-               Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(
-                  (response) => {
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
+                     response.data.response.data.forEach(apartment => {
+
+                        tt.services.calculateRoute({
+                           key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                           locations: apartment.longitude + ',' + apartment.latitude + ':' + '9.18' + ',' + '45.48',
+                        })
+                        .then(function(routeData) {
+                           let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+
+                           if(dist < SearchVue.maxDistance){
+                              SearchVue.results.push(apartment);
+                           };
+
+                           SearchVue.nRes = SearchVue.results.length;
+                        });
+
+                     });
+                  });
             }
 
             if (SearchVue.nBeds != "") {
@@ -156,14 +161,14 @@ const SearchVue = new Vue({
                );
             }
 
-            if (SearchVue.nRooms != "") {
-               Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
-                  (response) => {
-                     SearchVue.results = response.data.response.data;
-                     SearchVue.nRes = response.data.response.data.length;
-                  }
-               );
-            }
+            // if (SearchVue.nRooms != "") {
+            //    Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
+            //       (response) => {
+            //          SearchVue.results = response.data.response.data;
+            //          SearchVue.nRes = response.data.response.data.length;
+            //       }
+            //    );
+            // }
 
             if(SearchVue.services.length > 0){
                Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(
@@ -203,7 +208,7 @@ const SearchVue = new Vue({
                );
             }
          },
-         setService: function (e) {
+         setService(e) {
             if(e.target.checked){
                SearchVue.services.push(e.target.value);
 

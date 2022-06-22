@@ -27772,7 +27772,8 @@ var SearchVue = new Vue({
     loading: false,
     nBeds: "",
     services: [],
-    nRooms: ""
+    nRooms: "",
+    maxDistance: 20000
   },
   methods: {
     search: function search() {
@@ -27781,25 +27782,26 @@ var SearchVue = new Vue({
         SearchVue.nRes = response.data.response.data.length;
       });
     },
-    distance: function distance(a, b, c, d) {
-      /* '4.8,52.3:4.87,52.37' */
-      _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-        locations: "".concat(a, ",").concat(b, ":").concat(c, ",").concat(d)
-        /* `${lat1},${long1}\:${lat2},${long2}` */
-
-      }).then(function (routeData) {
-        console.log(routeData.toGeoJson().features[0].properties.summary.lengthInMeters);
-        return routeData.toGeoJson().features;
-      });
-    },
     applyFilter: function applyFilter() {
-      this.distance('9.035596245431645', '45.628535789797134', '9.192151415513356', '45.517986439899055');
+      if (
+      /*SearchVue.nBeds != "" &&*/
+      SearchVue.nRooms != "") {
+        Axios.get("/api/api-artments?" + "beds=" + this.nBeds + "&rooms=" + this.nRooms).then(function (response) {
+          response.data.response.data.forEach(function (apartment) {
+            _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
+              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+              locations: apartment.longitude + ',' + apartment.latitude + ':' + '9.18' + ',' + '45.48'
+            }).then(function (routeData) {
+              var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
 
-      if (SearchVue.nBeds != "" && SearchVue.nRooms != "") {
-        Axios.get("/api/api-artments?city=" + this.location + "&beds=" + this.nBeds + "&rooms=" + this.nRooms).then(function (response) {
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
+              if (dist < SearchVue.maxDistance) {
+                SearchVue.results.push(apartment);
+              }
+
+              ;
+              SearchVue.nRes = SearchVue.results.length;
+            });
+          });
         });
       }
 
@@ -27808,14 +27810,15 @@ var SearchVue = new Vue({
           SearchVue.results = response.data.response.data;
           SearchVue.nRes = response.data.response.data.length;
         });
-      }
+      } // if (SearchVue.nRooms != "") {
+      //    Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(
+      //       (response) => {
+      //          SearchVue.results = response.data.response.data;
+      //          SearchVue.nRes = response.data.response.data.length;
+      //       }
+      //    );
+      // }
 
-      if (SearchVue.nRooms != "") {
-        Axios.get("/api/api-artments?city=" + this.location + "&rooms=" + this.nRooms).then(function (response) {
-          SearchVue.results = response.data.response.data;
-          SearchVue.nRes = response.data.response.data.length;
-        });
-      }
 
       if (SearchVue.services.length > 0) {
         Axios.get("/api/api-artments?city=" + this.location + "&services=" + SearchVue.services[0]).then(function (response) {

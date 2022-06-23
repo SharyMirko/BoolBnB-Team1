@@ -134,11 +134,11 @@ const msgForm = new Vue({
          let btn = document.querySelector("#btnSendMsg");
          if (
             this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
-            this.text_ms > 20
+            this.text_ms.length > 20
             ) {
-               btn.disabled = true;
-            } else {
                btn.disabled = false;
+            } else {
+               btn.disabled = true;
             }
       },
    },

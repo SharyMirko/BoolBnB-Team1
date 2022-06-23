@@ -89,7 +89,7 @@
          {{-- form invio messaggio --}}
          <div class="d-none d-md-block col-md-4 col-lg-3 mt-5 mt-md-0" id="msgForm">
             <div class="price-text m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
-            <form method="POST" @change="msgValidate" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
+            <form method="POST" @keyup="msgValidate" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
                @csrf
                <div class="form-group row mb-2 text-center">
                   <div class="col">

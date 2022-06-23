@@ -28,8 +28,8 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
                 <div class="col" v-if="loading" v-for="apart in results2">
-                    <article class="card rounded-3 border-0">
-                       <a class="m-0 p-0 d-block" v-bind:href="link + apart.id">
+                    <article class="card rounded-3 border-0 h-100">
+                       <a class="m-0 p-0 d-flex flex-column flex-grow-1" v-bind:href="link + apart.id">
                           <div class="card-img-top position-relative">
                              <div class="position-absolute w-100 h-100 filtro-card"></div>
                              <img :src="apart[0].thumb" class="card-img-top"
@@ -54,8 +54,8 @@
 
 
                 <div class="col" v-for="apart in results">
-                  <article class="card rounded-3 border-0">
-                     <a class="m-0 p-0 d-block" v-bind:href="link + apart[0].id">
+                  <article class="card rounded-3 border-0 h-100">
+                     <a class="m-0 p-0 d-flex flex-column flex-grow-1" v-bind:href="link + apart[0].id">
                         <div class="card-img-top position-relative">
                            <div class="position-absolute w-100 h-100 filtro-card"></div>
                            <img :src="apart[0].thumb" class="card-img-top"

@@ -39,7 +39,7 @@
                <div class="ms-auto d-flex flex-column">
                   <div class="d-flex flex-column mb-4">
                      <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
-                     <a href="#" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
+                     <a href="{{route('admin.messages.index', ['apart_id'=>$apart->id])}}" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a></form>
                      <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
                   </div>
 

@@ -14,12 +14,10 @@ class MessageController extends Controller
     public function index()
     {
         $userApart = Apartment::where('user_id', Auth::user()->id)->get();
-        $userIdAparts = [];
-        foreach ($userApart as $apart) {
-            $userIdAparts[] = $apart->id;
-        }
-        
-       $messagges = Message::whereIn('apartment_id', $userIdAparts)->paginate(20);
+
+        $idcorretto = $_GET['apart_id'];
+
+       $messagges = Message::where('apartment_id', $idcorretto)->paginate(20);
        
 
         return view('admin.messages.index', compact('messagges', 'userApart'));

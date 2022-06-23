@@ -6,6 +6,11 @@
                 <img src="{{ asset('img/logo_light.svg') }}" alt="BoolBnB" class="logo">
                 <p class="my-3">BoolBnB è una piattaforma che ti consente di affittare il tuo immobile in modo semplice
                     e veloce.</p>
+                <div class="d-flex fs-3 mt-4">
+                    <a href="#" class="d-block"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="d-block"><i class="fa-brands fa-instagram mx-3"></i></a>
+                     <a href="#" class="d-block"><i class="fa-brands fa-twitter"></i></a>
+                </div>
             </div>
 
             <div class="col-12 col-sm-3 col-md-2 mb-4">

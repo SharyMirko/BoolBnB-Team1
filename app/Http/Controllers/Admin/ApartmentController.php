@@ -117,9 +117,10 @@ class ApartmentController extends Controller
       $apartment->premiumFeatures()->detach();
       $apartment->services()->detach();
       $apartment->messages()->delete();
+      $apartment->views()->delete();
 
       $apartment->delete();
 
-      return redirect()->route('apartments.index');
+      return redirect()->route('admin.dashboard');
    }
 }

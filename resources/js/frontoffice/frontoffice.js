@@ -119,6 +119,8 @@ const SearchVue = new Vue({
       nRooms: "",
       maxDistance: 20000,
       nRes2: 0,
+      lat: null,
+      lon: null
 
    },
    methods: {
@@ -178,7 +180,6 @@ const SearchVue = new Vue({
                   tenuta += "&services=" + SearchVue.services[i]
                }
             }
-            console.log(tenuta)
             Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + tenuta + "&beds=" + this.nBeds).then(
                (response) => {
                   console.log(response.data.response.data)
@@ -192,7 +193,6 @@ const SearchVue = new Vue({
                         })
                         .then(function(routeData) {
                            let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-                           console.log('ciao');
                            if(dist < parseInt(SearchVue.maxDistance)){
                               apartment.splice(0, 1);
                               SearchVue.results.push(apartment);
@@ -220,13 +220,56 @@ const SearchVue = new Vue({
             this.loading = true
 /*             let test = window.location.search.slice(0, 1)
  */            let test = window.location.search.replace("?city=", '')
+               if(test.includes('+')) {
+                 
+                 console.log(test.replace("+", " ")) 
+                 test = test.replace("+", " ")
+                test = test.replace("+", " ")
+                test = test.replace("+", " ")
+                test = test.replace("+", " ")
+               }
             this.location = test;
-            Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
+          /*   Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
                (response) =>{
                   this.results2 = response.data.response.data
                   this.nRes2 = this.results2.length
 
+               }) */
+               ttServices.services
+               .geocode({
+                  key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                  query: this.location,
                })
+               .then(function (response) {
+                  SearchVue.lat = response.results[0].position.lat;
+                  SearchVue.lon = response.results[0].position.lng;
+               });
+               
+               Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(
+                  (response) => {
+                     console.log(response.data.response.data)
+                     let lest = Object.entries(response.data.response.data);
+                     console.log(lest)
+                    lest.forEach((apartment, i) => {
+                        setTimeout(() => {
+                           tt.services.calculateRoute({
+                              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                              locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
+                           })
+                           .then(function(routeData) {
+                              let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+                              console.log(apartment);
+                              if(dist < parseInt(SearchVue.maxDistance)){
+                                 apartment.splice(0, 1);
+                                 SearchVue.results2.push(apartment);
+                              };
+   
+                              SearchVue.nRes2 = SearchVue.results2.length;
+                           })}, i * 300
+                          )
+   
+                     });
+                  });
          }
          
    },

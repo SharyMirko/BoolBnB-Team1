@@ -27714,16 +27714,79 @@ var FormRegisterVue = new Vue({
     password_confirmation: "",
     name: "",
     last_name: "",
-    date: "",
-    valid: false
+    date: ""
   },
   methods: {
     register: function register() {
       //validate email
       var btn = document.querySelector("#btnReg");
+      var today = new Date();
 
-      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password && this.name.length > 2 && this.last_name.length > 2 && this.date != "") {
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password && this.name.length > 2 && this.last_name.length > 2 && this.date != "" && today > new Date(this.date)) {
         btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  }
+}); // form login validation
+
+var FormLoginVue = new Vue({
+  el: "#loginModal",
+  data: {
+    email: "",
+    password: ""
+  },
+  methods: {
+    login: function login() {
+      //validate email
+      var btn = document.querySelector("#btnLog");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  }
+}); // form reset password validation
+
+var FormResetPasswordVue = new Vue({
+  el: "#passwordResetModal",
+  data: {
+    email: "",
+    password: "",
+    password_confirmation: ""
+  },
+  methods: {
+    resetPass: function resetPass() {
+      //validate email
+      var btn = document.querySelector("#btnReset");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  }
+}); // form reset password validation
+
+var msgForm = new Vue({
+  el: "#msgForm",
+  data: {
+    email: "",
+    text_ms: ""
+  },
+  methods: {
+    msgValidate: function msgValidate() {
+      //validate email
+      var btn = document.querySelector("#btnSendMsg");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.text_ms.length > 20) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
       }
     }
   }
@@ -27867,6 +27930,16 @@ var SearchVue = new Vue({
       if (e.target.checked == false) {
         SearchVue.services.splice(Object(lodash__WEBPACK_IMPORTED_MODULE_2__["indexOf"])(SearchVue.services, e.target.value), 1);
       }
+    },
+    resetFilter: function resetFilter() {
+      SearchVue.nBeds = "";
+      SearchVue.nRooms = "";
+      var checkboxes = document.querySelectorAll('.form-check-input');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = false;
+      });
+      SearchVue.services = [];
+      SearchVue.maxDistance = 20000;
     }
   },
   mounted: function mounted() {
@@ -27967,8 +28040,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/frontoffice/frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

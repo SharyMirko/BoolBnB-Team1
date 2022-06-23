@@ -43,22 +43,103 @@ const FormRegisterVue = new Vue({
       name: "",
       last_name: "",
       date: "",
-      valid: false,
+
    },
    methods: {
       register: function () {
          //validate email
          let btn = document.querySelector("#btnReg");
+         let today= new Date();
+
          if (
             this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
             this.password.length > 5 &&
             this.password_confirmation === this.password &&
             this.name.length > 2 &&
             this.last_name.length > 2 &&
-            this.date != ""
+            
+            this.date != "" && today > new Date(this.date)
+            
+            
          ) {
             btn.disabled = false;
+         } else {
+            btn.disabled = true;
          }
+      },
+   },
+});
+
+
+// form login validation
+const FormLoginVue = new Vue({
+   el: "#loginModal",
+   data: {
+      email: "",
+      password: "",
+   },
+   methods: {
+      login: function () {
+         //validate email
+         let btn = document.querySelector("#btnLog");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.password.length > 5
+            ) {
+               btn.disabled = false;
+            } else {
+               btn.disabled = true;
+            }
+      },
+   },
+});
+
+// form reset password validation
+
+const FormResetPasswordVue = new Vue({
+   el: "#passwordResetModal",
+   data: {
+      email: "",
+      password: "",
+      password_confirmation: "",
+   },
+   methods: {
+      resetPass: function () {
+         //validate email
+         let btn = document.querySelector("#btnReset");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.password.length > 5 &&
+            this.password_confirmation === this.password
+            ) {
+               btn.disabled = false;
+            } else {
+               btn.disabled = true;
+            }
+      },
+   },
+});
+
+// form reset password validation
+
+const msgForm = new Vue({
+   el: "#msgForm",
+   data: {
+      email: "",
+      text_ms: "",
+   },
+   methods: {
+      msgValidate: function () {
+         //validate email
+         let btn = document.querySelector("#btnSendMsg");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.text_ms.length > 20
+            ) {
+               btn.disabled = false;
+            } else {
+               btn.disabled = true;
+            }
       },
    },
 });
@@ -213,7 +294,22 @@ const SearchVue = new Vue({
             if(e.target.checked == false){
                SearchVue.services.splice(indexOf(SearchVue.services, e.target.value), 1);
             }
-         }
+         },
+         resetFilter() {
+            
+            SearchVue.nBeds = "";
+            SearchVue.nRooms = ""; 
+
+            const checkboxes = document.querySelectorAll('.form-check-input');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+            
+            SearchVue.services = [];
+            
+            SearchVue.maxDistance= 20000;
+   
+         },
       },
       mounted: function mounted () {
          if(window.location.search) {

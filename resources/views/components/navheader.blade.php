@@ -102,7 +102,7 @@
                         <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
                     </div>
 
-                    <form method="POST" action="{{ route('login') }}"
+                    <form method="POST" @change="login" action="{{ route('login') }}"
                         class="flex-grow-1 px-3 pb-3 rounded-0 d-flex flex-column justify-content-center">
                         @csrf
 
@@ -114,7 +114,7 @@
 
                         <div class="form-group row mb-2">
                             <div class="col">
-                                <input id="email" type="email"
+                                <input id="email" v-model="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" required autocomplete="email" autofocus
                                     placeholder="{{ __('E-Mail Address') }}">
@@ -129,7 +129,7 @@
 
                         <div class="form-group row mb-2">
                             <div class="col">
-                                <input id="password" type="password"
+                                <input id="password" v-model="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="current-password" placeholder="{{ __('Password') }}">
 
@@ -155,7 +155,7 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="btn btn-primary text-white d-block w-100 mb-3">
+                            <button type="submit" id="btnLog" disabled="true" class="btn btn-primary text-white d-block w-100 mb-3">
                                 {{ __('Login') }}
                             </button>
 
@@ -319,7 +319,7 @@
                             data-bs-dismiss="modal"></button>
                     </div>
 
-                    <form method="POST" action="{{ route('password.update') }}"
+                    <form method="POST" @change="resetPass" action="{{ route('password.update') }}"
                         class="flex-grow-1 px-3 pb-3 rounded-0 d-flex flex-column justify-content-center">
                         @csrf
 
@@ -330,7 +330,7 @@
 
                         <div class="form-group row mb-2 text-center">
                             <div class="col">
-                                <input id="email" type="email"
+                                <input id="email" v-model="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus
                                     placeholder="{{ __('E-Mail Address') }}">
@@ -345,7 +345,7 @@
 
                         <div class="form-group row mb-2">
                             <div class="col">
-                                <input id="password" type="password"
+                                <input id="password" v-model="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="new-password" placeholder="{{ __('Password') }}">
 
@@ -359,13 +359,13 @@
 
                         <div class="form-group row mb-2">
                             <div class="col">
-                                <input id="password-confirm" type="password" class="form-control"
+                                <input id="password-confirm" v-model="password_confirmation" type="password" class="form-control"
                                     name="password_confirmation" required autocomplete="new-password"
                                     placeholder="{{ __('Confirm Password') }}">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary text-white">
+                        <button type="submit" id="btnReset" disabled="true" class="btn btn-primary text-white">
                             {{ __('Reset Password') }}
                         </button>
                     </form>

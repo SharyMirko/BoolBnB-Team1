@@ -9,6 +9,7 @@ use App\Model\Service;
 use App\Model\Category;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -59,15 +60,24 @@ class ApartmentController extends Controller
    {
       $apartmentForm = $request->all();
 
-      $apartment = new Apartment();
-      $apartment->fill($apartmentForm);
-      $apartment->save();
+      $thumb_path = Storage::put('uploads', $apartmentForm['thumb']);
+
+      // $apartment = new Apartment();
+      // $apartment->fill($apartmentForm);
+      // $apartment->save();
+
+      $apartment = [
+         'user_id' => Auth::user()->id,
+         'thumb' => $thumb_path
+      ] + $apartmentForm;
+
+      $newApartment = Apartment::create($apartment);
 
       foreach ($request['service'] as $service) {
-         $apartment->services()->attach(['service_id' => $service], ['apartment_id' => $apartment->id]);
+         $newApartment->services()->attach(['service_id' => $service], ['apartment_id' => $newApartment->id]);
       }
 
-      return redirect()->route('admin.apartments.show', $apartment->id);
+      return redirect()->route('admin.apartments.show', $newApartment->id);
    }
 
 
@@ -104,7 +114,13 @@ class ApartmentController extends Controller
 
       $apartmentForm = $request->all();
 
-      $apartment->update($apartmentForm);
+      $thumb_path = Storage::put('uploads', $apartmentForm['thumb']);
+
+      $newApartment = [
+         'thumb' => $thumb_path
+      ] + $apartmentForm;
+
+      $apartment->update($newApartment);
 
       return redirect()->route('apartments.show', $apartment->id);
    }

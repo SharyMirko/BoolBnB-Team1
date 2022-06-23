@@ -178,9 +178,9 @@
                      <input id="address" value="{{ old('address', $apartment->address) }}" v-model="address" @change="addressSearch" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required autocomplete="address" autofocus placeholder="{{ __('Indirizzo') }}">
 
                      @error('address')
-                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                           </span>
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
                      @enderror
                   </div>
                </div>

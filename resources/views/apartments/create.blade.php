@@ -19,9 +19,9 @@
                {{-- titolo e area --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col">
-                     <input type="hidden" value="{{ $user_id }}" name="user_id">
                      <input type="hidden" v-model="hiddenlat" name="latitude">
                      <input type="hidden" v-model="hiddenlon" name="longitude">
+
                      <input id="title" v-model="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $title ?? old('title') }}" required autocomplete="title" autofocus placeholder="{{ __('Title') }}">
 
                      @error('title')
@@ -177,9 +177,9 @@
                      <input id="address" v-model="address" @change="addressSearch" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $address ?? old('address') }}" required autocomplete="address" autofocus placeholder="{{ __('Indirizzo') }}">
 
                      @error('address')
-                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                           </span>
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
                      @enderror
                   </div>
                </div>
@@ -189,7 +189,7 @@
                      <h4 class="mb-3">Foto</h4>
                      <input class="form-control" type="file" id="thumb" name="thumb" accept="image/*">
                      @error('thumb')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="alert alert-danger">{{ $message }}</div>
                      @enderror
                   </div>
                </div>

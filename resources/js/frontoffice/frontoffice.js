@@ -43,22 +43,103 @@ const FormRegisterVue = new Vue({
       name: "",
       last_name: "",
       date: "",
-      valid: false,
+
    },
    methods: {
       register: function () {
          //validate email
          let btn = document.querySelector("#btnReg");
+         let today= new Date();
+
          if (
             this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
             this.password.length > 5 &&
             this.password_confirmation === this.password &&
             this.name.length > 2 &&
             this.last_name.length > 2 &&
-            this.date != ""
+            
+            this.date != "" && today > new Date(this.date)
+            
+            
          ) {
             btn.disabled = false;
+         } else {
+            btn.disabled = true;
          }
+      },
+   },
+});
+
+
+// form login validation
+const FormLoginVue = new Vue({
+   el: "#loginModal",
+   data: {
+      email: "",
+      password: "",
+   },
+   methods: {
+      login: function () {
+         //validate email
+         let btn = document.querySelector("#btnLog");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.password.length > 5
+            ) {
+               btn.disabled = false;
+            } else {
+               btn.disabled = true;
+            }
+      },
+   },
+});
+
+// form reset password validation
+
+const FormResetPasswordVue = new Vue({
+   el: "#passwordResetModal",
+   data: {
+      email: "",
+      password: "",
+      password_confirmation: "",
+   },
+   methods: {
+      resetPass: function () {
+         //validate email
+         let btn = document.querySelector("#btnReset");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.password.length > 5 &&
+            this.password_confirmation === this.password
+            ) {
+               btn.disabled = false;
+            } else {
+               btn.disabled = true;
+            }
+      },
+   },
+});
+
+// form reset password validation
+
+const msgForm = new Vue({
+   el: "#msgForm",
+   data: {
+      email: "",
+      text_ms: "",
+   },
+   methods: {
+      msgValidate: function () {
+         //validate email
+         let btn = document.querySelector("#btnSendMsg");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.text_ms.length > 20
+            ) {
+               btn.disabled = false;
+            } else {
+               btn.disabled = true;
+            }
       },
    },
 });
@@ -119,6 +200,8 @@ const SearchVue = new Vue({
       nRooms: "",
       maxDistance: 20000,
       nRes2: 0,
+      lat: null,
+      lon: null
 
    },
    methods: {
@@ -178,7 +261,6 @@ const SearchVue = new Vue({
                   tenuta += "&services=" + SearchVue.services[i]
                }
             }
-            console.log(tenuta)
             Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + tenuta + "&beds=" + this.nBeds).then(
                (response) => {
                   console.log(response.data.response.data)
@@ -192,7 +274,6 @@ const SearchVue = new Vue({
                         })
                         .then(function(routeData) {
                            let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-                           console.log('ciao');
                            if(dist < parseInt(SearchVue.maxDistance)){
                               apartment.splice(0, 1);
                               SearchVue.results.push(apartment);
@@ -213,20 +294,78 @@ const SearchVue = new Vue({
             if(e.target.checked == false){
                SearchVue.services.splice(indexOf(SearchVue.services, e.target.value), 1);
             }
-         }
+         },
+         resetFilter() {
+            
+            SearchVue.nBeds = "";
+            SearchVue.nRooms = ""; 
+
+            const checkboxes = document.querySelectorAll('.form-check-input');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+            
+            SearchVue.services = [];
+            
+            SearchVue.maxDistance= 20000;
+   
+         },
       },
       mounted: function mounted () {
          if(window.location.search) {
             this.loading = true
 /*             let test = window.location.search.slice(0, 1)
  */            let test = window.location.search.replace("?city=", '')
+               if(test.includes('+')) {
+                 
+                 console.log(test.replace("+", " ")) 
+                 test = test.replace("+", " ")
+                test = test.replace("+", " ")
+                test = test.replace("+", " ")
+                test = test.replace("+", " ")
+               }
             this.location = test;
-            Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
+          /*   Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
                (response) =>{
                   this.results2 = response.data.response.data
                   this.nRes2 = this.results2.length
 
+               }) */
+               ttServices.services
+               .geocode({
+                  key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                  query: this.location,
                })
+               .then(function (response) {
+                  SearchVue.lat = response.results[0].position.lat;
+                  SearchVue.lon = response.results[0].position.lng;
+               });
+               
+               Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(
+                  (response) => {
+                     console.log(response.data.response.data)
+                     let lest = Object.entries(response.data.response.data);
+                     console.log(lest)
+                    lest.forEach((apartment, i) => {
+                        setTimeout(() => {
+                           tt.services.calculateRoute({
+                              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                              locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
+                           })
+                           .then(function(routeData) {
+                              let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+                              console.log(apartment);
+                              if(dist < parseInt(SearchVue.maxDistance)){
+                                 apartment.splice(0, 1);
+                                 SearchVue.results2.push(apartment);
+                              };
+   
+                              SearchVue.nRes2 = SearchVue.results2.length;
+                           })}, i * 300
+                          )
+   
+                     });
+                  });
          }
          
    },

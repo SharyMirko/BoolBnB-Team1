@@ -32,7 +32,7 @@
                        <a class="m-0 p-0 d-block" v-bind:href="link + apart.id">
                           <div class="card-img-top position-relative">
                              <div class="position-absolute w-100 h-100 filtro-card"></div>
-                             <img :src="apart.thumb" class="card-img-top"
+                             <img :src="apart[0].thumb" class="card-img-top"
                                 alt="lorem_picsum">
 
                              <div class="crown"></div>
@@ -40,12 +40,12 @@
                              {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div> --}}
                           </div>
                           <div class="card-body text-muted">
-                             <h5 class="card-title">@{{ apart.title }}</h5>
-                             <p class="geo icon mb-0">@{{ apart.address }}</p>
-                             <p class="city">@{{ apart.city }}</p>
+                             <h5 class="card-title">@{{ apart[0].title }}</h5>
+                             <p class="geo icon mb-0">@{{ apart[0].address }}</p>
+                             <p class="city">@{{ apart[0].city }}</p>
                              <div class="d-flex justify-content-between align-items-end flex-wrap">
-                                <p class="price-text m-0">€ @{{ apart.price }}<span class="price-suffix">/notte</span></p>
-                                <p class="category m-0">@{{ apart.category }}</p>
+                                <p class="price-text m-0">€ @{{ apart[0].price }}<span class="price-suffix">/notte</span></p>
+                                <p class="category m-0">@{{ apart[0].category }}</p>
                              </div>
                           </div>
                        </a>
@@ -159,7 +159,7 @@
 
                                         <div class="form-check">
                                             <input type="checkbox" @change="setService($event)" class="form-check-input" value="3"
-                                                id="wifi">
+                                                id="piscina">
                                             <label class="form-check-label" for="Piscina">Piscina</label>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                     </div>
                     <div class="modal-footer border-0 justify-content-center px-5 pb-4">
                         <button type="button" @click="applyFilter" class="btn btn-primary text-white flex-grow-1" data-bs-dismiss="modal">Applica filtri</button>
-                        <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1">Reset filtri</button>
+                        <button type="button" @click="resetFilter" class="btn-custom-outline btn btn-outline-primary flex-grow-1">Reset filtri</button>
                     </div>
                 </div>
             </div>

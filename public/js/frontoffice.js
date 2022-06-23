@@ -27714,16 +27714,79 @@ var FormRegisterVue = new Vue({
     password_confirmation: "",
     name: "",
     last_name: "",
-    date: "",
-    valid: false
+    date: ""
   },
   methods: {
     register: function register() {
       //validate email
       var btn = document.querySelector("#btnReg");
+      var today = new Date();
 
-      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password && this.name.length > 2 && this.last_name.length > 2 && this.date != "") {
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password && this.name.length > 2 && this.last_name.length > 2 && this.date != "" && today > new Date(this.date)) {
         btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  }
+}); // form login validation
+
+var FormLoginVue = new Vue({
+  el: "#loginModal",
+  data: {
+    email: "",
+    password: ""
+  },
+  methods: {
+    login: function login() {
+      //validate email
+      var btn = document.querySelector("#btnLog");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  }
+}); // form reset password validation
+
+var FormResetPasswordVue = new Vue({
+  el: "#passwordResetModal",
+  data: {
+    email: "",
+    password: "",
+    password_confirmation: ""
+  },
+  methods: {
+    resetPass: function resetPass() {
+      //validate email
+      var btn = document.querySelector("#btnReset");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.password.length > 5 && this.password_confirmation === this.password) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  }
+}); // form reset password validation
+
+var msgForm = new Vue({
+  el: "#msgForm",
+  data: {
+    email: "",
+    text_ms: ""
+  },
+  methods: {
+    msgValidate: function msgValidate() {
+      //validate email
+      var btn = document.querySelector("#btnSendMsg");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.text_ms.length > 20) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
       }
     }
   }
@@ -27775,7 +27838,9 @@ var SearchVue = new Vue({
     services: [],
     nRooms: "",
     maxDistance: 20000,
-    nRes2: 0
+    nRes2: 0,
+    lat: null,
+    lon: null
   },
   methods: {
     search: function search() {
@@ -27833,7 +27898,6 @@ var SearchVue = new Vue({
         }
       }
 
-      console.log(tenuta);
       Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + tenuta + "&beds=" + this.nBeds).then(function (response) {
         console.log(response.data.response.data);
         var lest = Object.entries(response.data.response.data);
@@ -27845,7 +27909,6 @@ var SearchVue = new Vue({
               locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
             }).then(function (routeData) {
               var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-              console.log('ciao');
 
               if (dist < parseInt(SearchVue.maxDistance)) {
                 apartment.splice(0, 1);
@@ -27867,21 +27930,71 @@ var SearchVue = new Vue({
       if (e.target.checked == false) {
         SearchVue.services.splice(Object(lodash__WEBPACK_IMPORTED_MODULE_2__["indexOf"])(SearchVue.services, e.target.value), 1);
       }
+    },
+    resetFilter: function resetFilter() {
+      SearchVue.nBeds = "";
+      SearchVue.nRooms = "";
+      var checkboxes = document.querySelectorAll('.form-check-input');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = false;
+      });
+      SearchVue.services = [];
+      SearchVue.maxDistance = 20000;
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
     if (window.location.search) {
       this.loading = true;
       /*             let test = window.location.search.slice(0, 1)
        */
 
       var test = window.location.search.replace("?city=", '');
+
+      if (test.includes('+')) {
+        console.log(test.replace("+", " "));
+        test = test.replace("+", " ");
+        test = test.replace("+", " ");
+        test = test.replace("+", " ");
+        test = test.replace("+", " ");
+      }
+
       this.location = test;
-      Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(function (response) {
-        _this.results2 = response.data.response.data;
-        _this.nRes2 = _this.results2.length;
+      /*   Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
+           (response) =>{
+              this.results2 = response.data.response.data
+              this.nRes2 = this.results2.length
+            }) */
+
+      _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
+        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+        query: this.location
+      }).then(function (response) {
+        SearchVue.lat = response.results[0].position.lat;
+        SearchVue.lon = response.results[0].position.lng;
+      });
+      Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(function (response) {
+        console.log(response.data.response.data);
+        var lest = Object.entries(response.data.response.data);
+        console.log(lest);
+        lest.forEach(function (apartment, i) {
+          setTimeout(function () {
+            _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
+              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+              locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
+            }).then(function (routeData) {
+              var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+              console.log(apartment);
+
+              if (dist < parseInt(SearchVue.maxDistance)) {
+                apartment.splice(0, 1);
+                SearchVue.results2.push(apartment);
+              }
+
+              ;
+              SearchVue.nRes2 = SearchVue.results2.length;
+            });
+          }, i * 300);
+        });
       });
     }
   }
@@ -27927,8 +28040,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/frontoffice/frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

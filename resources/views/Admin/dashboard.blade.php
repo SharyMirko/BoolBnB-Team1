@@ -91,10 +91,11 @@
                               </div>
 
                               <div class="d-flex">
-                                 <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
-                                 <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
-                                 <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pause"></i></a>
-                                 <a href="#" class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a>
+                                 <a href="{{ route('admin.apartments.show', $apart->id) }}" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
+                                 <a href="{{ route('admin.apartments.edit', $apart->id) }}" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
+                                 <!-- Elimina appartamento, popup trigger -->
+                                 <button type="button" data-baseurl="{{ route('admin.apartments.index') }}" data-id="{{ $apart->id }}" data-type="apartment" class="btn btn-danger text-white btn-del" data-bs-toggle="modal" data-bs-target="#delPopup" title="Elimina l'appartamento"><i class="fa-solid fa-trash-can"></i></button>
+                                 <!-- / -->
                               </div>
                            </div>
                         </div>

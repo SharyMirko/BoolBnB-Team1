@@ -120,6 +120,30 @@ const FormResetPasswordVue = new Vue({
    },
 });
 
+// form reset password validation
+
+const msgForm = new Vue({
+   el: "#msgForm",
+   data: {
+      email: "",
+      text_ms: "",
+   },
+   methods: {
+      msgValidate: function () {
+         //validate email
+         let btn = document.querySelector("#btnSendMsg");
+         if (
+            this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+            this.text_ms > 20
+            ) {
+               btn.disabled = true;
+            } else {
+               btn.disabled = false;
+            }
+      },
+   },
+});
+
 // form create
 
 const FormCreateVue = new Vue({

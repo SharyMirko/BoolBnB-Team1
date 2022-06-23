@@ -87,28 +87,28 @@
 
 
          {{-- form invio messaggio --}}
-         <div class="d-none d-md-block col-md-4 col-lg-3 mt-5 mt-md-0">
+         <div class="d-none d-md-block col-md-4 col-lg-3 mt-5 mt-md-0" id="msgForm">
             <div class="price-text m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
-            <form method="POST" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
+            <form method="POST" @change="msgValidate" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
                @csrf
                <div class="form-group row mb-2 text-center">
                   <div class="col">
                      <input name="apartment_id" type="hidden" value="{{$apartment->id}}">
                      @if(Auth::check())
-                     <input id="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     <input id="email" v-model="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
                      @else
-                     <input id="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                     <input id="email" v-model="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
                      @endif
                   </div>
                </div>
 
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <textarea class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
+                     <textarea v-model="text_ms" class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
                   </div>
                </div>
 
-               <button type="submit" class="btn btn-primary text-white w-100">
+               <button type="submit" id="btnSendMsg" class="btn btn-primary text-white w-100" disabled="true">
                   {{ __('Send message') }}
                </button>
             </form>

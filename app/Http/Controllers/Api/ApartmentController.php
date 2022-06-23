@@ -17,7 +17,7 @@ class ApartmentController extends Controller
     */
    public function index(Request $request)
    {
-      
+
      /*  $apiApartments = Apartment::with([
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
          'services' => function ($query2) {$query2->select('id', 'name');}
@@ -34,9 +34,9 @@ class ApartmentController extends Controller
         $filter = $filter->with([
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
          'services' => function ($query2) {$query2->select('id', 'name');}
-      ])->paginate(20);
+      ])->paginate(30);
       if(isset($request->services)){
-         
+
          foreach($filter as $key => $apart){
            if(!$apart->services->contains($request->services)){
              unset($filter[$key]);
@@ -52,7 +52,7 @@ class ApartmentController extends Controller
             'response'  => $filter,
             'sql' => $sql_string
          ]);
-     
+
    }
 
    /**

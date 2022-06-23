@@ -181,7 +181,7 @@
 
                         </form>
                     </div>
-                    <div class="modal-footer border-0 justify-content-center px-5">
+                    <div class="modal-footer border-0 justify-content-center px-5 pb-4">
                         <button type="button" @click="applyFilter" class="btn btn-primary text-white flex-grow-1" data-bs-dismiss="modal">Applica filtri</button>
                         <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1">Reset filtri</button>
                     </div>

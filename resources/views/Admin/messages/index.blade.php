@@ -4,18 +4,27 @@
 
 @section('content')
    <div class="container py-5">
-      <div class="row g-0">
-         <div class="col-12 text-center">
-            <h1 class="mb-5">Bentornato, <span class="dashboard-username text-capitalize">{{ Auth::user()->first_name }}</span></h1>
-            <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary text-white">+ Aggiungi appartamento</a>
-         </div>
-      </div>
 
       {{-- versione desktop --}}
-      <div class="row g-0 mt-5 d-none d-md-block">
-         <h3 class="backoffice-title">I miei messaggi</h3>
+      <div class="row g-0 mt-5">
+         <h3 class="backoffice-title"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> I miei messaggi</h3>
 
-         <table class="table">
+         <div class="d-flex align-items-center my-5 message">
+            <div class="img-box position-relative">
+               <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+               <div class="crown"></div>
+            </div>
+
+            <div class="ms-3">
+               <p class="category m-0 text-capitalize">{{$userApart[0]->category}}</p>
+               <h4 class="my-2 text-capitalize">{{$userApart[0]->title}}</h4>
+               <p class="geo icon mb-0">{{$userApart[0]->address}}</p>
+               <p class="city">{{$userApart[0]->city}}</p>
+               <p class="price-text m-0">€ {{$userApart[0]->price}}<span class="price-suffix">/notte</span></p>
+            </div>
+         </div>
+
+         <table class="table d-none d-md-block">
             <thead>
               <tr>
                 <th scope="col">Mittente</th>
@@ -37,43 +46,28 @@
       {{-- / --}}
 
       {{-- versione mobile --}}
-      {{-- <div class="row row-cols-1 d-md-none gy-4 gx-0 mt-3">
-         <h3 class="backoffice-title">I miei appartamenti</h3>
-         @foreach ($aparts as $apart)
+      <div class="row row-cols-1 d-md-none gy-4 gx-0 mt-3">
+         <h3 class="backoffice-title">I miei messaggi</h3>
+
+         @foreach ($messagges as $message)
             <div class="col">
                <article class="card rounded-3 border-0">
-                  <a class="m-0 p-0 d-block" href="#">
-                     <img src="{{$apart->thumb}}" class="card-img-top position-relative w-100" alt="{{$apart->title}}">
+                  <div class="card-body p-4">
+                     <h5>Mittente</h5>
+                     <p>{{$message->email_sender}}</p>
 
-                     <div class="crown"></div>
+                     <h5>Messaggi</h5>
+                     <p>{{$message->text_ms}}</p>
 
-                     <div class="card-body p-4">
-                        <p class="category  text-muted">{{$apart->category}}</p>
-                        <h4 class="text-muted">{{$apart->title}}</h4>
-                        <p class="geo icon text-muted mb-0">{{$apart->address}}</p>
-                        <p class="city text-muted">{{$apart->city}}</p>
-                        <p class="price text-muted">€ {{$apart->price}}<span class="price-suffix">/notte</span></p>
+                     <h5>Ricevuto il</h5>
+                     <p>{{$message->created_at}}</p>
+                  </div>
 
-                        <div class="d-flex flex-column">
-                           <div class="d-flex flex-column mb-4">
-                              <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
-                              <a href="#" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
-                              <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
-                           </div>
-
-                           <div class="d-flex">
-                              <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-eye"></i></a>
-                              <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pen"></i></a>
-                              <a href="#" class="btn btn-primary text-white me-2"><i class="fa-solid fa-pause"></i></a>
-                              <a href="#" class="btn btn-danger text-white"><i class="fa-solid fa-trash-can"></i></a>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
                </article>
             </div>
          @endforeach
-      </div> --}}
+
+      </div>
       {{-- / --}}
 
    </div>

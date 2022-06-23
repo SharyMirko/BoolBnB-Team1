@@ -10,60 +10,59 @@ use App\Model\Apartment;
 
 class MessageController extends Controller
 {
-    
-    public function index()
-    {
-        $userApart = Apartment::where('user_id', Auth::user()->id)->get();
-        $userIdAparts = [];
-        foreach ($userApart as $apart) {
-            $userIdAparts[] = $apart->id;
-        }
-        
-       $messagges = Message::whereIn('apartment_id', $userIdAparts)->paginate(20);
-       
 
-        return view('admin.messages.index', compact('messagges', 'userApart'));
-    }
+   public function index()
+   {
+      $idcorretto = $_GET['apart_id'];
 
-    
-    public function create()
-    {
-        //
-    }
+      $userApart = Apartment::where('id', $idcorretto)->get();
 
-    
-    public function store(Request $request)
-    {
-        $messageForm = $request->all();
+      $messagges = Message::where('apartment_id', $idcorretto)->paginate(20);
 
-        $message = new Message();
-        $message->fill($messageForm);
-        $message->save();
+      // dd($userApart);
 
-        return redirect()->route('apartments.show', $request->apartment_id)->with('inviato', 'Il tuo messaggio è stato inviato');
-    }
+      return view('admin.messages.index', compact('messagges', 'userApart'));
+   }
 
-    
-    public function show(Message $message)
-    {
-        //
-    }
 
-    
-    public function edit(Message $message)
-    {
-        //
-    }
+   public function create()
+   {
+      //
+   }
 
-    
-    public function update(Request $request, Message $message)
-    {
-        //
-    }
 
-    
-    public function destroy(Message $message)
-    {
-        //
-    }
+   public function store(Request $request)
+   {
+      $messageForm = $request->all();
+
+      $message = new Message();
+      $message->fill($messageForm);
+      $message->save();
+
+      return redirect()->route('apartments.show', $request->apartment_id)->with('inviato', 'Il tuo messaggio è stato inviato');
+   }
+
+
+   public function show(Message $message)
+   {
+      //
+   }
+
+
+   public function edit(Message $message)
+   {
+      //
+   }
+
+
+   public function update(Request $request, Message $message)
+   {
+      //
+   }
+
+
+   public function destroy(Message $message)
+   {
+      //
+   }
 }

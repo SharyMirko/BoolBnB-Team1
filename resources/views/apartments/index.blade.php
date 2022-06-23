@@ -159,7 +159,7 @@
 
                                         <div class="form-check">
                                             <input type="checkbox" @change="setService($event)" class="form-check-input" value="3"
-                                                id="wifi">
+                                                id="piscina">
                                             <label class="form-check-label" for="Piscina">Piscina</label>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                     </div>
                     <div class="modal-footer border-0 justify-content-center px-5">
                         <button type="button" @click="applyFilter" class="btn btn-primary text-white flex-grow-1" data-bs-dismiss="modal">Applica filtri</button>
-                        <button type="button" class="btn-custom-outline btn btn-outline-primary flex-grow-1">Reset filtri</button>
+                        <button type="button" @click="resetFilter" class="btn-custom-outline btn btn-outline-primary flex-grow-1">Reset filtri</button>
                     </div>
                 </div>
             </div>

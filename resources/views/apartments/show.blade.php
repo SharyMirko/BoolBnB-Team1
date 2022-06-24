@@ -39,7 +39,7 @@
                   <div class="d-flex">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-bath fs-3"></i>
-                        <div>{{ $apartment->rooms_n }}</div>
+                        <div>{{ $apartment->bathrooms_n }}</div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -54,7 +54,10 @@
                   </div>
                </div>
                <div class="col text-center py-3">
-                  <i class="fa-solid fa-wifi fs-3"></i><div>WiFi</div>
+                     <div class=" flex-grow-1">
+                        <i class="fa-solid fa-person-shelter fs-3"></i>
+                        <div>{{ $apartment->rooms_n }}</div>
+                     </div>
                </div>
             </div>
             <div class="row mb-5 g-0">

@@ -14,7 +14,7 @@
    <section class="container" id="sec_ap_descr">
       <div class="row g-0 gx-md-5 pt-3">
          {{-- descrizione --}}
-         <div class="col-12 col-md-8 col-lg-9">
+         <div class="col-12 col-md-7 col-lg-8">
             <div class="d-flex align-items-start mb-5">
                <div class="flex-grow-1">
                   <h1 class="text-capitalize">{{ $apartment->title }}</h1>
@@ -22,15 +22,20 @@
                   <p class="geo icon mb-0">{{ $apartment->address }}</p>
                   <p class="city">{{ $apartment->city }}</p>
                </div>
-               {{-- <div class="p-2 bg-secondary text-white rounded fw-bold">{{ substr($apartment->user->first_name, 0,1) }}{{ substr($apartment->user->last_name, 0,1) }}</div> --}}
-               {{-- <div class="col-1"></div> --}}
+
             </div>
             <div class="row row-cols-2 row-cols-lg-4 mb-5 align-items-center g-0">
                <div class="col text-center py-3">
                   <div class="d-flex ">
                      <div class="flex-grow-1">
                         <i class="fa-solid fa-bed fs-3"></i>
-                        <div>{{ $apartment->beds_n }}</div>
+                        <div>{{ $apartment->beds_n }}
+                        @if ( $apartment->beds_n == 1)
+                           letto
+                        @else
+                           letti
+                        @endif
+                        </div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -39,7 +44,13 @@
                   <div class="d-flex">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-bath fs-3"></i>
-                        <div>{{ $apartment->bathrooms_n }}</div>
+                        <div>{{ $apartment->bathrooms_n }}
+                           @if ( $apartment->bathrooms_n == 1)
+                              bagno
+                           @else
+                              bagni
+                           @endif
+                        </div>
                      </div>
                      <div class="separator d-none d-lg-block p-0"></div>
                   </div>
@@ -56,7 +67,13 @@
                <div class="col text-center py-3">
                      <div class=" flex-grow-1">
                         <i class="fa-solid fa-person-shelter fs-3"></i>
-                        <div>{{ $apartment->rooms_n }}</div>
+                        <div>{{ $apartment->rooms_n }}
+                           @if ( $apartment->rooms_n == 1)
+                           stanza
+                        @else
+                           stanze
+                        @endif
+                        </div>
                      </div>
                </div>
             </div>
@@ -90,7 +107,7 @@
 
 
          {{-- form invio messaggio --}}
-         <div class="d-none d-md-block col-md-4 col-lg-3 mt-5 mt-md-0" id="msgForm">
+         <div class="d-none d-md-block col-md-5 col-lg-4 mt-5 mt-md-0" id="msgForm">
             <div class="price-text m-0 py-2 px-3 text-white rounded-3 mb-2" id="price-show">€ {{ $apartment->price }}<span class="price-suffix">/notte</span></div>
             <form method="POST" @keyup="msgValidate" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
                @csrf

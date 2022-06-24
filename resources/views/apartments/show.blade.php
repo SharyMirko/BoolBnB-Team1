@@ -115,9 +115,9 @@
                   <div class="col">
                      <input name="apartment_id" type="hidden" value="{{$apartment->id}}">
                      @if(Auth::check())
-                     <input id="email" v-model="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                        <input id="emailMsg" v-model="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
                      @else
-                     <input id="email" v-model="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                        <input id="emailMsg" v-model="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
                      @endif
                   </div>
                </div>

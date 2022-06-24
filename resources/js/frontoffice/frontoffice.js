@@ -57,10 +57,10 @@ const FormRegisterVue = new Vue({
             this.password_confirmation === this.password &&
             this.name.length > 2 &&
             this.last_name.length > 2 &&
-            
+
             this.date != "" && today > new Date(this.date)
-            
-            
+
+
          ) {
             btn.disabled = false;
          } else {
@@ -120,6 +120,63 @@ const FormResetPasswordVue = new Vue({
    },
 });
 
+
+
+// form create
+
+const FormCreateVue = new Vue({
+   el: "#createModal",
+   data: {
+      title: "",
+      category: "",
+      price: "",
+      description: "",
+      address: "",
+      service: [],
+      area: "",
+      city: "",
+      beds_n: "",
+      bathrooms_n: "",
+      rooms_n: "",
+      hiddenlat: "",
+      hiddenlon: "",
+
+   },
+   methods: {
+      addressSearch: function () {
+         // API request to get address
+         ttServices.services
+            .geocode({
+               key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+               query: this.address + " " + this.city,
+            })
+            .then(function (response) {
+               FormCreateVue.hiddenlat = response.results[0].position.lat;
+               FormCreateVue.hiddenlon = response.results[0].position.lng;
+               console.log(response.results[0]);
+            });
+      },
+   },
+   created: function () {
+      let oldCity = document.querySelector('#city').value;
+      let oldAddress = document.querySelector('#address').value;
+      this.city = oldCity;
+      this.address = oldAddress;
+
+      ttServices.services
+      .geocode({
+         key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+         query: this.address + " " + this.city,
+      })
+      .then(function (response) {
+         FormCreateVue.hiddenlat = response.results[0].position.lat;
+         FormCreateVue.hiddenlon = response.results[0].position.lng;
+         console.log(response.results[0]);
+      });
+   },
+});
+
+
 // form reset password validation
 
 const msgForm = new Vue({
@@ -142,44 +199,11 @@ const msgForm = new Vue({
             }
       },
    },
-});
-
-// form create
-
-const FormCreateVue = new Vue({
-   el: "#createModal",
-   data: {
-      title: "",
-      category: "",
-      price: "",
-      description: "",
-      address: "",
-      service: [],
-      area: "",
-      city: "",
-      beds_n: "",
-      bathrooms_n: "",
-      rooms_n: "",
-      hiddenlat: "",
-      hiddenlon: "",
-     
-   },
-   methods: {
-      create: function () {},
-      addressSearch: function () {
-         // API request to get address
-         ttServices.services
-            .geocode({
-               key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-               query: this.address + " " + this.city,
-            })
-            .then(function (response) {
-               FormCreateVue.hiddenlat = response.results[0].position.lat;
-               FormCreateVue.hiddenlon = response.results[0].position.lng;
-               console.log(response.results[0]);
-            });
-      },
-   },
+   created: function() {
+      let oldEmail = document.querySelector('#emailMsg').value;
+      console.log(oldEmail);
+      this.email = oldEmail;
+   }
 });
 
 
@@ -296,19 +320,19 @@ const SearchVue = new Vue({
             }
          },
          resetFilter() {
-            
+
             SearchVue.nBeds = "";
-            SearchVue.nRooms = ""; 
+            SearchVue.nRooms = "";
 
             const checkboxes = document.querySelectorAll('.form-check-input');
             checkboxes.forEach((checkbox) => {
                 checkbox.checked = false;
             });
-            
+
             SearchVue.services = [];
-            
+
             SearchVue.maxDistance= 20000;
-   
+
          },
       },
       mounted: function mounted () {
@@ -317,8 +341,8 @@ const SearchVue = new Vue({
 /*             let test = window.location.search.slice(0, 1)
  */            let test = window.location.search.replace("?city=", '')
                if(test.includes('+')) {
-                 
-                 console.log(test.replace("+", " ")) 
+
+                 console.log(test.replace("+", " "))
                  test = test.replace("+", " ")
                 test = test.replace("+", " ")
                 test = test.replace("+", " ")
@@ -340,7 +364,7 @@ const SearchVue = new Vue({
                   SearchVue.lat = response.results[0].position.lat;
                   SearchVue.lon = response.results[0].position.lng;
                });
-               
+
                Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(
                   (response) => {
                      console.log(response.data.response.data)
@@ -359,15 +383,15 @@ const SearchVue = new Vue({
                                  apartment.splice(0, 1);
                                  SearchVue.results2.push(apartment);
                               };
-   
+
                               SearchVue.nRes2 = SearchVue.results2.length;
                            })}, i * 300
                           )
-   
+
                      });
                   });
          }
-         
+
    },
 });
 
@@ -390,12 +414,3 @@ let marker = new ttMaps.Marker({
    .setLngLat(center)
    .addTo(map);
 
-
-   // partenza pensiero della ricerca degli appartamenti vicini TODO:
-   // const currentLocation = (coordinate zona ricercata);
-   // let arrAppVicini = [];
-   // array.forEach(element => {
-   //    if (this.distance(currentLocation, element) <= 20000) {
-   //       arrAppVicini.push(element);
-   //    }
-   // });

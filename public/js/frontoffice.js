@@ -27770,26 +27770,6 @@ var FormResetPasswordVue = new Vue({
       }
     }
   }
-}); // form reset password validation
-
-var msgForm = new Vue({
-  el: "#msgForm",
-  data: {
-    email: "",
-    text_ms: ""
-  },
-  methods: {
-    msgValidate: function msgValidate() {
-      //validate email
-      var btn = document.querySelector("#btnSendMsg");
-
-      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.text_ms.length > 20) {
-        btn.disabled = false;
-      } else {
-        btn.disabled = true;
-      }
-    }
-  }
 }); // form create
 
 var FormCreateVue = new Vue({
@@ -27810,7 +27790,6 @@ var FormCreateVue = new Vue({
     hiddenlon: ""
   },
   methods: {
-    create: function create() {},
     addressSearch: function addressSearch() {
       // API request to get address
       _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
@@ -27822,6 +27801,45 @@ var FormCreateVue = new Vue({
         console.log(response.results[0]);
       });
     }
+  },
+  created: function created() {
+    var oldCity = document.querySelector('#city').value;
+    var oldAddress = document.querySelector('#address').value;
+    this.city = oldCity;
+    this.address = oldAddress;
+    _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
+      key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+      query: this.address + " " + this.city
+    }).then(function (response) {
+      FormCreateVue.hiddenlat = response.results[0].position.lat;
+      FormCreateVue.hiddenlon = response.results[0].position.lng;
+      console.log(response.results[0]);
+    });
+  }
+}); // form reset password validation
+
+var msgForm = new Vue({
+  el: "#msgForm",
+  data: {
+    email: "",
+    text_ms: ""
+  },
+  methods: {
+    msgValidate: function msgValidate() {
+      //validate email
+      var btn = document.querySelector("#btnSendMsg");
+
+      if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.text_ms.length > 20) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+  },
+  created: function created() {
+    var oldEmail = document.querySelector('#emailMsg').value;
+    console.log(oldEmail);
+    this.email = oldEmail;
   }
 }); // Serve per la ricerca nell'Index
 
@@ -28011,14 +28029,7 @@ var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___defaul
 });
 var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.Marker({
   draggable: false
-}).setLngLat(center).addTo(map); // partenza pensiero della ricerca degli appartamenti vicini TODO:
-// const currentLocation = (coordinate zona ricercata);
-// let arrAppVicini = [];
-// array.forEach(element => {
-//    if (this.distance(currentLocation, element) <= 20000) {
-//       arrAppVicini.push(element);
-//    }
-// });
+}).setLngLat(center).addTo(map);
 
 /***/ }),
 
@@ -28040,8 +28051,8 @@ var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

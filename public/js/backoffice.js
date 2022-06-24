@@ -114,7 +114,7 @@ btnDel.forEach(function (btn) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\js\backoffice\backoffice.js */"./resources/js/backoffice/backoffice.js");
+module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\backoffice\backoffice.js */"./resources/js/backoffice/backoffice.js");
 
 
 /***/ })

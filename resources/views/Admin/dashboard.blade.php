@@ -27,7 +27,11 @@
 
                <div class="d-flex align-items-center py-4">
                   <div class="img-box position-relative">
-                     <img src="{{ $apart->thumb }}" class="rounded-3 w-100 h-100" alt="{{ $apart->title }}">
+                     @if (str_contains( $apart->thumb, 'uploads'))
+                        <img src="{{ asset('storage/' . $apart->thumb) }}" class="rounded-3 w-100 h-100" alt="{{ $apart->title }}">
+                     @else
+                        <img src="{{ $apart->thumb }}" class="rounded-3 w-100 h-100" alt="{{ $apart->title }}">
+                     @endif
                      <div class="crown"></div>
                   </div>
 

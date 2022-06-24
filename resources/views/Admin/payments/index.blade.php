@@ -31,7 +31,7 @@
                <article class="rounded-3 p-5 text-center h-100">
                   <img src="{{ asset('img/promo_crown.svg') }}" alt="Promozione appartamento 72 ore" class="mb-3">
                   <h2 class="fw-bold my-4">Promo 72</h2>
-                  <h3 class="price-text">€ 5,99<span class="price-suffix">/24 ore</span></h3>
+                  <h3 class="price-text">€ 5,99<span class="price-suffix">/72 ore</span></h3>
                   <p class="my-4">Promuovi il tuo appartamento<br>per 72 ore</p>
                   <button class="btn btn-primary text-white">Promuovi</button>
                </article>
@@ -40,7 +40,7 @@
                <article class="rounded-3 p-5 text-center h-100">
                   <img src="{{ asset('img/promo_crown.svg') }}" alt="Promozione appartamento 144 ore" class="mb-3">
                   <h2 class="fw-bold my-4">Promo 144</h2>
-                  <h3 class="price-text">€ 9,99<span class="price-suffix">/24 ore</span></h3>
+                  <h3 class="price-text">€ 9,99<span class="price-suffix">/144 ore</span></h3>
                   <p class="my-4">Promuovi il tuo appartamento<br>per 144 ore</p>
                   <button class="btn btn-primary text-white">Promuovi</button>
                </article>

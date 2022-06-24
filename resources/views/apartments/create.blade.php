@@ -187,7 +187,10 @@
                <div class="form-group row">
                   <div class="col">
                      <h4 class="mb-3">Foto</h4>
-                     <input class="form-control" type="file" id="thumb" name="thumb" accept="image/*">
+                     <img src="" id="thumb-preview" alt="Preview" class="img-fluid mb-2">
+
+                     <input class="form-control" type="file" id="thumbCreate" name="thumb" accept="image/*">
+
                      @error('thumb')
                         <div class="alert alert-danger">{{ $message }}</div>
                      @enderror

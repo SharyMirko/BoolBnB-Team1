@@ -11,3 +11,24 @@ btnDel.forEach(btn => {
       }
    });
 });
+
+
+
+
+// anterprima thumb in create
+document.querySelector("#thumbCreate").addEventListener('change', function(){
+   readURL(this);
+   console.log('ciao')
+});
+
+function readURL(input) {
+   if (input.files && input.files[0]) {
+      let reader = new FileReader();
+
+      reader.onload = function (e) {
+         document.querySelector('#thumb-preview').src = e.target.result;
+      }
+
+      reader.readAsDataURL(input.files[0]);
+   }
+}

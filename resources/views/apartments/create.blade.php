@@ -187,7 +187,7 @@
                <div class="form-group row">
                   <div class="col">
                      <h4 class="mb-3">Foto</h4>
-                     <img src="" id="thumb-preview" alt="Preview" class="img-fluid mb-2">
+                     <img src="" id="thumb-preview" class="img-fluid mb-2">
 
                      <input class="form-control" type="file" id="thumbCreate" name="thumb" accept="image/*">
 

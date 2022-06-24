@@ -3,9 +3,6 @@
 @section('title', 'Modifica appartamento')
 
 @section('content')
-
-
-
    <div id="createModal" class="container py-5">
       <h3 class="backoffice-title mb-5"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> Modifica appartamento</h3>
       <form method="POST" action="{{ route('apartments.update', $apartment->id) }}" id="input-form" enctype="multipart/form-data">
@@ -32,7 +29,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{  old('area', $apartment->area) }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
+                     <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area', $apartment->area) }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
 
                      @error('area')
                         <span class="invalid-feedback" role="alert">
@@ -46,7 +43,7 @@
                {{-- categoria e prezzo --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col-8 col-md-7 col-lg-8">
-                     <select name="category" class="form-select @error('category') is-invalid @enderror" id="category">
+                     <select name="category" class="form-select @error('category') is-invalid @enderror" id="category" >
                         <option selected disabled hidden value="">Seleziona categoria</option>
                         @foreach ($categoryData as $category)
                            <option value="{{ $category->name }}">{{ $category->name }}</option>
@@ -54,9 +51,9 @@
                      </select>
 
                      @error('category')
-                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                           </span>
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                        </span>
                      @enderror
                   </div>
 
@@ -75,7 +72,7 @@
                {{-- stanze, bagni, letti --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ old('rooms_n', $apartment->room_n) }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}">
+                     <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ old('rooms_n', $apartment->rooms_n) }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}">
 
                      @error('rooms_n')
                         <span class="invalid-feedback" role="alert">
@@ -173,7 +170,7 @@
                   </div>
                </div>
 
-               <div class="form-group row mb-5">
+               <div class="form-group row mb-4">
                   <div class="col">
                      <input id="address" value="{{ old('address', $apartment->address) }}" v-model="address" @change="addressSearch" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required autocomplete="address" autofocus placeholder="{{ __('Indirizzo') }}">
 
@@ -188,7 +185,8 @@
                <div class="form-group row">
                   <div class="col">
                      <h4 class="mb-3">Foto</h4>
-                     <input class="form-control" type="file" id="thumb" name="thumb" accept="image/*">
+                     <img src="{{ asset('storage/' . $apartment->thumb) }}" alt="{{  $apartment->title }}" class="img-fluid">
+                     <input class="form-control mt-2" type="file" id="thumb" name="thumb" accept="image/*">
                      @error('thumb')
                         <div class="alert alert-danger">{{ $message }}</div>
                      @enderror

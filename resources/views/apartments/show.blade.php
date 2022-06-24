@@ -1,18 +1,25 @@
 @extends('layouts.layout')
 
-@section('title', 'Appartamento moderno')
+@section('title', $apartment->title)
 
 @section('content')
    <section class="container-fluid g-0 mb-5" id="sec_scroll_img">
-      <img src="{{ $apartment->thumb }}" class="w-100 h-100" alt="{{ $apartment->title }}">
+      @if (str_contains($apartment->thumb, 'uploads'))
+         <img src="{{ asset('storage/' . $apartment->thumb) }}" class="w-100 h-100" alt="{{ $apartment->title }}">
+      @else
+         <img src="{{ $apartment->thumb }}" class="w-100 h-100" alt="{{ $apartment->title }}">
+      @endif
    </section>
-   @if(session()->has('inviato'))
-   <div class="alert alert-success">
-       {{ session()->get('inviato') }}
-   </div>
-@endif
+
    <section class="container" id="sec_ap_descr">
       <div class="row g-0 gx-md-5 pt-3">
+
+         @if(session()->has('inviato'))
+            <div class="alert alert-success">
+               {{ session()->get('inviato') }}
+            </div>
+         @endif
+
          {{-- descrizione --}}
          <div class="col-12 col-md-7 col-lg-8">
             <div class="d-flex align-items-start mb-5">
@@ -165,24 +172,26 @@
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-4">
-               <form action="">
+               <form method="POST" @keyup="msgValidate" action="{{ route('messages.store') }}" id="input-form" enctype="multipart/form-data">
+                  @csrf
                   <div class="form-group row mb-2 text-center">
                      <div class="col">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
-
-
+                        <input name="apartment_id" type="hidden" value="{{$apartment->id}}">
+                        @if(Auth::check())
+                           <input id="emailMsg" v-model="email" type="email" class="form-control" name="email_sender" value="{{ auth()->user()->email }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                        @else
+                           <input id="emailMsg" v-model="email" type="email" class="form-control" name="email_sender" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
+                        @endif
                      </div>
                   </div>
 
                   <div class="form-group row mb-2 text-center">
                      <div class="col">
-                        <textarea class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
-
-
+                        <textarea v-model="text_ms" class="form-control" id="text_ms" name="text_ms" rows="6" cols="50" autofocus placeholder="{{ __('Message') }}" required></textarea>
                      </div>
                   </div>
 
-                  <button type="submit" class="btn btn-primary text-white w-100">
+                  <button type="submit" id="btnSendMsg" class="btn btn-primary text-white w-100" disabled="true">
                      {{ __('Send message') }}
                   </button>
                </form>

@@ -169,11 +169,11 @@
                             <div class="form-group row mb-2">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="distance-radius" class="form-label">Raggio di Ricerca</label>
+                                        <label for="distance-radius" class="form-label">Raggio di Ricerca: <strong>@{{maxDistance / 1000}} km</strong></label>
                                         <input type="range" v-model="maxDistance" class="form-range" min="1000" max="100000" step="1000" id="customRange3">
                                         <div class="d-flex justify-content-between">
                                             <span>1 km</span>
-                                            <span>@{{maxDistance / 1000}} km</span>
+                                            <span>100 km</span>
                                         </div>
                                     </div>
                                 </div>

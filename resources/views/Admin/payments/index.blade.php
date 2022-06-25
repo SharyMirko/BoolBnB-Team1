@@ -3,6 +3,7 @@
 @section('title', 'Promozione')
 
 @section('content')
+<div id="payApp">
    <div class="container py-5">
 
       @if(session()->has('seccess_txt'))
@@ -11,15 +12,20 @@
       </div>
    @endif
    
-
+   <div class="modal fade" id="checkModal" tabindex="-1" aria-labelledby="checkModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content rounded-3 overflow-hidden">
+  
+              <div class="modal-body d-flex p-0">
 
       <form method="post" id="payment-form" action="{{ url('/admin/checkout')}}">
          @csrf
          <section>
              <label for="amount">
                  <span class="input-label">Amount</span>
+                 <span id="selectedamount"></span>
                  <div class="input-wrapper amount-wrapper">
-                     <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                     <input class="d-none" id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="" >
                  </div>
              </label>
 
@@ -31,6 +37,7 @@
          <input id="nonce" name="payment_method_nonce" type="hidden" />
          <button class="button" type="submit"><span>Test Transaction</span></button>
      </form>
+              </div></div></div></div>
      <script src="https://js.braintreegateway.com/web/dropin/1.33.2/js/dropin.min.js"></script>
      <script>
          var form = document.querySelector('#payment-form');
@@ -91,7 +98,8 @@
                   <h2 class="fw-bold my-4">Promo 24</h2>
                   <h3 class="price-text">€ 2,99<span class="price-suffix">/24 ore</span></h3>
                   <p class="my-4">Promuovi il tuo appartamento<br>per 24 ore</p>
-                  <button class="btn btn-primary text-white">Promuovi</button>
+                  <button data-bs-toggle="modal"
+                  data-bs-target="#checkModal" id="promo24btn" class="btn btn-primary text-white">Promuovi</button>
                </article>
             </div>
             <div class="col" id="promo72">
@@ -100,7 +108,8 @@
                   <h2 class="fw-bold my-4">Promo 72</h2>
                   <h3 class="price-text">€ 5,99<span class="price-suffix">/72 ore</span></h3>
                   <p class="my-4">Promuovi il tuo appartamento<br>per 72 ore</p>
-                  <button class="btn btn-primary text-white">Promuovi</button>
+                  <button data-bs-toggle="modal"
+                  data-bs-target="#checkModal" id="promo72btn" class="btn btn-primary text-white">Promuovi</button>
                </article>
             </div>
             <div class="col" id="promo144">
@@ -109,10 +118,12 @@
                   <h2 class="fw-bold my-4">Promo 144</h2>
                   <h3 class="price-text">€ 9,99<span class="price-suffix">/144 ore</span></h3>
                   <p class="my-4">Promuovi il tuo appartamento<br>per 144 ore</p>
-                  <button class="btn btn-primary text-white">Promuovi</button>
+                  <button data-bs-toggle="modal"
+                  data-bs-target="#checkModal" id="promo144btn" class="btn btn-primary text-white">Promuovi</button>
                </article>
             </div>
          </div>
       </div>
    </div>
+</div>
 @endsection

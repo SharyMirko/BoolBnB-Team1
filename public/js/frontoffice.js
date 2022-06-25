@@ -28016,6 +28016,24 @@ var SearchVue = new Vue({
       });
     }
   }
+}); // payment app
+
+var btnPromo24 = document.getElementById('promo24btn');
+var btnPromo72 = document.getElementById('promo72btn');
+var btnPromo144 = document.getElementById('promo144btn');
+var amout = document.getElementById('amount');
+var amoutshow = document.getElementById('selectedamount');
+btnPromo24.addEventListener('click', function () {
+  amount.setAttribute("value", "2.99");
+  amoutshow.innerHTML = "2.99";
+});
+btnPromo72.addEventListener('click', function () {
+  amount.setAttribute("value", "5.99");
+  amoutshow.innerHTML = "5.99";
+});
+btnPromo144.addEventListener('click', function () {
+  amount.setAttribute("value", "9.99");
+  amoutshow.innerHTML = "9.99";
 }); // Serve a creare mappa nello Show
 
 var longitude = document.getElementById("longitude");

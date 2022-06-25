@@ -29,10 +29,6 @@ class ViewController extends Controller
  
          }
 
-       
-         
-// Generate random colours for the groups
-
         return view('admin.statistics.index')->with('days',json_encode($days,JSON_NUMERIC_CHECK))->with('views',json_encode($views,JSON_NUMERIC_CHECK));
     }
 

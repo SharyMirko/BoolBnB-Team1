@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\PremiumFeature;
+use App\Model\Apartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Braintree;
+use Carbon\Carbon;
 
 class PremiumFeatureController extends Controller
 {
@@ -38,6 +40,7 @@ class PremiumFeatureController extends Controller
 
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
+        $apart = Apartment::where('id', $_GET['apart_id'])->first();
 
         $result = $gateway->transaction()->sale([
             'amount'             => $amount,
@@ -50,6 +53,34 @@ class PremiumFeatureController extends Controller
         if ($result->success) {
             $transaction = $result->transaction;
             /* header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id); */
+
+           
+            if($amount == 2.99) {
+                $feature = [
+                    'premium_feature_id' => 1,
+                ];
+                
+              $apart->premiumFeatures()->attach($feature, ['started_at' => Carbon::now(),
+              'expiring_at' => Carbon::now()->add('hour', 24)]);
+            };
+            if($amount == 5.99) {
+                $feature = [
+                    'premium_feature_id' => 2,
+                ];
+                
+              $apart->premiumFeatures()->attach($feature, ['started_at' => Carbon::now(),
+              'expiring_at' => Carbon::now()->add('hour', 72)]);
+            };
+            if($amount == 9.99) {
+                $feature = [
+                    'premium_feature_id' => 3,
+                ];
+                
+              $apart->premiumFeatures()->attach($feature, ['started_at' => Carbon::now(),
+              'expiring_at' => Carbon::now()->add('hour', 144)]);
+            };
+
+
             return back()->with('seccess_txt', 'Acquisto andato a buon fine! ID della transazione:' . $transaction->id);
         } else {
             $errorString = "";

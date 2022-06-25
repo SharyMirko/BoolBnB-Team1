@@ -18,7 +18,7 @@
   
               <div class="modal-body d-flex p-0">
 
-      <form method="post" id="payment-form" action="{{ url('/admin/checkout')}}">
+      <form method="post" id="payment-form" action="{{ url('/admin/checkout?apart_id=' . $_GET['apart_id'])}}">
          @csrf
          <section>
              <label for="amount">

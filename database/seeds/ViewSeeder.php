@@ -16,9 +16,13 @@ class ViewSeeder extends Seeder
     */
    public function run(FakerGenerator $faker)
    {
-      View::create([
-         'apartment_id'   => Apartment::inRandomOrder()->first()->id,
-         'ip_address'     => $faker->ipv4()
-      ]);
+      for ($i=0; $i < 2000; $i++) { 
+         # code...
+         View::create([
+            'apartment_id'   => Apartment::inRandomOrder()->first()->id,
+            'ip_address'     => $faker->ipv4(),
+            'created_at'     => $faker->dateTimeBetween('-1 week', 'today')
+         ]);
+      }
    }
 }

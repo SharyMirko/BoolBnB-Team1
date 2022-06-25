@@ -29,6 +29,8 @@ Route::middleware('auth')
       Route::resource('/messages', 'MessageController');
       Route::resource('/payments', 'PremiumFeatureController'); 
       Route::post('/checkout', 'PremiumFeatureController@checkout');
+      Route::resource('/statistics', 'ViewController');
+      Route::get('/statistics', 'ViewController@index');
       //Route::resource('/categories', 'CategoryController');
       
    });
@@ -36,6 +38,7 @@ Route::middleware('auth')
 Route::get('/', 'HomeController@index')->name('LandingPage');
 Route::resource('/apartments', 'Admin\ApartmentController');
 Route::resource('/messages', 'Admin\MessageController');
+
 
 Route::get('/messages', 'Admin\MessageController@index')->name('messages');
 

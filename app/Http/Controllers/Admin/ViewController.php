@@ -7,12 +7,40 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
+
 class ViewController extends Controller
 {
     
     public function index()
     {
-        return view('admin.statistics.index');
+      /*   $groups = View::where('apartment_id', $_GET['apart_id'])
+                ->orderBy('created_at')
+                  ->get();
+         foreach ($groups as $key => $data) {
+            $data['giorno'] = date('Y-m-d',strtotime($data['created_at']));
+         }; */
+         
+
+
+         $year = [
+            '2021',
+            '2022'
+         ];
+         
+
+         $views = [];
+ 
+         foreach ($year as $key => $value) {
+ 
+             $views[] = View::where('apartment_id', $_GET['apart_id'])->where(\DB::raw('DATE_FORMAT(created_at, "%Y")'),$value)->count();
+ 
+         }
+
+       
+         
+// Generate random colours for the groups
+
+        return view('admin.statistics.index')->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('views',json_encode($views,JSON_NUMERIC_CHECK));
     }
 
     

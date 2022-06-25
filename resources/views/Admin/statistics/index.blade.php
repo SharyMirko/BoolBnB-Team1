@@ -10,7 +10,7 @@
    </div>
    <script src="{{ asset('chart.js/chart.js') }}"></script>
    <script>
-    let year = {{$year}};
+    let year = {{$days}};
     let views = {{$views}};
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, {

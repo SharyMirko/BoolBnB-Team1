@@ -103,7 +103,24 @@ btnDel.forEach(function (btn) {
     } else {//nothing
     }
   });
+}); // anterprima thumb in create
+
+document.querySelector("#thumbCreate").addEventListener('change', function () {
+  readURL(this);
+  console.log('ciao');
 });
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      document.querySelector('#thumb-preview').src = e.target.result;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
 /***/ }),
 
@@ -114,7 +131,7 @@ btnDel.forEach(function (btn) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Documents\Boolean\BoolBnB-Team1\resources\js\backoffice\backoffice.js */"./resources/js/backoffice/backoffice.js");
+module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/backoffice/backoffice.js */"./resources/js/backoffice/backoffice.js");
 
 
 /***/ })

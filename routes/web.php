@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,20 +22,42 @@ Route::middleware('auth')
    ->name('admin.')
    ->prefix('admin')
    ->group(function () {
+     
       Route::get('/', 'DashboardController@index')->name('dashboard');
       //Route::post('/slugger', 'DashboardController@slugger')->name('slugger');
       Route::resource('/apartments', 'ApartmentController');
       Route::resource('/messages', 'MessageController');
-      Route::resource('/payments', 'PremiumFeatureController');
+      Route::resource('/payments', 'PremiumFeatureController'); 
+      Route::post('/checkout', 'PremiumFeatureController@checkout');
       //Route::resource('/categories', 'CategoryController');
+      
    });
 
 Route::get('/', 'HomeController@index')->name('LandingPage');
 Route::resource('/apartments', 'Admin\ApartmentController');
 Route::resource('/messages', 'Admin\MessageController');
-Route::resource('/payments', 'Admin\PremiumFeatureController');
+
 Route::get('/messages', 'Admin\MessageController@index')->name('messages');
 
 Route::get('{any?}', function () {
    return view('guests.landing');
 })->where('any', '.*');
+
+
+
+
+/* Route::get('/payments', function(){
+   $gateway = new Braintree\Gateway([
+      'environment' => config('services.braintree.environment'),
+      'merchantId' => config('services.braintree.merchantId'),
+      'publicKey' => config('services.braintree.publicKey'),
+      'privateKey' => config('services.braintree.privateKey')
+  ]);
+  $token = $gateway->ClientToken()->generate();
+  return view('admin.payments.index', [
+   'token' => $token
+  ]);
+});
+Route::post('/checkout', function(Request $request) {
+
+}); */

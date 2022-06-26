@@ -16,7 +16,7 @@ class ApartmentPremiumFeatureSeeder extends Seeder
       $apartments = Apartment::all();
 
       foreach ($apartments as $apartment) {
-         $apartmentPremiumFeature = PremiumFeature::inRandomOrder()->limit(rand(0, 5))->get();
+         $apartmentPremiumFeature = PremiumFeature::inRandomOrder()->limit(rand(0, 1))->get();
 
          $apartment->premiumFeatures()->attach($apartmentPremiumFeature->pluck('id')->all());
       }

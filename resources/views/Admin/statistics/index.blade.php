@@ -6,7 +6,7 @@
    <div class="container py-5">
       <h3 class="backoffice-title"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> Statistiche</h3>
 
-      {{-- <div class="d-flex align-items-center my-5 message flex-wrap">
+      <div class="d-flex align-items-center my-5 message flex-wrap">
          <div class="img-box position-relative flex-grow-1 flex-sm-grow-0 mb-3">
             <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
             <div class="crown"></div>
@@ -19,7 +19,7 @@
             <p class="city">{{$userApart[0]->city}}</p>
             <p class="price-text m-0">€ {{$userApart[0]->price}}<span class="price-suffix">/notte</span></p>
          </div>
-      </div> --}}
+      </div>
 
       <canvas id="myChart" class="my-5"></canvas>
    </div>

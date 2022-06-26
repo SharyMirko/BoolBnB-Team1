@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\View;
+use App\Model\Apartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -14,24 +15,34 @@ class ViewController extends Controller
 
    public function index()
    {
+
+      $idcorretto = $_GET['apart_id'];
+
+      $userApart = Apartment::where('id', $idcorretto)->get();
+
+      
       $days = [];
-
+      
       $currentDate = date('d-m-Y');
-
+      
       for ($i=0; $i < 8; $i++) {
          $d = strtotime($currentDate);
          $d -= 3600*24*$i;
-
+         
          array_unshift($days, date('d-m-Y', $d));
       };
 
       $views = [];
-
+      
       foreach ($days as $key => $value) {
          $views[] = View::where('apartment_id', $_GET['apart_id'])->where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'), date('Y-m-d', strtotime($value)))->count();
       }
 
-      return view('admin.statistics.index')->with('days', json_encode($days))->with('views',json_encode($views,JSON_NUMERIC_CHECK));
+      // dd(json_encode($userApart));
+
+      return view('admin.statistics.index', compact('userApart'))
+            ->with('days', json_encode($days))
+            ->with('views', json_encode($views,JSON_NUMERIC_CHECK));
    }
 
 

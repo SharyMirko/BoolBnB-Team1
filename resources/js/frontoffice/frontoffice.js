@@ -395,6 +395,24 @@ const SearchVue = new Vue({
    },
 });
 
+// Serve a creare mappa nello Show
+let longitude = document.getElementById("longitude");
+let latitude = document.getElementById("latitude");
+var center = [longitude.innerHTML, latitude.innerHTML];
+let mapShow = ttMaps.map({
+   key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+   container: "mapShow",
+   center: center,
+   zoom: 15,
+});
+let marker = new ttMaps.Marker({
+   draggable: false,
+   color: '#F15E75',
+   scale: 1.5,
+})
+   .setLngLat(center)
+   .addTo(mapShow);
+
 
 // payment app
 
@@ -417,21 +435,5 @@ btnPromo144.addEventListener('click', function(){
    amoutshow.innerHTML = "9.99";
 })
 
-// Serve a creare mappa nello Show
 
-
-let longitude = document.getElementById("longitude");
-let latitude = document.getElementById("latitude");
-var center = [longitude.innerHTML, latitude.innerHTML];
-let map = ttMaps.map({
-   key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-   container: "map",
-   center: center,
-   zoom: 15,
-});
-let marker = new ttMaps.Marker({
-   draggable: false,
-})
-   .setLngLat(center)
-   .addTo(map);
 

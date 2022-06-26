@@ -105,7 +105,7 @@
             <div class="row w-100 g-0">
                <div class="col">
                   <h4 class="mb-3">Location</h4>
-                  <div id='map' class="w-100 rounded-3 overflow-hidden"></div>
+                  <div id='mapShow' class="w-100 rounded-3 overflow-hidden"></div>
                </div>
             </div>
          </div>

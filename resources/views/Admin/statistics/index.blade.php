@@ -3,40 +3,44 @@
 @section('title', 'Statistiche')
 
 @section('content')
-
    <div class="container py-5">
-      <canvas id="myChart" width="400" height="400"></canvas>
+      <h3 class="backoffice-title"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> Statistiche</h3>
 
+      {{-- <div class="d-flex align-items-center my-5 message flex-wrap">
+         <div class="img-box position-relative flex-grow-1 flex-sm-grow-0 mb-3">
+            <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            <div class="crown"></div>
+         </div>
+
+         <div class="ms-3 flex-grow-1">
+            <p class="category m-0 text-capitalize">{{$userApart[0]->category}}</p>
+            <h4 class="my-2 text-capitalize">{{$userApart[0]->title}}</h4>
+            <p class="geo icon mb-0">{{$userApart[0]->address}}</p>
+            <p class="city">{{$userApart[0]->city}}</p>
+            <p class="price-text m-0">€ {{$userApart[0]->price}}<span class="price-suffix">/notte</span></p>
+         </div>
+      </div> --}}
+
+      <canvas id="myChart" class="my-5"></canvas>
    </div>
+
+   {{-- script Chart JS --}}
    <script src="{{ asset('chart.js/chart.js') }}"></script>
    <script>
-    let year = {{$days}};
+    let days = {!!$days!!};
     let views = {{$views}};
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: year,
+            labels: days,
             datasets: [{
-                label: '# of views',
+                label: 'Visualizzazioni dell\'appartamento',
                 data: views,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
+                borderColor: 'rgba(241, 94, 117, 1)',
+                backgroundColor: 'rgba(241, 94, 117, 1)',
+                borderWidth: 3,
+                borderJoinStyle: 'round'
             }]
         },
         options: {

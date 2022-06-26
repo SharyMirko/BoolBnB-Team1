@@ -5,13 +5,11 @@
 @section('content')
 <div id="payApp">
    <div class="container py-5">
-
-      @if(session()->has('seccess_txt'))
+      @if(session()->has('success_txt'))
          <div class="alert alert-success">
-            {{ session()->get('seccess_txt') }}
+            {{ session()->get('success_txt') }}
          </div>
       @endif
-
       <div class="row g-0 mt-5">
          <h3 class="backoffice-title"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> Promozione</h3>
 
@@ -86,6 +84,7 @@
             </section>
 
             <input id="nonce" name="payment_method_nonce" type="hidden" />
+
             <div class="modal-footer border-0">
                <button class="btn btn-primary text-white" type="submit">Procedi</button>
                <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Annulla</button>

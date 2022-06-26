@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\View;
 use App\Model\Apartment;
+use App\Model\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,9 @@ class ViewController extends Controller
 
    public function index()
    {
-
       $idcorretto = $_GET['apart_id'];
 
       $userApart = Apartment::where('id', $idcorretto)->get();
-
       
       $days = [];
       
@@ -31,18 +30,21 @@ class ViewController extends Controller
          
          array_unshift($days, date('d-m-Y', $d));
       };
-
+      
       $views = [];
+      $msgs = [];
       
       foreach ($days as $key => $value) {
-         $views[] = View::where('apartment_id', $_GET['apart_id'])->where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'), date('Y-m-d', strtotime($value)))->count();
+         $views[] = View::where('apartment_id', $idcorretto)->where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'), date('Y-m-d', strtotime($value)))->count();
+         $msgs[] = Message::where('apartment_id', $idcorretto)->where(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'), date('Y-m-d', strtotime($value)))->count();
       }
 
       // dd(json_encode($userApart));
 
       return view('admin.statistics.index', compact('userApart'))
             ->with('days', json_encode($days))
-            ->with('views', json_encode($views,JSON_NUMERIC_CHECK));
+            ->with('views', json_encode($views, JSON_NUMERIC_CHECK))
+            ->with('msgs', json_encode($msgs, JSON_NUMERIC_CHECK));
    }
 
 

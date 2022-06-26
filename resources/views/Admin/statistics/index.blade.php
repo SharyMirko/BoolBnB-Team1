@@ -21,36 +21,70 @@
          </div>
       </div>
 
-      <canvas id="myChart" class="my-5"></canvas>
+      <div class="row row-cols-1 row-cols-lg-2 gx-0 gx-lg-3 gy-5 gy-lg-0 my-lg-5" >
+         <div class="col">
+            <h5 class="mb-3">Visualizzazioni degli ultimi 8 giorni</h5>
+            <canvas id="viewChart" class=""></canvas>
+         </div>
+         <div class="col">
+            <h5 class="mb-3">Messaggi ricevuti negli ultimi 8 giorni</h5>
+            <canvas id="msgsChart" class=""></canvas>
+         </div>
+      </div>
    </div>
 
    {{-- script Chart JS --}}
    <script src="{{ asset('chart.js/chart.js') }}"></script>
    <script>
-    let days = {!!$days!!};
-    let views = {{$views}};
-    const ctx = document.getElementById('myChart');
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
+      let days = {!!$days!!};
+      let viewsData = {{$views}};
+      const view = document.getElementById('viewChart');
+      const viewChart = new Chart(view, {
+         type: 'line',
+         data: {
             labels: days,
-            datasets: [{
-                label: 'Visualizzazioni dell\'appartamento',
-                data: views,
-                borderColor: 'rgba(241, 94, 117, 1)',
-                backgroundColor: 'rgba(241, 94, 117, 1)',
-                borderWidth: 3,
-                borderJoinStyle: 'round'
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+               datasets: [{
+                  label: 'Visualizzazioni dell\'appartamento',
+                  data: viewsData,
+                  borderColor: 'rgba(241, 94, 117, 1)',
+                  backgroundColor: 'rgba(255, 255, 255, 1)',
+                  borderWidth: 3,
+                  borderJoinStyle: 'round'
+               }]
+            },
+            options: {
+               scales: {
+                  y: {
+                     beginAtZero: true
+                  }
+               }
             }
-        }
-    });
+         });
+      let msgsData = {{$msgs}};
+      const msgs = document.getElementById('msgsChart');
+      const msgsChart = new Chart(msgs, {
+         type: 'line',
+         data: {
+               labels: days,
+               datasets: [{
+                  label: 'Messaggi ricevuti',
+                  data: msgsData,
+                  borderColor: 'rgba(241, 94, 117, 1)',
+                  backgroundColor: 'rgba(255, 255, 255, 1)',
+                  borderWidth: 3,
+                  borderJoinStyle: 'round'
+               }]
+         },
+         options: {
+               scales: {
+                  y: {
+                     beginAtZero: true,
+                     ticks: {
+                        stepSize: 1
+                     }
+                  }
+               }
+         }
+      });
     </script>
-
 @endsection

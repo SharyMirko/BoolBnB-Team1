@@ -27681,7 +27681,25 @@ __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+ // payment app
 
+var btnPromo24 = document.getElementById('promo24btn');
+var btnPromo72 = document.getElementById('promo72btn');
+var btnPromo144 = document.getElementById('promo144btn');
+var amout = document.getElementById('amount');
+var amoutshow = document.getElementById('selectedamount');
+btnPromo24.addEventListener('click', function () {
+  amount.setAttribute("value", "2.99");
+  amoutshow.innerHTML = "2.99";
+});
+btnPromo72.addEventListener('click', function () {
+  amount.setAttribute("value", "5.99");
+  amoutshow.innerHTML = "5.99";
+});
+btnPromo144.addEventListener('click', function () {
+  amount.setAttribute("value", "9.99");
+  amoutshow.innerHTML = "9.99";
+});
 var LandingPageVue = new Vue({
   el: "#LandingPageVue",
   render: function render(h) {
@@ -28016,38 +28034,22 @@ var SearchVue = new Vue({
       });
     }
   }
-}); // payment app
-
-var btnPromo24 = document.getElementById('promo24btn');
-var btnPromo72 = document.getElementById('promo72btn');
-var btnPromo144 = document.getElementById('promo144btn');
-var amout = document.getElementById('amount');
-var amoutshow = document.getElementById('selectedamount');
-btnPromo24.addEventListener('click', function () {
-  amount.setAttribute("value", "2.99");
-  amoutshow.innerHTML = "2.99";
-});
-btnPromo72.addEventListener('click', function () {
-  amount.setAttribute("value", "5.99");
-  amoutshow.innerHTML = "5.99";
-});
-btnPromo144.addEventListener('click', function () {
-  amount.setAttribute("value", "9.99");
-  amoutshow.innerHTML = "9.99";
 }); // Serve a creare mappa nello Show
 
 var longitude = document.getElementById("longitude");
 var latitude = document.getElementById("latitude");
 var center = [longitude.innerHTML, latitude.innerHTML];
-var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.map({
+var mapShow = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.map({
   key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
-  container: "map",
+  container: "mapShow",
   center: center,
   zoom: 15
 });
 var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.Marker({
-  draggable: false
-}).setLngLat(center).addTo(map);
+  draggable: false,
+  color: '#F15E75',
+  scale: 1.5
+}).setLngLat(center).addTo(mapShow);
 
 /***/ }),
 

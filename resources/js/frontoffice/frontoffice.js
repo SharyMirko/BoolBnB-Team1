@@ -7,6 +7,29 @@ import { default as tt } from "@tomtom-international/web-sdk-services";
 import { default as ttMaps } from "@tomtom-international/web-sdk-maps";
 import { forEach, indexOf, isSet } from "lodash";
 
+
+// payment app
+
+let btnPromo24 = document.getElementById('promo24btn');
+let btnPromo72 = document.getElementById('promo72btn');
+let btnPromo144 = document.getElementById('promo144btn');
+let amout = document.getElementById('amount');
+let amoutshow = document.getElementById('selectedamount');
+
+btnPromo24.addEventListener('click', function(){
+   amount.setAttribute("value", "2.99");
+   amoutshow.innerHTML = "2.99";
+})
+btnPromo72.addEventListener('click', function(){
+   amount.setAttribute("value", "5.99");
+   amoutshow.innerHTML = "5.99";
+})
+btnPromo144.addEventListener('click', function(){
+   amount.setAttribute("value", "9.99");
+   amoutshow.innerHTML = "9.99";
+})
+
+
 const LandingPageVue = new Vue({
    el: "#LandingPageVue",
    render: (h) => h(LandingPageVue),
@@ -413,27 +436,6 @@ let marker = new ttMaps.Marker({
    .setLngLat(center)
    .addTo(mapShow);
 
-
-// payment app
-
-let btnPromo24 = document.getElementById('promo24btn');
-let btnPromo72 = document.getElementById('promo72btn');
-let btnPromo144 = document.getElementById('promo144btn');
-let amout = document.getElementById('amount');
-let amoutshow = document.getElementById('selectedamount');
-
-btnPromo24.addEventListener('click', function(){
-   amount.setAttribute("value", "2.99");
-   amoutshow.innerHTML = "2.99";
-})
-btnPromo72.addEventListener('click', function(){
-   amount.setAttribute("value", "5.99");
-   amoutshow.innerHTML = "5.99";
-})
-btnPromo144.addEventListener('click', function(){
-   amount.setAttribute("value", "9.99");
-   amoutshow.innerHTML = "9.99";
-})
 
 
 

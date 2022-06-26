@@ -86,11 +86,11 @@
             </section>
 
             <input id="nonce" name="payment_method_nonce" type="hidden" />
+            <div class="modal-footer">
+               <button class="btn btn-primary text-white" type="submit">Procedi</button>
+               <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Annulla</button>
+            </div>
          </form>
-      </div>
-      <div class="modal-footer">
-         <button class="btn btn-primary text-white" type="submit">Procedi</button>
-         <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Annulla</button>
       </div>
    </div>
    </div>

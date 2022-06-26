@@ -2,24 +2,28 @@
 const btnDel = document.querySelectorAll('.btn-del');
 const indexForm = document.querySelector('#indexForm');
 
-btnDel.forEach(btn => {
-   btn.addEventListener('click', function(){
-      if (this.dataset.type == 'apartment') {
-         indexForm.action = this.dataset.baseurl + '/' + this.dataset.id;
-      } else {
-         //nothing
-      }
+if (btnDel) {
+   btnDel.forEach(btn => {
+      btn.addEventListener('click', function(){
+         if (this.dataset.type == 'apartment') {
+            indexForm.action = this.dataset.baseurl + '/' + this.dataset.id;
+         } else {
+            //nothing
+         }
+      });
    });
-});
+}
 
 
 
 
 // anterprima thumb in create
-document.querySelector("#thumbCreate").addEventListener('change', function(){
-   readURL(this);
-   console.log('ciao')
-});
+if (document.querySelector("#thumbCreate")) {
+   document.querySelector("#thumbCreate").addEventListener('change', function(){
+      readURL(this);
+      console.log('ciao')
+   });
+}
 
 function readURL(input) {
    if (input.files && input.files[0]) {

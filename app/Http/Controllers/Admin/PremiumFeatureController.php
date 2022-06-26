@@ -11,7 +11,7 @@ use Carbon\Carbon;
 
 class PremiumFeatureController extends Controller
 {
-    
+
     public function index()
     {
         $gateway = new Braintree\Gateway([
@@ -20,10 +20,10 @@ class PremiumFeatureController extends Controller
             'publicKey' => config('services.braintree.publicKey'),
             'privateKey' => config('services.braintree.privateKey')
         ]);
-            
+
            $token = $gateway->ClientToken()->generate();
-           
-           
+
+
            return view('admin.payments.index', [
             'token' => $token
            ]);
@@ -54,12 +54,12 @@ class PremiumFeatureController extends Controller
             $transaction = $result->transaction;
             /* header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id); */
 
-           
+
             if($amount == 2.99) {
                 $feature = [
                     'premium_feature_id' => 1,
                 ];
-                
+
               $apart->premiumFeatures()->attach($feature, ['started_at' => Carbon::now(),
               'expiring_at' => Carbon::now()->add('hour', 24)]);
             };
@@ -67,7 +67,7 @@ class PremiumFeatureController extends Controller
                 $feature = [
                     'premium_feature_id' => 2,
                 ];
-                
+
               $apart->premiumFeatures()->attach($feature, ['started_at' => Carbon::now(),
               'expiring_at' => Carbon::now()->add('hour', 72)]);
             };
@@ -75,13 +75,13 @@ class PremiumFeatureController extends Controller
                 $feature = [
                     'premium_feature_id' => 3,
                 ];
-                
+
               $apart->premiumFeatures()->attach($feature, ['started_at' => Carbon::now(),
               'expiring_at' => Carbon::now()->add('hour', 144)]);
             };
 
 
-            return back()->with('seccess_txt', 'Acquisto andato a buon fine! ID della transazione:' . $transaction->id);
+            return back()->with('success_txt', 'Acquisto andato a buon fine! ID della transazione: ' . $transaction->id);
         } else {
             $errorString = "";
 

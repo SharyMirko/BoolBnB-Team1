@@ -29,8 +29,8 @@ Route::middleware('auth')
       Route::resource('/messages', 'MessageController');
       Route::resource('/payments', 'PremiumFeatureController'); 
       Route::post('/checkout', 'PremiumFeatureController@checkout');
-      Route::resource('/statistics', 'ViewController');
       Route::get('/statistics', 'ViewController@index');
+      Route::resource('/statistics', 'ViewController');
       //Route::resource('/categories', 'CategoryController');
       
    });

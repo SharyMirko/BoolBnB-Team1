@@ -39,7 +39,7 @@
                         @if (Route::has('register'))
                             <li class="nav-item mt-3 my-md-0">
                                 <button class="btn btn-primary text-light" data-bs-toggle="modal"
-                                    data-bs-target="#registerModal">{{ __('Register') }}</button>
+                                    data-bs-target="#registerModal">{{ __('Registrati') }}</button>
                             </li>
                         @endif
                     @else
@@ -60,7 +60,7 @@
 
                                  {{-- aggiungi appartaemnto --}}
                                  <a class="dropdown-item" href="{{ route('admin.apartments.create') }}">
-                                    {{ __('Add apartments') }}
+                                    {{ __('Aggiungi appartamento') }}
                                  </a>
 
                                 {{-- logout --}}
@@ -117,7 +117,7 @@
                                 <input id="email" v-model="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" required autocomplete="email" autofocus
-                                    placeholder="{{ __('E-Mail Address') }}">
+                                    placeholder="{{ __('E-Mail') }}">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -148,7 +148,7 @@
                                         {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Ricordami') }}
                                     </label>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                             @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}" data-bs-toggle="modal"
                                     data-bs-target="#passwordResetModal">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('Password dimenticata?') }}
                                 </a>
                             @endif
                         </div>
@@ -185,13 +185,10 @@
 
                 <div class="d-flex flex-column p-3 flex-grow-1">
                     <div class="text-end">
-                        <button type="button" class="btn-close" aria-label="Close"
-                            data-bs-dismiss="modal"></button>
+                        <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
                     </div>
 
-                    <form method="POST" @change="register" action="{{ route('register') }}"
-                        class="flex-grow-1 px-3 pb-3 rounded-0 d-flex flex-column justify-content-center"
-                        id="formReg">
+                    <form method="POST" @change="register" action="{{ route('register') }}" class="flex-grow-1 px-3 pb-3 rounded-0 d-flex flex-column justify-content-center" id="formReg">
                         @csrf
 
                         <div class="form-group row text-center">
@@ -206,7 +203,7 @@
                                 <input id="email" v-model="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" required autocomplete="email" autofocus
-                                    placeholder="{{ __('E-Mail Address') }}">
+                                    placeholder="{{ __('E-Mail') }}">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -235,7 +232,7 @@
                                 <input id="password_confirm" v-model="password_confirmation" type="password"
                                     class="form-control @error('password') is-invalid @enderror"
                                     name="password_confirmation" required autocomplete="current-password"
-                                    placeholder="{{ __('Conferma la password') }}">
+                                    placeholder="{{ __('Conferma password') }}">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -251,7 +248,7 @@
                                 <input id="first_name" v-model="name" type="text"
                                     class="form-control @error('first_name') is-invalid @enderror" name="first_name"
                                     value="{{ old('first_name') }}" required autocomplete="first_name" autofocus
-                                    placeholder="{{ __('First name') }}">
+                                    placeholder="{{ __('Nome') }}">
 
                                 @error('first_name')
                                     <span class="invalid-feedback" role="alert">
@@ -266,7 +263,7 @@
                                 <input id="last_name" v-model="last_name" type="text"
                                     class="form-control @error('last_name') is-invalid @enderror" name="last_name"
                                     value="{{ old('last_name') }}" required autocomplete="last_name" autofocus
-                                    placeholder="{{ __('Last name') }}">
+                                    placeholder="{{ __('Cognome') }}">
 
                                 @error('last_name')
                                     <span class="invalid-feedback" role="alert">
@@ -281,7 +278,7 @@
                                 <input id="date_of_birth" v-model="date" type="text"
                                     class="form-control @error('date_of_birth') is-invalid @enderror"
                                     name="date_of_birth" value="{{ old('date_of_birth') }}" required
-                                    autocomplete="date_of_birth" autofocus placeholder="{{ __('Birth date') }}"
+                                    autocomplete="date_of_birth" autofocus placeholder="{{ __('Data di nascita') }}"
                                     onfocus="(this. type='date')">
 
                                 @error('date_of_birth')
@@ -294,7 +291,7 @@
 
                         <button type="submit" id="btnReg" disabled="true"
                             class="btn btn-primary text-white d-block w-100 mb-3">
-                            {{ __('Register') }}
+                            {{ __('Registrati') }}
                         </button>
                     </form>
                 </div>
@@ -333,7 +330,7 @@
                                 <input id="email" v-model="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus
-                                    placeholder="{{ __('E-Mail Address') }}">
+                                    placeholder="{{ __('E-Mail') }}">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -361,7 +358,7 @@
                             <div class="col">
                                 <input id="password-confirm" v-model="password_confirmation" type="password" class="form-control"
                                     name="password_confirmation" required autocomplete="new-password"
-                                    placeholder="{{ __('Confirm Password') }}">
+                                    placeholder="{{ __('Conferma Password') }}">
                             </div>
                         </div>
 

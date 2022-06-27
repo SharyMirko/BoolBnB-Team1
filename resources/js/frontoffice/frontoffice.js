@@ -411,13 +411,20 @@ if (document.querySelector('#searchApp')) {
                this.loading = true
    /*             let test = window.location.search.slice(0, 1)
     */            let test = window.location.search.replace("?city=", '')
-                  if(test.includes('+')) {
+                  if(test.includes('+') || test.includes('%20')) {
 
 
                     test = test.replace("+", " ")
                    test = test.replace("+", " ")
                    test = test.replace("+", " ")
                    test = test.replace("+", " ")
+                   test = test.replace("+", " ")
+                   test = test.replace("+", " ")
+                   test = test.replace("%20", " ")
+                   test = test.replace("%20", " ")
+                   test = test.replace("%20", " ")
+                   test = test.replace("%20", " ")
+                   test = test.replace("%20", " ")
                   }
                this.location = test;
              /*   Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(

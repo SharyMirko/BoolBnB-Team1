@@ -20,7 +20,7 @@
                      <input type="hidden" v-model="hiddenlat" name="latitude">
                      <input type="hidden" v-model="hiddenlon" name="longitude">
 
-                     <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $apartment->title) }}" required autocomplete="title" autofocus placeholder="{{ __('Title') }}">
+                     <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $apartment->title) }}" required autocomplete="title" autofocus placeholder="{{ __('Titolo') }}">
 
                      @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                   </div>
 
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $apartment->price) }}" required autocomplete="price" autofocus placeholder="€ {{ __('Price') }}/notte">
+                     <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $apartment->price) }}" required autocomplete="price" autofocus placeholder="€ {{ __('Prezzo') }}/notte">
 
                      @error('price')
                         <span class="invalid-feedback" role="alert">
@@ -105,7 +105,7 @@
                {{-- descrizione --}}
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="10" cols="50" autofocus placeholder="{{ __('Description') }}" required>{{ old('description', $apartment->description) }}</textarea>
+                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="10" cols="50" autofocus placeholder="{{ __('Descrizione') }}" required>{{ old('description', $apartment->description) }}</textarea>
 
                      @error('description')
                         <span class="invalid-feedback" role="alert">
@@ -224,7 +224,7 @@
 
          <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary text-white">
-               {{ __('Update') }}
+               {{ __('Aggiorna') }}
             </button>
          </div>
       </form>

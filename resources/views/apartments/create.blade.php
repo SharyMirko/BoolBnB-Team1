@@ -22,7 +22,7 @@
                      <input type="hidden" v-model="hiddenlat" name="latitude">
                      <input type="hidden" v-model="hiddenlon" name="longitude">
 
-                     <input id="title" v-model="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $title ?? old('title') }}" required autocomplete="title" autofocus placeholder="{{ __('Title') }}">
+                     <input id="title" v-model="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $title ?? old('title') }}" required autocomplete="title" autofocus placeholder="{{ __('Titolo') }}">
 
                      @error('title')
                            <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                   </div>
 
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="price" v-model="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $price ?? old('price') }}" required autocomplete="price" autofocus placeholder="€ {{ __('Price') }}/notte">
+                     <input id="price" v-model="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $price ?? old('price') }}" required autocomplete="price" autofocus placeholder="€ {{ __('Prezzo') }}/notte">
 
                      @error('price')
                         <span class="invalid-feedback" role="alert">
@@ -123,34 +123,12 @@
                   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-2 row-cols-lg-3 g-0">
 
                      <div class="col d-flex flex-column ">
-                        <div class="form-check">
-                           <input type="checkbox" v-model="service[0]" name="service[]" class="form-check-input" value="{{$serviceData[0]['id']}}" id="{{$serviceData[0]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[0]['name']}}">{{$serviceData[0]['name']}}</label>
-                        </div>
-
-                        <div class="form-check">
-                           <input type="checkbox"  v-model="service[1]" name="service[]" class="form-check-input" value="{{$serviceData[1]['id']}}" id="{{$serviceData[1]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[1]['name']}}">{{$serviceData[1]['name']}}</label>
-                        </div>
-
-                        <div class="form-check">
-                           <input type="checkbox"  v-model="service[2]" name="service[]" class="form-check-input" value="{{$serviceData[2]['id']}}" id="{{$serviceData[2]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[2]['name']}}">{{$serviceData[2]['name']}}</label>
-                        </div>
-                     </div>
-
-                     <div class="col d-flex flex-column">
-                        <div class="form-check">
-                           <input type="checkbox"  v-model="service[3]" name="service[]" class="form-check-input" value="{{$serviceData[3]['id']}}" id="{{$serviceData[3]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[3]['name']}}">{{$serviceData[3]['name']}}</label>
-                        </div>
-
-                        <div class="form-check">
-                           <input type="checkbox"  v-model="service[4]" name="service[]" class="form-check-input" value="{{$serviceData[4]['id']}}" id="{{$serviceData[4]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[4]['name']}}">{{$serviceData[4]['name']}}</label>
-                        </div>
-
-
+                        @foreach ($serviceData as $service)
+                           <div class="form-check">
+                              <input type="checkbox" v-model="service[0]" name="service[]" class="form-check-input" value="{{$service->id}}" id="{{$service->name}}">
+                              <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                           </div>
+                        @endforeach
                      </div>
                   </div>
                </div>
@@ -203,7 +181,7 @@
 
          <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary text-white" id="btnCreateApart" disabled="true">
-               {{ __('Public') }}
+               {{ __('Pubblica') }}
             </button>
          </div>
       </form>

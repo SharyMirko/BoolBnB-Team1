@@ -32,7 +32,11 @@
                      @else
                         <img src="{{ $apart->thumb }}" class="rounded-3 w-100 h-100" alt="{{ $apart->title }}">
                      @endif
+
+                     @if (count($apart->premiumFeatures) != 0)
+                         
                      <div class="crown"></div>
+                     @endif
                   </div>
 
                   <div class="ms-3">
@@ -47,7 +51,13 @@
                      <div class="d-flex flex-column mb-4">
                         <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
                         <a href="{{ route('admin.messages.index', ['apart_id'=>$apart->id]) }}" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
-                        <a href="{{ route('admin.payments.index', ['apart_id'=>$apart->id]) }}"><i class="fa-solid fa-crown"></i> Promuovi</a>
+                        @if (count($apart->premiumFeatures) != 0)
+                         
+                     <p>Appartamento promosso</p>
+                     @else
+
+                     <a href="{{ route('admin.payments.index', ['apart_id'=>$apart->id]) }}"><i class="fa-solid fa-crown"></i> Promuovi</a>
+                     @endif
                      </div>
 
                      <div class="d-flex">

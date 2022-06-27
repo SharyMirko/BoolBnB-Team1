@@ -29,7 +29,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area', $apartment->area) }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
+                     <input id="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area', $apartment->area) }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="10">
 
                      @error('area')
                         <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                   </div>
 
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $apartment->price) }}" required autocomplete="price" autofocus placeholder="€ {{ __('Prezzo') }}/notte">
+                     <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $apartment->price) }}" required autocomplete="price" autofocus placeholder="€ {{ __('Prezzo') }}/notte" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="1">
 
                      @error('price')
                         <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                {{-- stanze, bagni, letti --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ old('rooms_n', $apartment->rooms_n) }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}">
+                     <input id="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ old('rooms_n', $apartment->rooms_n) }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="0">
 
                      @error('rooms_n')
                         <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ old('beds_n', $apartment->beds_n) }}" required autocomplete="beds_n" autofocus placeholder="{{ __('N. Letti') }}">
+                     <input id="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ old('beds_n', $apartment->beds_n) }}" required autocomplete="beds_n" autofocus placeholder="{{ __('N. Letti') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="0">
 
                      @error('beds_n')
                         <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ old('bathrooms_n', $apartment->bathrooms_n) }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('N. Bagni') }}">
+                     <input id="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ old('bathrooms_n', $apartment->bathrooms_n) }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('N. Bagni') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="0">
 
                      @error('bathrooms_n')
                         <span class="invalid-feedback" role="alert">

@@ -21,7 +21,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto align-items-center mt-3  mt-md-0">
                     <li class="nav-item ">
-                        <a class="nav-link nav-link-personal" href="{{ route('apartments.index') }}">Cerca</a>
+                        <a class="nav-link nav-link-personal" href="{{ route('apartments.index', 'city=') }}">Cerca</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-personal" href="#">About</a>

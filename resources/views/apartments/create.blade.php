@@ -106,7 +106,7 @@
                {{-- descrizione --}}
                <div class="form-group row mb-2 text-center">
                   <div class="col">
-                     <textarea class="form-control @error('description') is-invalid @enderror" v-model="description" id="description" name="description" rows="10" cols="50" autofocus placeholder="{{ __('Description') }}" required></textarea>
+                     <textarea class="form-control @error('description') is-invalid @enderror" v-model="description" id="description" name="description" rows="10" cols="50" autofocus placeholder="{{ __('Descrizione') }}" required></textarea>
 
                      @error('description')
                         <span class="invalid-feedback" role="alert">

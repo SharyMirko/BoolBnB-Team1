@@ -189,7 +189,7 @@
                      <h4 class="mb-3">Foto</h4>
                      <img src="" id="thumb-preview" class="img-fluid mb-2">
 
-                     <input class="form-control" type="file" id="thumbCreate" name="thumb" accept="image/*">
+                     <input class="form-control" v-model="thumb_create" type="file" id="thumbCreate" name="thumb" accept="image/*">
 
                      @error('thumb')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -202,7 +202,7 @@
          <hr>
 
          <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary text-white" disabled="true">
+            <button type="submit" class="btn btn-primary text-white" id="btnCreateApart" disabled="true">
                {{ __('Public') }}
             </button>
          </div>

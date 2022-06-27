@@ -154,6 +154,7 @@ if (document.querySelector('#createModal')) {
          beds_n: "",
          bathrooms_n: "",
          rooms_n: "",
+         thumb_create: "",
          hiddenlat: "",
          hiddenlon: "",
 
@@ -172,7 +173,8 @@ if (document.querySelector('#createModal')) {
                this.city != "" &&
                this.beds_n != "" &&
                this.bathrooms_n != "" &&
-               this.rooms_n != ""
+               this.rooms_n != "" &&
+               this.thumb_create != ""
                ) {
                   btn.disabled = false;
                } else {
@@ -296,7 +298,7 @@ if (document.querySelector('#searchApp')) {
                            SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
                         })}, i * 300
                        )
-   
+
                   })
                   let pre = response.data.sql
                   pre.forEach((apartment, i) => {
@@ -377,7 +379,7 @@ if (document.querySelector('#searchApp')) {
                           )
                      })
                   });
-                  
+
             },
             setService(e) {
                if(e.target.checked){
@@ -410,8 +412,8 @@ if (document.querySelector('#searchApp')) {
    /*             let test = window.location.search.slice(0, 1)
     */            let test = window.location.search.replace("?city=", '')
                   if(test.includes('+')) {
-   
-                    
+
+
                     test = test.replace("+", " ")
                    test = test.replace("+", " ")
                    test = test.replace("+", " ")
@@ -436,9 +438,9 @@ if (document.querySelector('#searchApp')) {
 
                   Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(
                      (response) => {
-                   
+
                         let lest = Object.entries(response.data.response.data);
-                 
+
                        lest.forEach((apartment, i) => {
                            setTimeout(() => {
                               tt.services.calculateRoute({
@@ -447,16 +449,16 @@ if (document.querySelector('#searchApp')) {
                               })
                               .then(function(routeData) {
                                  let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-                                 
+
                                  if(dist < parseInt(SearchVue.maxDistance)){
                                     apartment.splice(0, 1);
                                     SearchVue.results2.push(apartment);
                                  };
-   
+
                                  SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
                               })}, i * 300
                              )
-   
+
                         })
                         let pre = response.data.sql
                         pre.forEach((apartment, i) => {

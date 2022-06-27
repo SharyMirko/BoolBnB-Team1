@@ -75,7 +75,6 @@
             @foreach ($aparts as $apart)
                <div class="col">
                   <article class="card rounded-3 border-0">
-                     <a class="m-0 p-0 d-block" href="#">
                         <img src="{{$apart->thumb}}" class="card-img-top position-relative w-100" alt="{{$apart->title}}">
 
                         <div class="crown"></div>
@@ -103,7 +102,6 @@
                               </div>
                            </div>
                         </div>
-                     </a>
                   </article>
                </div>
             @endforeach

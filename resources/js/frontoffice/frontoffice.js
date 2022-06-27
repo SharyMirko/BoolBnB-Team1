@@ -21,15 +21,15 @@ let items = document.querySelectorAll(".carousel .carousel-item");
 if (items) {
    items.forEach((el) => {
       const minPerSlide = 3;
-   
+
       let next = el.nextElementSibling;
-   
+
       for (var i = 1; i < minPerSlide; i++) {
          if (!next) {
             // wrap carousel by using first child
             next = items[0];
          }
-   
+
          let cloneChild = next.cloneNode(true);
          el.appendChild(cloneChild.children[0]);
          next = next.nextElementSibling;
@@ -50,24 +50,24 @@ if(document.querySelector('#registerModal')) {
          name: "",
          last_name: "",
          date: "",
-   
+
       },
       methods: {
          register: function () {
             //validate email
             let btn = document.querySelector("#btnReg");
             let today= new Date();
-   
+
             if (
                this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
                this.password.length > 5 &&
                this.password_confirmation === this.password &&
                this.name.length > 2 &&
                this.last_name.length > 2 &&
-   
+
                this.date != "" && today > new Date(this.date)
-   
-   
+
+
             ) {
                btn.disabled = false;
             } else {
@@ -156,9 +156,29 @@ if (document.querySelector('#createModal')) {
          rooms_n: "",
          hiddenlat: "",
          hiddenlon: "",
-   
+
       },
       methods: {
+         createApartmentForm: function (){
+            let btn = document.querySelector("#btnCreateApart");
+            if (
+               this.title != "" &&
+               this.category != "" &&
+               this.price != "" &&
+               this.description != "" &&
+               this.address != "" &&
+               this.service.length != 0 &&
+               this.area != "" &&
+               this.city != "" &&
+               this.beds_n != "" &&
+               this.bathrooms_n != "" &&
+               this.rooms_n != ""
+               ) {
+                  btn.disabled = false;
+               } else {
+                  btn.disabled = true;
+               }
+         },
          addressSearch: function () {
             // API request to get address
             ttServices.services
@@ -178,7 +198,7 @@ if (document.querySelector('#createModal')) {
          let oldAddress = document.querySelector('#address').value;
          this.city = oldCity;
          this.address = oldAddress;
-   
+
          ttServices.services
          .geocode({
             key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
@@ -243,7 +263,7 @@ if (document.querySelector('#searchApp')) {
          nRes2: 0,
          lat: null,
          lon: null
-   
+
       },
       methods: {
          search() {
@@ -272,11 +292,11 @@ if (document.querySelector('#searchApp')) {
                               apartment.splice(0, 1)
                               SearchVue.results.push(apartment);
                            };
-   
+
                            SearchVue.nRes = SearchVue.results.length;
                         })}, i * 300
                        )
-   
+
                   });
                });
          },
@@ -319,37 +339,37 @@ if (document.querySelector('#searchApp')) {
                                  apartment.splice(0, 1);
                                  SearchVue.results.push(apartment);
                               };
-   
+
                               SearchVue.nRes = SearchVue.results.length;
                            })}, i * 300
                           )
-   
+
                      });
                   });
             },
             setService(e) {
                if(e.target.checked){
                   SearchVue.services.push(e.target.value);
-   
+
                }
                if(e.target.checked == false){
                   SearchVue.services.splice(indexOf(SearchVue.services, e.target.value), 1);
                }
             },
             resetFilter() {
-   
+
                SearchVue.nBeds = "";
                SearchVue.nRooms = "";
-   
+
                const checkboxes = document.querySelectorAll('.form-check-input');
                checkboxes.forEach((checkbox) => {
                    checkbox.checked = false;
                });
-   
+
                SearchVue.services = [];
-   
+
                SearchVue.maxDistance= 20000;
-   
+
             },
          },
          mounted: function mounted () {
@@ -358,7 +378,7 @@ if (document.querySelector('#searchApp')) {
    /*             let test = window.location.search.slice(0, 1)
     */            let test = window.location.search.replace("?city=", '')
                   if(test.includes('+')) {
-   
+
                     console.log(test.replace("+", " "))
                     test = test.replace("+", " ")
                    test = test.replace("+", " ")
@@ -370,7 +390,7 @@ if (document.querySelector('#searchApp')) {
                   (response) =>{
                      this.results2 = response.data.response.data
                      this.nRes2 = this.results2.length
-   
+
                   }) */
                   ttServices.services
                   .geocode({
@@ -381,7 +401,7 @@ if (document.querySelector('#searchApp')) {
                      SearchVue.lat = response.results[0].position.lat;
                      SearchVue.lon = response.results[0].position.lng;
                   });
-   
+
                   Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(
                      (response) => {
                         console.log(response.data.response.data)
@@ -400,15 +420,15 @@ if (document.querySelector('#searchApp')) {
                                     apartment.splice(0, 1);
                                     SearchVue.results2.push(apartment);
                                  };
-   
+
                                  SearchVue.nRes2 = SearchVue.results2.length;
                               })}, i * 300
                              )
-   
+
                         });
                      });
             }
-   
+
       },
    });
 }

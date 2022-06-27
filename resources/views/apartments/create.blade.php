@@ -8,7 +8,7 @@
 
    <div id="createModal" class="container py-5">
       <h3 class="backoffice-title mb-5"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> Aggiungi appartamento</h3>
-      <form method="POST" action="{{ route('admin.apartments.store') }}" id="input-form" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('admin.apartments.store') }}" @change="createApartmentForm" id="input-form" enctype="multipart/form-data">
          @csrf
 
          <div class="row g-0">
@@ -202,7 +202,7 @@
          <hr>
 
          <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary text-white">
+            <button type="submit" class="btn btn-primary text-white" disabled="true">
                {{ __('Public') }}
             </button>
          </div>

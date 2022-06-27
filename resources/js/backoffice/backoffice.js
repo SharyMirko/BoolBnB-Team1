@@ -20,7 +20,6 @@ if (btnDel) {
 if (document.querySelector("#thumbCreate")) {
    document.querySelector("#thumbCreate").addEventListener('change', function(){
       readURL(this);
-      console.log('ciao')
    });
 }
 

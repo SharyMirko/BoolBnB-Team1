@@ -126,15 +126,12 @@
                         @foreach ($serviceData as $service)
 
                            <div class="form-check">
-                              @php
-                                 $data = old('serviceData', $serviceData->pluck('id')->all());
-                                 // dd($data);
-                              @endphp
+                             
 
 
                               @foreach ($ciao as $c)
 
-                                 @if (in_array($c->id, $data ))
+                                 @if ($c->id == $service->id)
                                     <input type="checkbox" name="serviceData[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}" checked>
                                  @else
                                     <input type="checkbox" name="serviceData[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}">

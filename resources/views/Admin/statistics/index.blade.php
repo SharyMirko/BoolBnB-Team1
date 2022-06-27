@@ -8,7 +8,12 @@
 
       <div class="d-flex align-items-center my-5 message flex-wrap">
          <div class="img-box position-relative flex-grow-1 flex-sm-grow-0 mb-3">
-            <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            @if (str_contains( $userApart[0]->thumb, 'uploads'))
+               <img src="{{ asset('storage/' . $userApart[0]->thumb) }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            @else
+               <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            @endif
+
             <div class="crown"></div>
          </div>
 

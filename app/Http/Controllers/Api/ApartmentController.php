@@ -38,6 +38,12 @@ class ApartmentController extends Controller
          'services' => function ($query2) {$query2->select('id', 'name');},
          'premiumFeatures' => function ($query3) {$query3->select('id', 'expiring_at')->where('expiring_at', '>', Carbon::now());}
       ])->paginate(30);
+         foreach ($filter as $key => $apart) {
+            if($apart->visible == 0) {
+               unset($filter[$key]);
+            }
+         }
+
       if(isset($request->services)){
          foreach($filter as $key => $apart){
            if(!$apart->services->contains($request->services)){

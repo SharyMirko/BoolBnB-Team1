@@ -30,7 +30,7 @@
                <thead>
                <tr>
                   <th scope="col">Mittente</th>
-                  <th scope="col" class="w-100">Messaggio</th>
+                  <th scope="col w-100">Messaggio</th>
                   <th scope="col">Ricevuto il</th>
                </tr>
                </thead>
@@ -38,8 +38,8 @@
                   @foreach ($messagges as $message)
                      <tr>
                         <td class="py-4" scope="row"><a href="mailto:{{$message->email_sender}}">{{$message->email_sender}}</a></td>
-                        <td class="py-4">{{$message->text_ms}}</td>
-                        <td class="py-4">{{$message->created_at}}</td>
+                        <td class="py-4 w-100" scope="row">{{$message->text_ms}}</td>
+                        <td class="py-4 message-date" scope="row">{{$message->created_at}}</td>
                      </tr>
                @endforeach
                </tbody>

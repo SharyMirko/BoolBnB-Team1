@@ -126,7 +126,7 @@
                         @foreach ($serviceData as $service)
 
                            <div class="form-check">
-                             
+
 
 
                               @foreach ($ciao as $c)
@@ -175,7 +175,7 @@
             </div>
 
             {{-- colonna dx --}}
-            <div class="col-12 col-md-5 gx-5">
+            <div class="col-12 col-md-5 gx-md-5">
                <h4 class="mb-3">Location</h4>
                <div class="form-group row mb-2">
                   <div class="col">

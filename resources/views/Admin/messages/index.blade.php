@@ -19,7 +19,7 @@
                <p class="category m-0 text-capitalize">{{$userApart[0]->category}}</p>
                <h4 class="my-2 text-capitalize">{{$userApart[0]->title}}</h4>
                <p class="geo icon mb-0">{{$userApart[0]->address}}</p>
-               <p class="city">{{$userApart[0]->city}}</p>
+               <p class="city mb-1">{{$userApart[0]->city}}</p>
                <p class="price-text m-0">€ {{$userApart[0]->price}}<span class="price-suffix">/notte</span></p>
             </div>
          </div>
@@ -38,7 +38,7 @@
                   @foreach ($messagges as $message)
                      <tr>
                         <td class="py-4" scope="row"><a href="mailto:{{$message->email_sender}}">{{$message->email_sender}}</a></td>
-                        <td class="py-4 w-100">{{$message->text_ms}}</td>
+                        <td class="py-4">{{$message->text_ms}}</td>
                         <td class="py-4">{{$message->created_at}}</td>
                      </tr>
                @endforeach

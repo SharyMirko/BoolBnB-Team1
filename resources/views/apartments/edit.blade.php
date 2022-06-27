@@ -186,8 +186,14 @@
                <div class="form-group row">
                   <div class="col">
                      <h4 class="mb-3">Foto</h4>
-                     <img src="{{ asset('storage/' . $apartment->thumb) }}" alt="{{  $apartment->title }}" class="img-fluid">
+                     @if (str_contains( $apartment->thumb, 'uploads'))
+                        <img src="{{ asset('storage/' . $apartment->thumb) }}" alt="{{ $apartment->title }}" class="img-fluid">
+                     @else
+                        <img src="{{ $apartment->thumb }}" class="img-fluid mb-2" alt="{{ $apartment->title }}">
+                     @endif
+
                      <input class="form-control mt-2" type="file" id="thumb" name="thumb" accept="image/*">
+
                      @error('thumb')
                         <div class="alert alert-danger">{{ $message }}</div>
                      @enderror

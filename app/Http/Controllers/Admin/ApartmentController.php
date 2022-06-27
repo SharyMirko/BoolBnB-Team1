@@ -54,7 +54,7 @@ class ApartmentController extends Controller
       ]);
    }
 
-   
+
 
    public function store(Request $request)
    {
@@ -114,11 +114,19 @@ class ApartmentController extends Controller
 
       $apartmentForm = $request->all();
 
-      $thumb_path = Storage::put('uploads', $apartmentForm['thumb']);
+      if (array_key_exists('thumb', $apartmentForm)) {
 
-      $newApartment = [
-         'thumb' => $thumb_path
-      ] + $apartmentForm;
+         Storage::delete($apartment->thumb);
+
+         $thumb_path = Storage::put('uploads', $apartmentForm['thumb']);
+
+         $newApartment = [
+            'thumb' => $thumb_path
+         ] + $apartmentForm;
+
+      } else {
+         $newApartment = $apartmentForm;
+      }
 
       $apartment->update($newApartment);
 

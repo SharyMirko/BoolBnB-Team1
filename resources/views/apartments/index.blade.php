@@ -27,6 +27,32 @@
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
+                <div class="col" v-for="apart in premium">
+                    <article class="card rounded-3 border-0 h-100">
+                       <a class="m-0 p-0 d-flex flex-column flex-grow-1" v-bind:href="link + apart.id">
+                          <div class="card-img-top position-relative">
+                             <div class="position-absolute w-100 h-100 filtro-card"></div>
+                             <img :src="apart.thumb" class="card-img-top"
+                                alt="lorem_picsum">
+  
+                             <div class="crown"></div>
+  
+                             {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div> --}}
+                          </div>
+                          <div class="card-body text-muted">
+                             <h5 class="card-title">@{{ apart.title }}</h5>
+                             <p class="geo icon mb-0">@{{ apart.address }}</p>
+                             <p class="city">@{{ apart.city }}</p>
+                             <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                <p class="price-text m-0">€ @{{ apart.price }}<span class="price-suffix">/notte</span></p>
+                                <p class="category m-0">@{{ apart.category }}</p>
+                             </div>
+                          </div>
+                       </a>
+                    </article>
+                 </div>
+
+
                 <div class="col" v-if="loading" v-for="apart in results2">
                     <article class="card rounded-3 border-0 h-100">
                        <a class="m-0 p-0 d-flex flex-column flex-grow-1" v-bind:href="link + apart[0].id">
@@ -35,7 +61,7 @@
                              <img :src="apart[0].thumb" class="card-img-top"
                                 alt="lorem_picsum">
 
-                             <div class="crown"></div>
+                
 
                              {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div> --}}
                           </div>
@@ -52,6 +78,7 @@
                     </article>
                  </div>
 
+                
 
                 <div class="col" v-for="apart in results">
                   <article class="card rounded-3 border-0 h-100">
@@ -61,7 +88,7 @@
                            <img :src="apart[0].thumb" class="card-img-top"
                               alt="lorem_picsum">
 
-                           <div class="crown"></div>
+                     
 
                            {{-- <div class="user-avatar position-absolute"><span class="m-0 p-0">@{{ apart.user.first_name.substring(0, 1) }}@{{ apart.user.last_name.substring(0, 1) }}</span></div> --}}
                         </div>

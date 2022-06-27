@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Model\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 
 class ApartmentController extends Controller
@@ -30,27 +31,31 @@ class ApartmentController extends Controller
          ]; */
          $filter = $this->composeQuery($request);
          $sql_string = $filter->toSql();
+         $premium = [];
 
         $filter = $filter->with([
          'user' => function ($query1) {$query1->select('id', 'first_name', 'last_name');},
-         'services' => function ($query2) {$query2->select('id', 'name');}
+         'services' => function ($query2) {$query2->select('id', 'name');},
+         'premiumFeatures' => function ($query3) {$query3->select('id', 'expiring_at')->where('expiring_at', '>', Carbon::now());}
       ])->paginate(30);
       if(isset($request->services)){
-
          foreach($filter as $key => $apart){
            if(!$apart->services->contains($request->services)){
              unset($filter[$key]);
            }
          }
       }
-
-
-
+      foreach ($filter as $key => $apart) {
+        if(count($apart->premiumFeatures) != 0) {
+         unset($filter[$key]);
+         $premium[] = $apart;
+        }
+      }
 
          return response()->json([
             'success'   => true,
             'response'  => $filter,
-            'sql' => $sql_string
+            'sql' => $premium
          ]);
 
    }

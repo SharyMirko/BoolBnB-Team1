@@ -169,7 +169,6 @@ if (document.querySelector('#createModal')) {
                .then(function (response) {
                   FormCreateVue.hiddenlat = response.results[0].position.lat;
                   FormCreateVue.hiddenlon = response.results[0].position.lng;
-                  console.log(response.results[0]);
                });
          },
       },
@@ -187,7 +186,6 @@ if (document.querySelector('#createModal')) {
          .then(function (response) {
             FormCreateVue.hiddenlat = response.results[0].position.lat;
             FormCreateVue.hiddenlon = response.results[0].position.lng;
-            console.log(response.results[0]);
          });
       },
    });
@@ -231,6 +229,7 @@ if (document.querySelector('#searchApp')) {
       el: "#searchApp",
       data: {
          results2: [],
+         premium: [],
          location: "",
          results: [],
          nRes: 0,
@@ -247,6 +246,9 @@ if (document.querySelector('#searchApp')) {
       },
       methods: {
          search() {
+            this.results2 = [];
+            this.premium = [];
+            this.results = [];
             ttServices.services
                .geocode({
                   key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
@@ -267,20 +269,37 @@ if (document.querySelector('#searchApp')) {
                         })
                         .then(function(routeData) {
                            let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-                           console.log('ciao');
                            if(dist < SearchVue.maxDistance){
                               apartment.splice(0, 1)
                               SearchVue.results.push(apartment);
                            };
-   
-                           SearchVue.nRes = SearchVue.results.length;
+                           SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
                         })}, i * 300
                        )
    
-                  });
+                  })
+                  let pre = response.data.sql
+                  pre.forEach((apartment, i) => {
+                     setTimeout(() => {
+                        tt.services.calculateRoute({
+                           key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                           locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
+                        })
+                        .then(function(routeData) {
+                           let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+                           if(dist < parseInt(SearchVue.maxDistance)){
+                              SearchVue.premium.push(apartment);
+                           }
+                           SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
+                        })}, i * 300
+                       )
+                  })
                });
          },
          applyFilter() {
+            this.results2 = [];
+            this.premium = [];
+            this.results = [];
             this.loading = false;
             if(SearchVue.results.length != 0) {
                SearchVue.results = [];
@@ -304,9 +323,8 @@ if (document.querySelector('#searchApp')) {
                }
                Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + tenuta + "&beds=" + this.nBeds).then(
                   (response) => {
-                     console.log(response.data.response.data)
                      let lest = Object.entries(response.data.response.data);
-                     console.log(lest)
+                     let pre = response.data.sql
                     lest.forEach((apartment, i) => {
                         setTimeout(() => {
                            tt.services.calculateRoute({
@@ -318,14 +336,28 @@ if (document.querySelector('#searchApp')) {
                               if(dist < parseInt(SearchVue.maxDistance)){
                                  apartment.splice(0, 1);
                                  SearchVue.results.push(apartment);
-                              };
-   
-                              SearchVue.nRes = SearchVue.results.length;
+                              }
+                              SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
                            })}, i * 300
                           )
-   
-                     });
+                     })
+                     pre.forEach((apartment, i) => {
+                        setTimeout(() => {
+                           tt.services.calculateRoute({
+                              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                              locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
+                           })
+                           .then(function(routeData) {
+                              let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+                              if(dist < parseInt(SearchVue.maxDistance)){
+                                 SearchVue.premium.push(apartment);
+                              }
+                              SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
+                           })}, i * 300
+                          )
+                     })
                   });
+                  
             },
             setService(e) {
                if(e.target.checked){
@@ -359,7 +391,7 @@ if (document.querySelector('#searchApp')) {
     */            let test = window.location.search.replace("?city=", '')
                   if(test.includes('+')) {
    
-                    console.log(test.replace("+", " "))
+                    
                     test = test.replace("+", " ")
                    test = test.replace("+", " ")
                    test = test.replace("+", " ")
@@ -384,9 +416,9 @@ if (document.querySelector('#searchApp')) {
    
                   Axios.get("/api/api-artments?" + "rooms=" + this.nRooms + "$services=" + "&beds=" + this.nBeds).then(
                      (response) => {
-                        console.log(response.data.response.data)
+                   
                         let lest = Object.entries(response.data.response.data);
-                        console.log(lest)
+                 
                        lest.forEach((apartment, i) => {
                            setTimeout(() => {
                               tt.services.calculateRoute({
@@ -395,17 +427,33 @@ if (document.querySelector('#searchApp')) {
                               })
                               .then(function(routeData) {
                                  let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
-                                 console.log(apartment);
+                                 
                                  if(dist < parseInt(SearchVue.maxDistance)){
                                     apartment.splice(0, 1);
                                     SearchVue.results2.push(apartment);
                                  };
    
-                                 SearchVue.nRes2 = SearchVue.results2.length;
+                                 SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
                               })}, i * 300
                              )
    
-                        });
+                        })
+                        let pre = response.data.sql
+                        pre.forEach((apartment, i) => {
+                           setTimeout(() => {
+                              tt.services.calculateRoute({
+                                 key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                                 locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
+                              })
+                              .then(function(routeData) {
+                                 let dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
+                                 if(dist < parseInt(SearchVue.maxDistance)){
+                                    SearchVue.premium.push(apartment);
+                                 }
+                                 SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
+                              })}, i * 300
+                             )
+                        })
                      });
             }
    

@@ -43,10 +43,11 @@
                {{-- categoria e prezzo --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col-8 col-md-7 col-lg-8">
+
                      <select name="category" class="form-select @error('category') is-invalid @enderror" id="category" >
                         <option selected disabled hidden value="">Seleziona categoria</option>
                         @foreach ($categoryData as $category)
-                           <option value="{{ $category->name }}">{{ $category->name }}</option>
+                           <option value="{{ $category->name }}" @if($apartment->category == $category->name) selected @endif>{{ $category->name }}</option>
                         @endforeach
                      </select>
 

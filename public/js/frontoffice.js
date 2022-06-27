@@ -27802,6 +27802,15 @@ if (document.querySelector('#createModal')) {
       hiddenlon: ""
     },
     methods: {
+      createApartmentForm: function createApartmentForm() {
+        var btn = document.querySelector("#btnCreateApart");
+
+        if (this.title != "" && this.category != "" && this.price != "" && this.description != "" && this.address != "" && this.service.length != 0 && this.area != "" && this.city != "" && this.beds_n != "" && this.bathrooms_n != "" && this.rooms_n != "") {
+          btn.disabled = false;
+        } else {
+          btn.disabled = true;
+        }
+      },
       addressSearch: function addressSearch() {
         // API request to get address
         _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
@@ -28033,7 +28042,7 @@ if (document.querySelector('#searchApp')) {
              (response) =>{
                 this.results2 = response.data.response.data
                 this.nRes2 = this.results2.length
-                 }) */
+               }) */
 
         _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
           key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
@@ -28125,8 +28134,8 @@ if (mapContainer) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/js/frontoffice/frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
-module.exports = __webpack_require__(/*! /Users/shary/boolean/laravel/BoolBnB-Team1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\js\frontoffice\frontoffice.js */"./resources/js/frontoffice/frontoffice.js");
+module.exports = __webpack_require__(/*! C:\Users\Neeiser PC\Desktop\Boolean\BoolBnB-Team1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

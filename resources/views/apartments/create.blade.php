@@ -8,7 +8,7 @@
 
    <div id="createModal" class="container py-5">
       <h3 class="backoffice-title mb-5"><a href="{{ route('admin.dashboard') }}" class="text-muted"><i class="fa-solid fa-arrow-left fs-5"></i></a> Aggiungi appartamento</h3>
-      <form method="POST" action="{{ route('admin.apartments.store') }}" @change="createApartmentForm" id="input-form" enctype="multipart/form-data">
+      <form method="POST" @change="createApartmentForm" action="{{ route('admin.apartments.store') }}" id="input-form" enctype="multipart/form-data">
          @csrf
 
          <div class="row g-0">
@@ -31,7 +31,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="area" min="0" v-model="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ $area ?? old('area') }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
+                     <input id="area" v-model="area" type="number" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ $area ?? old('area') }}" required autocomplete="area" autofocus placeholder="{{ __('Mt Quadri') }}">
 
                      @error('area')
                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                   </div>
 
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="price" min="0" v-model="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $price ?? old('price') }}" required autocomplete="price" autofocus placeholder="€ {{ __('Price') }}/notte">
+                     <input id="price" v-model="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $price ?? old('price') }}" required autocomplete="price" autofocus placeholder="€ {{ __('Price') }}/notte">
 
                      @error('price')
                         <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
                {{-- stanze, bagni, letti --}}
                <div class="form-group row mb-2 gx-2">
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="rooms_n" min="0" v-model="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ $rooms_n ?? old('rooms_n') }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}">
+                     <input id="rooms_n" v-model="rooms_n" type="number" class="form-control @error('rooms_n') is-invalid @enderror" name="rooms_n" value="{{ $rooms_n ?? old('rooms_n') }}" required autocomplete="rooms_n" autofocus placeholder=" {{ __('N. Stanze') }}">
 
                      @error('rooms_n')
                         <span class="invalid-feedback" role="alert">
@@ -83,7 +83,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="beds_n" min="0" v-model="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ $beds_n ?? old('beds_n') }}" required autocomplete="beds_n" autofocus placeholder="{{ __('N. Letti') }}">
+                     <input id="beds_n" v-model="beds_n" type="number" class="form-control @error('beds_n') is-invalid @enderror" name="beds_n" value="{{ $beds_n ?? old('beds_n') }}" required autocomplete="beds_n" autofocus placeholder="{{ __('N. Letti') }}">
 
                      @error('beds_n')
                         <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
                      @enderror
                   </div>
                   <div class="col-4 col-md-5 col-lg-4">
-                     <input id="bathrooms_n" min="0" v-model="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ $bathrooms_n ?? old('bathrooms_n') }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('N. Bagni') }}">
+                     <input id="bathrooms_n" v-model="bathrooms_n" type="number" class="form-control @error('bathrooms_n') is-invalid @enderror" name="bathrooms_n" value="{{ $bathrooms_n ?? old('bathrooms_n') }}" required autocomplete="bathrooms_n" autofocus placeholder="{{ __('N. Bagni') }}">
 
                      @error('bathrooms_n')
                         <span class="invalid-feedback" role="alert">
@@ -202,7 +202,7 @@
          <hr>
 
          <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary text-white" disabled="true">
+            <button type="submit" class="btn btn-primary text-white" id="btnCreateApart" disabled="true">
                {{ __('Public') }}
             </button>
          </div>

@@ -85,6 +85,10 @@ header {
    .dropdown-item:focus {
       background-color: $primary;
       color: $white;
-   }
+   }   
+}
 
+.mandatory{
+   color: #e11818;
+   font-weight: 600;
 }

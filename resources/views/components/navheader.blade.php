@@ -195,7 +195,7 @@
                             <h1>Registrazione</h1>
                             <p class="mb-3">Sei già registrato? <a href="#" class="fw-3"
                                     data-bs-toggle="modal" data-bs-target="#loginModal">Accedi</a></p>
-                            <p class="mb-1">Tutti i campi sono obbligatori.</p>
+                            <p class="mb-1 mandatory">Tutti i campi sono obbligatori.</p>
                         </div>
 
                         <div class="form-group row mb-2">
@@ -323,6 +323,7 @@
                         <div class="form-group row text-center">
                             <h1>Reset password</h1>
                             <p>Compila i campi sottostanti per reimpostare la password.</p>
+                            <p class="mb-1 mandatory">Tutti i campi sono obbligatori.</p>
                         </div>
 
                         <div class="form-group row mb-2 text-center">

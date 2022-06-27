@@ -120,55 +120,14 @@
                <div class="form-group my-4">
                   <h4 class="mb-3">Servizi</h4>
                   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-2 row-cols-lg-3 g-0">
-
                      <div class="col d-flex flex-column ">
-
                         @foreach ($serviceData as $service)
-
                            <div class="form-check">
-
-
-
-                              @foreach ($ciao as $c)
-
-                                 @if ($c->id == $service->id)
-                                    <input type="checkbox" name="serviceData[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}" checked>
-                                 @else
-                                    <input type="checkbox" name="serviceData[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}">
-                                 @endif
-
-                              @endforeach
-
-
+                              <input type="checkbox" name="service-{{ $service->id }}" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}">
                               <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}</label>
-
                            </div>
                         @endforeach
-
-{{--
-                        <div class="form-check">
-                           <input type="checkbox" name="service[]" class="form-check-input" value="{{$serviceData[1]['id']}}" id="{{$serviceData[1]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[1]['name']}}">{{$serviceData[1]['name']}}</label>
-                        </div>
-
-                        <div class="form-check">
-                           <input type="checkbox" name="service[]" class="form-check-input" value="{{$serviceData[2]['id']}}" id="{{$serviceData[2]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[2]['name']}}">{{$serviceData[2]['name']}}</label>
-                        </div> --}}
                      </div>
-
-                     {{-- <div class="col d-flex flex-column">
-                        <div class="form-check">
-                           <input type="checkbox" name="service[]" class="form-check-input" value="{{$serviceData[3]['id']}}" id="{{$serviceData[3]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[3]['name']}}">{{$serviceData[3]['name']}}</label>
-                        </div>
-
-                        <div class="form-check">
-                           <input type="checkbox" name="service[]" class="form-check-input" value="{{$serviceData[4]['id']}}" id="{{$serviceData[4]['name']}}">
-                           <label class="form-check-label" for="{{$serviceData[4]['name']}}">{{$serviceData[4]['name']}}</label>
-                        </div>
-                     </div> --}}
-
                   </div>
                </div>
                {{-- / --}}

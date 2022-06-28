@@ -10,7 +10,7 @@
             <h1>Un'esperienza unica</h1>
             <h3 class="my-3">Trova la tua location da sogno</h3>
 
-            <form action="{{ route('apartments.index', 'city=') }}" method="GET" class="d-flex w-100 align-items-center position-relative">
+            <form action="{{ route('apartments.index') }}" method="GET" class="d-flex w-100 align-items-center position-relative">
                <i class="fas fa-search"></i>
                <input type="text" placeholder="Location" name="city" id="Landing-search" class="form-control me-2 flex-grow-1">
                <button class="btn btn-primary text-light">Cerca</button>

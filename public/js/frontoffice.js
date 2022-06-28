@@ -27815,7 +27815,7 @@ if (document.querySelector('#createModal')) {
       addressSearch: function addressSearch() {
         // API request to get address
         _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
-          key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+          key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
           query: this.address + " " + this.city
         }).then(function (response) {
           FormCreateVue.hiddenlat = response.results[0].position.lat;
@@ -27829,7 +27829,7 @@ if (document.querySelector('#createModal')) {
       this.city = oldCity;
       this.address = oldAddress;
       _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
-        key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+        key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
         query: this.address + " " + this.city
       }).then(function (response) {
         FormCreateVue.hiddenlat = response.results[0].position.lat;
@@ -27893,7 +27893,7 @@ if (document.querySelector('#searchApp')) {
         this.premium = [];
         this.results = [];
         _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
-          key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+          key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
           query: this.location
         }).then(function (response) {
           SearchVue.lat = response.results[0].position.lat;
@@ -27904,7 +27904,7 @@ if (document.querySelector('#searchApp')) {
           asparagi.forEach(function (apartment, i) {
             setTimeout(function () {
               _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-                key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                 locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
               }).then(function (routeData) {
                 var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
@@ -27923,7 +27923,7 @@ if (document.querySelector('#searchApp')) {
           pre.forEach(function (apartment, i) {
             setTimeout(function () {
               _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-                key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                 locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
               }).then(function (routeData) {
                 var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
@@ -27949,7 +27949,7 @@ if (document.querySelector('#searchApp')) {
         }
 
         _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
-          key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+          key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
           query: this.location
         }).then(function (response) {
           SearchVue.lat = response.results[0].position.lat;
@@ -27971,7 +27971,7 @@ if (document.querySelector('#searchApp')) {
           lest.forEach(function (apartment, i) {
             setTimeout(function () {
               _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-                key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                 locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
               }).then(function (routeData) {
                 var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
@@ -27988,7 +27988,7 @@ if (document.querySelector('#searchApp')) {
           pre.forEach(function (apartment, i) {
             setTimeout(function () {
               _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-                key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                 locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
               }).then(function (routeData) {
                 var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
@@ -28031,11 +28031,11 @@ if (document.querySelector('#searchApp')) {
 
         var test = window.location.search.replace("?city=", '');
 
-        if (test.includes('+')) {
+        if (test.includes('+') || test.includes('%20')) {
           test = test.replace("+", " ");
           test = test.replace("+", " ");
-          test = test.replace("+", " ");
-          test = test.replace("+", " ");
+          test = test.replace("%20", " ");
+          test = test.replace("%20", " ");
         }
 
         this.location = test;
@@ -28045,8 +28045,12 @@ if (document.querySelector('#searchApp')) {
                 this.nRes2 = this.results2.length
               }) */
 
+        if (this.location == 'Vibo Valentia' || this.location == 'vibo valentia') {
+          alert('AAAAAAAAA  COMU JIAMUUUUUUU');
+        }
+
         _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.geocode({
-          key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+          key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
           query: this.location
         }).then(function (response) {
           SearchVue.lat = response.results[0].position.lat;
@@ -28057,7 +28061,7 @@ if (document.querySelector('#searchApp')) {
           lest.forEach(function (apartment, i) {
             setTimeout(function () {
               _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-                key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                 locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
               }).then(function (routeData) {
                 var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
@@ -28076,7 +28080,7 @@ if (document.querySelector('#searchApp')) {
           pre.forEach(function (apartment, i) {
             setTimeout(function () {
               _tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0___default.a.services.calculateRoute({
-                key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                 locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat
               }).then(function (routeData) {
                 var dist = routeData.toGeoJson().features[0].properties.summary.lengthInMeters;
@@ -28103,7 +28107,7 @@ var mapContainer = document.querySelector('#mapShow');
 if (mapContainer) {
   var center = [longitude.innerHTML, latitude.innerHTML];
   var mapShow = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_1___default.a.map({
-    key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+    key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
     container: "mapShow",
     center: center,
     zoom: 15

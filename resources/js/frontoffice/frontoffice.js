@@ -185,7 +185,7 @@ if (document.querySelector('#createModal')) {
             // API request to get address
             ttServices.services
                .geocode({
-                  key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                  key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                   query: this.address + " " + this.city,
                })
                .then(function (response) {
@@ -202,7 +202,7 @@ if (document.querySelector('#createModal')) {
 
          ttServices.services
          .geocode({
-            key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+            key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
             query: this.address + " " + this.city,
          })
          .then(function (response) {
@@ -273,7 +273,7 @@ if (document.querySelector('#searchApp')) {
             this.results = [];
             ttServices.services
                .geocode({
-                  key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                  key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                   query: this.location,
                })
                .then(function (response) {
@@ -286,7 +286,7 @@ if (document.querySelector('#searchApp')) {
                  asparagi.forEach((apartment, i) => {
                      setTimeout(() => {
                         tt.services.calculateRoute({
-                           key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                           key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                            locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                         })
                         .then(function(routeData) {
@@ -304,7 +304,7 @@ if (document.querySelector('#searchApp')) {
                   pre.forEach((apartment, i) => {
                      setTimeout(() => {
                         tt.services.calculateRoute({
-                           key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                           key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                            locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                         })
                         .then(function(routeData) {
@@ -328,7 +328,7 @@ if (document.querySelector('#searchApp')) {
             }
             ttServices.services
                .geocode({
-                  key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                  key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                   query: this.location,
                })
                .then(function (response) {
@@ -350,7 +350,7 @@ if (document.querySelector('#searchApp')) {
                     lest.forEach((apartment, i) => {
                         setTimeout(() => {
                            tt.services.calculateRoute({
-                              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                              key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                               locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                            })
                            .then(function(routeData) {
@@ -366,7 +366,7 @@ if (document.querySelector('#searchApp')) {
                      pre.forEach((apartment, i) => {
                         setTimeout(() => {
                            tt.services.calculateRoute({
-                              key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                              key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                               locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                            })
                            .then(function(routeData) {
@@ -416,13 +416,6 @@ if (document.querySelector('#searchApp')) {
 
                     test = test.replace("+", " ")
                    test = test.replace("+", " ")
-                   test = test.replace("+", " ")
-                   test = test.replace("+", " ")
-                   test = test.replace("+", " ")
-                   test = test.replace("+", " ")
-                   test = test.replace("%20", " ")
-                   test = test.replace("%20", " ")
-                   test = test.replace("%20", " ")
                    test = test.replace("%20", " ")
                    test = test.replace("%20", " ")
                   }
@@ -433,9 +426,12 @@ if (document.querySelector('#searchApp')) {
                      this.nRes2 = this.results2.length
 
                   }) */
+                  if( this.location == 'Vibo Valentia' || this.location == 'vibo valentia') {
+                     alert('AAAAAAAAA  COMU JIAMUUUUUUU')
+                  }
                   ttServices.services
                   .geocode({
-                     key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                     key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                      query: this.location,
                   })
                   .then(function (response) {
@@ -451,7 +447,7 @@ if (document.querySelector('#searchApp')) {
                        lest.forEach((apartment, i) => {
                            setTimeout(() => {
                               tt.services.calculateRoute({
-                                 key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                                 key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                                  locations: apartment[1].longitude + ',' + apartment[1].latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                               })
                               .then(function(routeData) {
@@ -471,7 +467,7 @@ if (document.querySelector('#searchApp')) {
                         pre.forEach((apartment, i) => {
                            setTimeout(() => {
                               tt.services.calculateRoute({
-                                 key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+                                 key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
                                  locations: apartment.longitude + ',' + apartment.latitude + ':' + SearchVue.lon + ',' + SearchVue.lat,
                               })
                               .then(function(routeData) {
@@ -485,7 +481,7 @@ if (document.querySelector('#searchApp')) {
                         })
                      });
             }
-
+            
       },
    });
 }
@@ -501,7 +497,7 @@ if (mapContainer) {
    let center = [longitude.innerHTML, latitude.innerHTML];
 
    let mapShow = ttMaps.map({
-      key: "SzN6PUdLOxzY6usjVDt2ZoioaXJbt2fE",
+      key: "kb5mljoX0qPv1CGGQX29ioYKCOT7Gm6b",
       container: "mapShow",
       center: center,
       zoom: 15,

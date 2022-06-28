@@ -123,7 +123,7 @@
                      <div class="col d-flex flex-column ">
                         @foreach ($serviceData as $service)
                            <div class="form-check">
-                              <input type="checkbox" name="service-{{ $service->id }}" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}">
+                              <input type="checkbox" name="service[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}">
                               <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}</label>
                            </div>
                         @endforeach

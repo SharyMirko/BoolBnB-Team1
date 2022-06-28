@@ -10,6 +10,7 @@ use App\Model\Category;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ApartmentController extends Controller
 {
@@ -84,6 +85,8 @@ class ApartmentController extends Controller
    public function show(Apartment $apartment)
    {
       $services = $apartment->services()->where('apartment_id', $apartment->id)->get();
+     
+      
       return view('apartments.show', compact('apartment', 'services'));
    }
 

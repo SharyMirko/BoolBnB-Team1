@@ -27837,10 +27837,10 @@ if (document.querySelector('#createModal')) {
       });
     }
   });
-} // form reset password validation
+} // form invio messaggio validation
 
 
-if (document.querySelector('#msgForm')) {
+if (document.querySelector('#msgForm') || document.querySelector('#sendMessageModal')) {
   var msgForm = new Vue({
     el: "#msgForm",
     data: {
@@ -27861,7 +27861,29 @@ if (document.querySelector('#msgForm')) {
     },
     created: function created() {
       var oldEmail = document.querySelector('#emailMsg').value;
-      console.log(oldEmail);
+      this.email = oldEmail;
+    }
+  });
+  var msgFormMobile = new Vue({
+    el: "#sendMessageModal",
+    data: {
+      email: "",
+      text_ms: ""
+    },
+    methods: {
+      msgValidate: function msgValidate() {
+        //validate email
+        var btn = document.querySelector("#btnSendMsgMobile");
+
+        if (this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && this.text_ms.length > 20) {
+          btn.disabled = false;
+        } else {
+          btn.disabled = true;
+        }
+      }
+    },
+    created: function created() {
+      var oldEmail = document.querySelector('#emailMsgMobile').value;
       this.email = oldEmail;
     }
   });
@@ -27917,7 +27939,7 @@ if (document.querySelector('#searchApp')) {
                 ;
                 SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
               });
-            }, i * 300);
+            }, i * 700);
           });
           var pre = response.data.sql;
           pre.forEach(function (apartment, i) {
@@ -27934,7 +27956,7 @@ if (document.querySelector('#searchApp')) {
 
                 SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
               });
-            }, i * 300);
+            }, i * 700);
           });
         });
       },
@@ -27983,7 +28005,7 @@ if (document.querySelector('#searchApp')) {
 
                 SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
               });
-            }, i * 300);
+            }, i * 700);
           });
           pre.forEach(function (apartment, i) {
             setTimeout(function () {
@@ -27999,7 +28021,7 @@ if (document.querySelector('#searchApp')) {
 
                 SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
               });
-            }, i * 300);
+            }, i * 700);
           });
         });
       },
@@ -28074,7 +28096,7 @@ if (document.querySelector('#searchApp')) {
                 ;
                 SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
               });
-            }, i * 300);
+            }, i * 700);
           });
           var pre = response.data.sql;
           pre.forEach(function (apartment, i) {
@@ -28091,7 +28113,7 @@ if (document.querySelector('#searchApp')) {
 
                 SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
               });
-            }, i * 300);
+            }, i * 700);
           });
         });
       }

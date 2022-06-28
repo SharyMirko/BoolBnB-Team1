@@ -27,7 +27,10 @@
 
                   {{-- coroncina promozione --}}
                   <div class="d-flex align-items-center mb-3">
+                     @if (count($apartment->premiumFeatures) != 0)
                      <div class="crown-show"></div>
+                     @endif
+                    
                      <h1 class="text-capitalize mb-0">{{ $apartment->title }}</h1>
                   </div>
 

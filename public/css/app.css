@@ -12463,6 +12463,15 @@ header .dropdown-item:focus {
   margin-left: 1.25rem;
 }
 
+.crown-show {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #FFBC39;
+  background: url(/images/promo_crown.svg?a56a974a7cbb5c75bcf05685a62a9fb9) center;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  margin-right: 0.75rem;
+}
+
 .message .img-box {
   width: 15rem;
   height: 10rem;

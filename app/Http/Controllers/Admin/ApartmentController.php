@@ -92,9 +92,7 @@ class ApartmentController extends Controller
    public function edit(Apartment $apartment)
    {
       if (Auth::id() !== $apartment->user_id) abort(403);
-
-      $ciao = $apartment->services()->where('apartment_id', $apartment->id)->get();
-
+      $apartment = $apartment->with('services')->first();
       $users = User::all();
       $services = Service::all();
       $categoryData = Category::all();
@@ -103,7 +101,6 @@ class ApartmentController extends Controller
 
       return view('apartments.edit', [
          'apartment'    => $apartment,
-         'ciao'         => $ciao,
          'users'        => $users,
          'serviceData'  => $services,
          'categoryData' => $categoryData

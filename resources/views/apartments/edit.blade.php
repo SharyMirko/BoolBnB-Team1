@@ -122,24 +122,22 @@
                   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-2 row-cols-lg-3 g-0">
 
                      <div class="col d-flex flex-column ">
-
+                        
                         @foreach ($serviceData as $service)
-
+                        
                            <div class="form-check">
+
+                            @for ($i = 0; $i < count($apartment->services); $i++)
+                            @if ($apartment->services[$i]->id == $service->id) 
+                            <input class="form-check-input" type="checkbox" name="services[]" value="{{ $service->id }}" checked>
+                              @else
+                              <input class="form-check-input" type="checkbox" name="services[]" value="{{ $service->id }}">
+                            @endif
+                            @endfor
                              
-
-
-                              @foreach ($ciao as $c)
-
-                                 @if ($c->id == $service->id)
-                                    <input type="checkbox" name="serviceData[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}" checked>
-                                 @else
-                                    <input type="checkbox" name="serviceData[]" class="form-check-input" value="{{ $service->id }}" id="service-{{ $service->id }}">
-                                 @endif
-
-                              @endforeach
-
-
+                                      
+   
+                     
                               <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}</label>
 
                            </div>

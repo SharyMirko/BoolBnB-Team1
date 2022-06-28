@@ -296,7 +296,7 @@ if (document.querySelector('#searchApp')) {
                               SearchVue.results.push(apartment);
                            };
                            SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
-                        })}, i * 300
+                        })}, i * 700
                        )
 
                   })
@@ -313,7 +313,7 @@ if (document.querySelector('#searchApp')) {
                               SearchVue.premium.push(apartment);
                            }
                            SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
-                        })}, i * 300
+                        })}, i * 700
                        )
                   })
                });
@@ -360,7 +360,7 @@ if (document.querySelector('#searchApp')) {
                                  SearchVue.results.push(apartment);
                               }
                               SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
-                           })}, i * 300
+                           })}, i * 700
                           )
                      })
                      pre.forEach((apartment, i) => {
@@ -375,7 +375,7 @@ if (document.querySelector('#searchApp')) {
                                  SearchVue.premium.push(apartment);
                               }
                               SearchVue.nRes = SearchVue.results.length + SearchVue.premium.length;
-                           })}, i * 300
+                           })}, i * 700
                           )
                      })
                   });
@@ -459,7 +459,7 @@ if (document.querySelector('#searchApp')) {
                                  };
 
                                  SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
-                              })}, i * 300
+                              })}, i * 700
                              )
 
                         })
@@ -476,12 +476,12 @@ if (document.querySelector('#searchApp')) {
                                     SearchVue.premium.push(apartment);
                                  }
                                  SearchVue.nRes2 = SearchVue.results2.length + SearchVue.premium.length;
-                              })}, i * 300
+                              })}, i * 700
                              )
                         })
                      });
             }
-            
+
       },
    });
 }

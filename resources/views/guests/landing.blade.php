@@ -75,7 +75,7 @@
 
 
    {{-- categorie --}}
-   <section class="container my-4 py-4" id="sec_categorie">
+   {{-- <section class="container my-4 py-4" id="sec_categorie">
       <div class="row py-4">
             <h3>Categorie</h3>
       </div>
@@ -105,7 +105,7 @@
                </a>
             </div>
       </div>
-   </section>
+   </section> --}}
    {{-- / --}}
 
 @endsection

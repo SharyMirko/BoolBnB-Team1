@@ -95,12 +95,10 @@ class ApartmentController extends Controller
    public function edit(Apartment $apartment)
    {
       if (Auth::id() !== $apartment->user_id) abort(403);
-      $apartment = $apartment->with('services')->first();
+      // $apartment = $apartment->with('services')->first();
       $users = User::all();
       $services = Service::all();
       $categoryData = Category::all();
-
-      // dd($ciao);
 
       return view('apartments.edit', [
          'apartment'    => $apartment,
@@ -116,6 +114,8 @@ class ApartmentController extends Controller
       if (Auth::id() !== $apartment->user_id) abort(403);
 
       $apartmentForm = $request->all();
+
+      // dd($apartmentForm);
 
       if (array_key_exists('thumb', $apartmentForm)) {
 

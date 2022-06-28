@@ -24,7 +24,13 @@
          <div class="col-12 col-md-7 col-lg-8">
             <div class="d-flex align-items-start mb-5">
                <div class="flex-grow-1">
-                  <h1 class="text-capitalize">{{ $apartment->title }}</h1>
+
+                  {{-- coroncina promozione --}}
+                  <div class="d-flex align-items-center mb-3">
+                     <div class="crown-show"></div>
+                     <h1 class="text-capitalize mb-0">{{ $apartment->title }}</h1>
+                  </div>
+
                   <p class="price-text my-2 d-md-none">€{{ $apartment->price }}<span class="price-suffix">/notte</span></p>
                   <p class="geo icon mb-0">{{ $apartment->address }}</p>
                   <p class="city">{{ $apartment->city }}</p>

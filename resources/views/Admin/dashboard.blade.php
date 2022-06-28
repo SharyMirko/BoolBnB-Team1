@@ -34,8 +34,7 @@
                      @endif
 
                      @if (count($apart->premiumFeatures) != 0)
-                         
-                     <div class="crown"></div>
+                        <div class="crown"></div>
                      @endif
                   </div>
 
@@ -51,12 +50,11 @@
                      <div class="d-flex flex-column mb-4">
                         <a href="{{ route('admin.statistics.index', ['apart_id'=>$apart->id]) }}" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
                         <a href="{{ route('admin.messages.index', ['apart_id'=>$apart->id]) }}" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
-                        @if (count($apart->premiumFeatures) != 0)
-                         
-                     <p>Appartamento promosso</p>
-                     @else
 
-                     <a href="{{ route('admin.payments.index', ['apart_id'=>$apart->id]) }}"><i class="fa-solid fa-crown"></i> Promuovi</a>
+                     @if (count($apart->premiumFeatures) != 0)
+                        {{-- niente --}}
+                     @else
+                        <a href="{{ route('admin.payments.index', ['apart_id'=>$apart->id]) }}"><i class="fa-solid fa-crown"></i> Promuovi</a>
                      @endif
                      </div>
 
@@ -87,7 +85,9 @@
                   <article class="card rounded-3 border-0">
                         <img src="{{$apart->thumb}}" class="card-img-top position-relative w-100" alt="{{$apart->title}}">
 
-                        <div class="crown"></div>
+                        @if (count($apart->premiumFeatures) != 0)
+                           <div class="crown"></div>
+                        @endif
 
                         <div class="card-body p-4">
                            <p class="category  text-muted">{{$apart->category}}</p>
@@ -98,9 +98,15 @@
 
                            <div class="d-flex flex-column">
                               <div class="d-flex flex-column mb-4">
-                                 <a href="#" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
+                                 <a href="{{ route('admin.statistics.index', ['apart_id'=>$apart->id]) }}" class="mb-1"><i class="fa-solid fa-chart-line"></i> Statistiche</a>
                                  <a href="{{ route('admin.messages.index', ['apart_id'=>$apart->id]) }}" class="mb-1"><i class="fa-solid fa-envelope"></i> Messaggi ricevuti</a>
-                                 <a href="#"><i class="fa-solid fa-crown"></i> Promuovi</a>
+
+                                 @if (count($apart->premiumFeatures) != 0)
+                                 {{-- niente --}}
+                                 @else
+                                    <a href="{{ route('admin.payments.index', ['apart_id'=>$apart->id]) }}"><i class="fa-solid fa-crown"></i> Promuovi</a>
+                                 @endif
+
                               </div>
 
                               <div class="d-flex">

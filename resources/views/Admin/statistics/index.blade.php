@@ -8,7 +8,12 @@
 
       <div class="d-flex align-items-center my-5 message flex-wrap">
          <div class="img-box position-relative flex-grow-1 flex-sm-grow-0 mb-3">
-            <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            @if (str_contains( $userApart[0]->thumb, 'uploads'))
+               <img src="{{ asset('storage/' . $userApart[0]->thumb) }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            @else
+               <img src="{{ $userApart[0]->thumb }}" class="rounded-3 h-100 img-fluid" alt="{{ $userApart[0]->title }}">
+            @endif
+
             <div class="crown"></div>
          </div>
 
@@ -16,12 +21,12 @@
             <p class="category m-0 text-capitalize">{{$userApart[0]->category}}</p>
             <h4 class="my-2 text-capitalize">{{$userApart[0]->title}}</h4>
             <p class="geo icon mb-0">{{$userApart[0]->address}}</p>
-            <p class="city">{{$userApart[0]->city}}</p>
+            <p class="city mb-1">{{$userApart[0]->city}}</p>
             <p class="price-text m-0">€ {{$userApart[0]->price}}<span class="price-suffix">/notte</span></p>
          </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-lg-2 gx-0 gx-lg-3 gy-5 gy-lg-0 my-lg-5" >
+      <div class="row row-cols-1 row-cols-lg-2 gx-0 gx-lg-3 gy-5 gy-lg-0 my-lg-5 py-3 px-lg-3" id="charts-wrapper">
          <div class="col">
             <h5 class="mb-3">Visualizzazioni degli ultimi 8 giorni</h5>
             <canvas id="viewChart" class=""></canvas>

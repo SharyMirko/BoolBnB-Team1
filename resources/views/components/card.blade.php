@@ -2,7 +2,12 @@
    <a class="m-0 p-0 d-flex flex-column flex-grow-1" href="{{ route('apartments.show', $item->id) }}">
       <div class="card-img-top position-relative">
          <div class="position-absolute w-100 h-100 filtro-card"></div>
-         <img src="{{ $item->thumb }}" class="card-img-top" alt="{{ $item->title }}">
+
+         @if ((str_contains( $item->thumb, 'uploads')))
+            <img src="{{ asset('storage/' . $item->thumb) }}" class="card-img-top" alt="{{ $item->title }}">
+         @else
+            <img src="{{ $item->thumb }}" class="card-img-top" alt="{{ $item->title }}">
+         @endif
 
          <div class="crown"></div>
 

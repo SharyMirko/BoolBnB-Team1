@@ -214,8 +214,8 @@ if (document.querySelector('#createModal')) {
 }
 
 
-// form reset password validation
-if (document.querySelector('#msgForm')) {
+// form invio messaggio validation
+if (document.querySelector('#msgForm') || document.querySelector('#sendMessageModal')) {
    const msgForm = new Vue({
       el: "#msgForm",
       data: {
@@ -238,7 +238,32 @@ if (document.querySelector('#msgForm')) {
       },
       created: function() {
          let oldEmail = document.querySelector('#emailMsg').value;
-         console.log(oldEmail);
+         this.email = oldEmail;
+      }
+   });
+
+   const msgFormMobile = new Vue({
+      el: "#sendMessageModal",
+      data: {
+         email: "",
+         text_ms: "",
+      },
+      methods: {
+         msgValidate: function () {
+            //validate email
+            let btn = document.querySelector("#btnSendMsgMobile");
+            if (
+               this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+               this.text_ms.length > 20
+               ) {
+                  btn.disabled = false;
+               } else {
+                  btn.disabled = true;
+               }
+         },
+      },
+      created: function() {
+         let oldEmail = document.querySelector('#emailMsgMobile').value;
          this.email = oldEmail;
       }
    });

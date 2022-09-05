@@ -8,13 +8,6 @@ import { default as ttMaps } from "@tomtom-international/web-sdk-maps";
 import { forEach, indexOf, isSet } from "lodash";
 
 
-// const LandingPageVue = new Vue({
-//    el: "#LandingPageVue",
-//    render: (h) => h(LandingPageVue),
-// });
-
-
-
 // Landing Slider
 let items = document.querySelectorAll(".carousel .carousel-item");
 
@@ -36,8 +29,6 @@ if (items) {
       }
    });
 }
-
-
 
 // form register validation
 if(document.querySelector('#registerModal')) {
@@ -64,10 +55,7 @@ if(document.querySelector('#registerModal')) {
                this.password_confirmation === this.password &&
                this.name.length > 2 &&
                this.last_name.length > 2 &&
-
                this.date != "" && today > new Date(this.date)
-
-
             ) {
                btn.disabled = false;
             } else {
@@ -77,8 +65,6 @@ if(document.querySelector('#registerModal')) {
       },
    });
 }
-
-
 
 // form login validation
 if (document.querySelector('#loginModal')) {
@@ -104,9 +90,6 @@ if (document.querySelector('#loginModal')) {
       },
    });
 }
-
-
-
 
 // form reset password validation
 if (document.querySelector('#passwordResetModal')) {
@@ -214,7 +197,7 @@ if (document.querySelector('#createModal')) {
 }
 
 
-// form invio messaggio validation
+// form sending messages validation
 if (document.querySelector('#msgForm') || document.querySelector('#sendMessageModal')) {
    const msgForm = new Vue({
       el: "#msgForm",
@@ -270,7 +253,7 @@ if (document.querySelector('#msgForm') || document.querySelector('#sendMessageMo
 }
 
 
-// Serve per la ricerca nell'Index
+// index searchApp
 if (document.querySelector('#searchApp')) {
    const SearchVue = new Vue({
       el: "#searchApp",
@@ -434,8 +417,7 @@ if (document.querySelector('#searchApp')) {
          mounted: function mounted () {
             if(window.location.search) {
                this.loading = true
-   /*             let test = window.location.search.slice(0, 1)
-    */            let test = window.location.search.replace("?city=", '')
+             let test = window.location.search.replace("?city=", '')
                   if(test.includes('+') || test.includes('%20')) {
 
 
@@ -445,12 +427,7 @@ if (document.querySelector('#searchApp')) {
                    test = test.replace("%20", " ")
                   }
                this.location = test;
-             /*   Axios.get("/api/api-artments?" + "city=" + test + "&rooms=" + this.tenuta + "&beds=" + this.nBeds).then(
-                  (response) =>{
-                     this.results2 = response.data.response.data
-                     this.nRes2 = this.results2.length
-
-                  }) */
+            
                   if( this.location == 'Vibo Valentia' || this.location == 'vibo valentia') {
                      alert('AAAAAAAAA  COMU JIAMUUUUUUU')
                   }
@@ -513,7 +490,7 @@ if (document.querySelector('#searchApp')) {
 
 
 
-// Mappa nello Show
+// TomTom API for map data
 let longitude = document.getElementById("longitude");
 let latitude = document.getElementById("latitude");
 let mapContainer = document.querySelector('#mapShow');
